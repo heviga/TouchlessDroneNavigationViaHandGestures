@@ -1,0 +1,180 @@
+# import cv2
+# import mediapipe as mp
+# from model import KeyPointClassifier
+# import landmark_utils as u
+#
+# mp_drawing = mp.solutions.drawing_utils
+# mp_drawing_styles = mp.solutions.drawing_styles
+# mp_hands = mp.solutions.hands
+#
+# kpclf = KeyPointClassifier()
+#
+# # Updated gestures dictionary with your 8 gestures
+# gestures = {
+#     0: "Palm",              # dlan
+#     1: "Fist",              # pěst
+#     2: "Rock",              # rock
+#     3: "Ok",                # ok
+#     4: "Peace",             # peace
+#     5: "Like",              # palec hore
+#     6: "Up",                # ukazovák hore
+#     7: "Down",              # ukazovák dole
+#     8: "No Hand Detected"   # no hand
+# }
+#
+# # For webcam input:
+# cap = cv2.VideoCapture(0)
+# with mp_hands.Hands(
+#         model_complexity=0,
+#         min_detection_confidence=0.5,
+#         min_tracking_confidence=0.5) as hands:
+#     while cap.isOpened():
+#         success, image = cap.read()
+#         if not success:
+#             print("Ignoring empty camera frame.")
+#             continue
+#
+#         # Process the image and recognize hand gestures
+#         image.flags.writeable = False
+#         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+#         results = hands.process(image)
+#
+#         # Draw the hand annotations on the image
+#         image.flags.writeable = True
+#         image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
+#         gesture_index = 8  # Default to "No Hand Detected"
+#         if results.multi_hand_landmarks:
+#             for hand_landmarks in results.multi_hand_landmarks:
+#                 landmark_list = u.calc_landmark_list(image, hand_landmarks)
+#                 keypoints = u.pre_process_landmark(landmark_list)
+#                 gesture_index = kpclf(keypoints)
+#
+#                 mp_drawing.draw_landmarks(
+#                     image,
+#                     hand_landmarks,
+#                     mp_hands.HAND_CONNECTIONS,
+#                     mp_drawing_styles.get_default_hand_landmarks_style(),
+#                     mp_drawing_styles.get_default_hand_connections_style())
+#
+#         # Flip the image horizontally for a selfie-view display
+#         final = cv2.flip(image, 1)
+#         cv2.putText(final, gestures[gesture_index],
+#                     (10, 30), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255))
+#         cv2.imshow('MediaPipe Hands', final)
+#         if cv2.waitKey(5) & 0xFF == 27:  # Press 'Esc' to exit
+#             break
+#
+# cap.release()
+# cv2.destroyAllWindows()
+
+# POKUS 2
+# import cv2
+# import mediapipe as mp
+# import numpy as np
+# import sys
+# import traceback
+# import time  # Ensure this line is added
+# from threading import Thread, Event
+# # from tellopy import Tello  # Commented out for webcam testing, uncomment for drone use
+# from model import KeyPointClassifier
+# import landmark_utils as u
+#
+#
+#
+# # Initialize MediaPipe solutions for hands and face detection
+# mp_hands = mp.solutions.hands.Hands(min_detection_confidence=0.5, min_tracking_confidence=0.5)
+# mp_face_detection = mp.solutions.face_detection.FaceDetection(min_detection_confidence=0.5)
+#
+# prediction = 'None'
+# last_gesture_time = time.time()  # Initialize to current time
+#
+#
+# def control(action):
+#     # Print the simulated drone action
+#     print(f"Simulated drone action: {action}")
+#     global last_gesture_time
+#     last_gesture_time = time.time()  # Reset the timer on action
+#
+#
+# def recognise_gesture(frame):
+#     global prediction, mp_hands
+#     gestures = {
+#         0: "Palm",
+#         1: "Fist",
+#         2: "Rock",
+#         3: "Ok",
+#         4: "Peace",
+#         5: "Like",
+#         6: "Up",
+#         7: "Down",
+#         8: "None"
+#     }
+#
+#     kpclf = KeyPointClassifier()
+#     image_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+#     hand_results = mp_hands.process(image_rgb)
+#     if hand_results.multi_hand_landmarks:
+#         for hand_landmarks in hand_results.multi_hand_landmarks:
+#             landmark_list = u.calc_landmark_list(frame, hand_landmarks)
+#             keypoints = u.pre_process_landmark(landmark_list)
+#             gesture_index = kpclf(keypoints)
+#             prediction = gestures.get(gesture_index, "None")
+#             control(f"Gesture detected: {prediction}")  # Simulate action based on gesture
+#
+#
+# def follow_face(frame):
+#     global mp_face_detection
+#     face_results = mp_face_detection.process(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
+#     if face_results.detections:
+#         # Simulate face following logic
+#         control("Following face")  # Simulate following face action
+#
+#
+# def main():
+#     cap = cv2.VideoCapture(0)  # Use the webcam
+#
+#     while True:
+#         ret, frame = cap.read()
+#         if not ret:
+#             print("Failed to grab frame")
+#             break
+#
+#         # Decide between gesture recognition and face following based on time elapsed
+#         if time.time() - last_gesture_time > 20:
+#             follow_face(frame)
+#         else:
+#             recognise_gesture(frame)
+#
+#         cv2.putText(frame, prediction, (10, 30), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2)
+#         cv2.imshow('Test With Webcam', frame)
+#
+#         if cv2.waitKey(1) & 0xFF == ord('q'):
+#             break
+#
+#     cap.release()
+#     cv2.destroyAllWindows()
+#
+#
+# if __name__ == '__main__':
+#     main()
+
+
+# def find_face(image, mp_face_detection):
+#     frame_height, frame_width, _ = image.shape
+#     face_results = mp_face_detection.process(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
+#     areas = []  # To store areas of all detected faces
+#
+#     if face_results.detections:
+#         for detection in face_results.detections:
+#             bboxC = detection.location_data.relative_bounding_box
+#             xmin = int(bboxC.xmin * frame_width)
+#             ymin = int(bboxC.ymin * frame_height)
+#             width = int(bboxC.width * frame_width)
+#             height = int(bboxC.height * frame_height)
+#             cv2.rectangle(image, (xmin, ymin), (xmin + width, ymin + height), (0, 255, 0), 2)
+#             area = width * height
+#             area_percentage = 100*area/(frame_width*frame_height)
+#             areas.append(area)
+#             print(f"Face detected with area: {area_percentage} %")
+#     return areas
+
