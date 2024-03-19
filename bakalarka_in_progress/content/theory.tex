@@ -150,6 +150,8 @@ The value that the transfer function typically returns is a mix of the neuron's 
 	\label{neural_n_example}
 \end{figure}
  
+ \subsection*{Feedforward Neural Network}
+ Weights are assigned after an input layer has been identified. Larger weights contribute more significantly to the output than smaller ones, helping to determine the relative importance of each variable. After that, each input is multiplied by its corresponding weight before being added together. The output is then determined by passing it through an activation function. The node "fires," or activates, when its output surpasses a predetermined threshold, forwarding data to the network's subsequent layer. As a result, one node's output ends up becoming the next node's input. This neural network is classified as a feedforward network because of the way that data is passed from one layer to the next.
  
  
 \subsection*{Activation Functions}
@@ -336,20 +338,24 @@ An activation function called Softmax is used to convert numbers or logits (outp
 	\caption{A diagram of the NN softmax classification process.}
 \end{figure}
 
-\subsection{Feedforward Neural Network}
-Weights are assigned after an input layer has been identified. Larger weights contribute more significantly to the output than smaller ones, helping to determine the relative importance of each variable. After that, each input is multiplied by its corresponding weight before being added together. The output is then determined by passing it through an activation function. The node "fires," or activates, when its output surpasses a predetermined threshold, forwarding data to the network's subsequent layer. As a result, one node's output ends up becoming the next node's input. This neural network is classified as a feedforward network because of the way that data is passed from one layer to the next.
 
 
-\subsection{Training A Neural Network}
-The weights of the connections between the nodes are randomly chosen, and neural networks then use a technique known as backpropagation to learn new, improved connection weights based on the inputs and outputs that are predetermined. Neural networks can therefore learn.
-The random connection weights are used after the inputs and outputs are selected. Next, the output is computed and evaluated relative to the expected outputs. The difference is referred to as a network error.  The error should be to be minimal. Backpropagation is used for that purpose.  The connected neurons receive a message about their error from the output neurons, and the connection weight between them is modified. The weights are computed using a learning rate, errors, neuron inputs, and the previous weight.\\
-%Backpropagation
+\subsection*{Training A Neural Network}
+The weights of the connections between the nodes are randomly chosen, and neural networks then use a technique known as backpropagation to learn new, improved connection weights based on the inputs and outputs that are predetermined . Neural networks can therefore learn.
+The backpropagation algorithm works as follows:
+\begin{enumerate}[label=\arabic*.]
+	\item Forward Pass: The input data is passed through the network (from input to output layers), calculating the output of each layer until the final predictions are made.
+	\item Loss Calculation: The difference between the predicted outputs and the actual labels is calculated using the loss function specified.
+	\item Backward Pass (Backpropagation): The gradient (partial derivatives) of the loss function with respect to each weight is calculated backward from the output layer to the input layer. This involves applying the chain rule from calculus to propagate the error backward through the network.
+	\item Weight Update: The weights are updated using an optimization algorithm (like Adam). The optimizer uses the gradients calculated during backpropagation to adjust the weights in a direction that minimizes the loss. Usually the weights are computed using a learning rate, errors, neuron inputs, and the previous weight.
+ \end{enumerate}
+ This entire process is repeated for a specified number of epochs or until another stopping criterion is met (like the early stopping callback, which halts training if the validation loss doesn't improve for a set number of epochs).
+
 \subsubsection*{Cost functions}
-
- As we train the model, we’ll want to evaluate its accuracy using a cost (or loss) function. Loss function tells us about how good our algorithm models our dataset.The loss error is calculated for each training sample, while the loss function represents the whole set of $m$ samples. The cost function represents the average loss error for each sample. It is a function that assesses how well a machine learning model performs with a given set of data. The error between expected and predicted values is quantified by the Cost Function and shown as a single real number. Cost functions can be formed in a variety of ways, depending on the nature of the problem. For a model using a formula 
+ As we train the model, we’ll want to evaluate its accuracy using a cost (or loss) function. Loss function tells us about how good our algorithm models our dataset.The loss error is calculated for each training sample, while the loss function represents the whole set of $m$ samples. The cost function represents the average loss error for each sample. It is a function that assesses how well a machine learning model performs with a given set of data. The error between expected and predicted values is quantified by the Cost Function and shown as a single real number. Cost functions can be formed in a variety of ways, depending on the nature of the problem. For a model using a formula ,
  \begin{equation*}
  	\hat{y} = wx
- \end{equation*}, where $\hat{y}$ is predicted value, $x$ a vector of data used for prediction and training and $w$ the weight.
+ \end{equation*} where $\hat{y}$ is predicted value, $x$ a vector of data used for prediction and training and $w$ the weight.
  
   
  The commonly used loss function is the mean squared error (MSE).  In the equation below,
@@ -364,7 +370,7 @@ $m$ is the number of samples.
 \end{equation}
 
 
-Crossentropy function
+Crossentropy function\\
 Other names for cross-entropy loss include logistic loss, log loss, and logarithmic loss. Every predicted class probability is compared to the actual class probability, and a loss function is used to penalize the probability according to its deviation from the actual expected value. Because the penalty is logarithmic, large differences near to 1 will result in a large score, and small differences approaching 0 will result in a small score. Cross-entropy loss in a perfect model is 0.
 What is meant by cross-entropy is 
 \begin{equation}
@@ -372,13 +378,33 @@ What is meant by cross-entropy is
 \end{equation}
 where $M$ is number of classes, $y$ is the binary indicator if class of label $c$ is the correct classification for observation $o$ and $p$ is the predicted probability.
 
-When dealing with labels that are one-hot encoded, such as in the case of the 3-class classification problem, where the values are [1,0,0], [0,1,0], and [0,0,1], categorical cross-entropy is employed.
+When dealing with labels that are one-hot encoded, such as 3-class classification problem, where the values are [1,0,0], [0,1,0], and [0,0,1], categorical cross-entropy is employed.
 Labels in sparse categorical cross-entropy are encoded with integers, such as [1], [2], and [3] for a 3-class problem.
 
 
 There are many other types of cost functions used in ML, e.g. Root Mean Square error (RMSE), Binary Cross Entropy Loss Function,  Categorical cross-entropy, Hinge Loss, Kullback-Liebler Divergence LOSS (KL-Divergence), Huber Loss. Choosing a cost function will be influenced by the type of problem, the output activation function and network architecture.
 
 
+\subsection*{Hyperparameters of Neural Networks}
+\begin{itemize}
+	\item Learning Rate is a crucial parameter that controls to which extend the model needs to be modified. It is determines the step size at each training iteration. It is usually a value between 0 and 1. We can determine the direction of a loss function's optimum by computing the loss function's gradient. The step size that  in that direction is determined by the learning rate parameter.
+	\item Batch size tells us how much data is changed during 1 cycle (one epoch) of training. Larger batch sizes could lead to faster training, but with a trade off for lower accuracy or overfitting. The best size will depend on a number of variables, such as the size of the training dataset, the complexity of the model, and the available computational resources.
+	\item Epochs define the number times that the learning algorithm will work through the entire training dataset. Every sample in the training dataset has had a chance to update the internal model parameters after one epoch. One or more batches make up an epoch.
+\end{itemize}
+
+
+
+\subsection*{Optimalizators of Neural Networks}
+\begin{itemize}
+	\item Gradient Descent is a basic optimalization algorithm in classification problems and linear regression. It uses first derivates of cost function to find its minimum. The batch gradient descent averages and modifies the weights after gathering all the cost function values from every row in a single epoch. However, it can sometimes get stuck on local minimum and be unable to determine the global minimum.
+	\item Stochastic Gradient Descent is similar to adaptive learning in boosting methods of ML. The network uses the value from each iteration and gradually updates the weights according to how much weight's are responsible for error. As it reaches global minima, it is more effective than Gradient Descent.
+	\item Adam is convenient for most convex optimization problems with large datasets. It combines adaptive methods and momentum methods, where it takes into account the moving average of the gradient's first and second-order moments of the gradient. This allows it to effectively adapt the learning rates for each parameter.
+	 It is an extension to stochastic gradient descent.
+\end{itemize}
+
+
+
+\subsubsection*{Regulations of Neural Network}
 When talking about regulation of neural networks we can mention techniques like dropout or early stopping.
 
 Dropout is a regularization strategy for neural networks that, with a given probability p, drops a unit (along with connections) during training.
@@ -394,85 +420,68 @@ The goal is to stop co-adaptation, which occurs when a neural network becomes ov
 		transform shape,
 		every node/.style={scale=0.8} % Adjust the node text scaling factor as needed
 		]
-	
-	\foreach \y in {1,...,5}{
-		\node[node] (i\y) at (0,\nodesep*\y) {};
-		\node[node, right=\layersep of i\y] (h1\y) {};
-		\node[node, right=\layersep of h1\y] (h2\y) {};
-	}
-	
-	\node[node, right=\layersep of h22] (o1) {};
-	\node[node, right=\layersep of h24] (o2) {};
-	
-	\foreach \source in {1,...,5}
-	\foreach \dest in {1,...,5}{
-		\path[-stealth, thick] (i\source) edge (h1\dest);
-		\path[-stealth, thick] (h1\source) edge (h2\dest);
-	}
-	\foreach \source in {1,...,5}
-	\foreach \dest in {1,2}
-	\draw[-stealth, thick] (h2\source) -- (o\dest);
-	
-	\draw[-stealth, thick] (7.5,3*\nodesep) -- node[above,font=\Large] {dropout} (9.5, 3*\nodesep);
-	
-	% Boundary
-	
-	\foreach \y in {1,...,5}
-	\node[node, right=15em of h2\y] (di\y) {};
-	
-	\node[red,font=\huge] at (di1) {$\times$};
-	\node[red,font=\huge] at (di3) {$\times$};
-	
-	\foreach \y in {1,...,5}
-	\node[node, right=\layersep of di\y] (dh1\y) {};
-	
-	\node[red,font=\huge] at (dh11) {$\times$};
-	\node[red,font=\huge] at (dh13) {$\times$};
-	\node[red,font=\huge] at (dh14) {$\times$};
-	
-	\foreach \y in {1,...,5}
-	\node[node, right=\layersep of dh1\y] (dh2\y) {};
-	
-	\node[red,font=\huge] at (dh22) {$\times$};
-	\node[red,font=\huge] at (dh24) {$\times$};
-	
-	\node[node, right=\layersep of dh22] (do1) {};
-	\node[node, right=\layersep of dh24] (do2) {};
-	
-	\foreach \source in {2,4,5}
-	\foreach \dest in {2,5}
-	\draw[-stealth, thick] (di\source) -- (dh1\dest);
-	
-	\foreach \source in {2,5}
-	\foreach \dest in {1,3,5}
-	\draw[-stealth, thick] (dh1\source) -- (dh2\dest);
-	
-	\foreach \source in {1,3,5}
-	\foreach \dest in {1,2}
-	\draw[-stealth, thick] (dh2\source) -- (do\dest);
-	
-\end{tikzpicture}
+		
+		\foreach \y in {1,...,5}{
+			\node[node] (i\y) at (0,\nodesep*\y) {};
+			\node[node, right=\layersep of i\y] (h1\y) {};
+			\node[node, right=\layersep of h1\y] (h2\y) {};
+		}
+		
+		\node[node, right=\layersep of h22] (o1) {};
+		\node[node, right=\layersep of h24] (o2) {};
+		
+		\foreach \source in {1,...,5}
+		\foreach \dest in {1,...,5}{
+			\path[-stealth, thick] (i\source) edge (h1\dest);
+			\path[-stealth, thick] (h1\source) edge (h2\dest);
+		}
+		\foreach \source in {1,...,5}
+		\foreach \dest in {1,2}
+		\draw[-stealth, thick] (h2\source) -- (o\dest);
+		
+		\draw[-stealth, thick] (7.5,3*\nodesep) -- node[above,font=\Large] {dropout} (9.5, 3*\nodesep);
+		
+		% Boundary
+		
+		\foreach \y in {1,...,5}
+		\node[node, right=15em of h2\y] (di\y) {};
+		
+		\node[red,font=\huge] at (di1) {$\times$};
+		\node[red,font=\huge] at (di3) {$\times$};
+		
+		\foreach \y in {1,...,5}
+		\node[node, right=\layersep of di\y] (dh1\y) {};
+		
+		\node[red,font=\huge] at (dh11) {$\times$};
+		\node[red,font=\huge] at (dh13) {$\times$};
+		\node[red,font=\huge] at (dh14) {$\times$};
+		
+		\foreach \y in {1,...,5}
+		\node[node, right=\layersep of dh1\y] (dh2\y) {};
+		
+		\node[red,font=\huge] at (dh22) {$\times$};
+		\node[red,font=\huge] at (dh24) {$\times$};
+		
+		\node[node, right=\layersep of dh22] (do1) {};
+		\node[node, right=\layersep of dh24] (do2) {};
+		
+		\foreach \source in {2,4,5}
+		\foreach \dest in {2,5}
+		\draw[-stealth, thick] (di\source) -- (dh1\dest);
+		
+		\foreach \source in {2,5}
+		\foreach \dest in {1,3,5}
+		\draw[-stealth, thick] (dh1\source) -- (dh2\dest);
+		
+		\foreach \source in {1,3,5}
+		\foreach \dest in {1,2}
+		\draw[-stealth, thick] (dh2\source) -- (do\dest);
+		
+	\end{tikzpicture}
 \end{figure}
 
 An intuitive technique for training just enough, is early stopping. It prevents the model from learning on 'noised' dataset. When training, after every epoch, the model is evaluated using a validation dataset. The training process is terminated if the model's performance on the validaion dataset begins to drop (for example, if loss starts to rise or accuracy starts to fall).
 
-
-
-\subsection*{Hyperparameters of Neural Networks}
-\begin{itemize}
-	\item Learning Rate is a crucial parameter that controls to which extend the model needs to be modified. It is determines the step size at each training iteration. It is usually a value between 0 and 1. We can determine the direction of a loss function's optimum by computing the loss function's gradient. The step size that  in that direction is determined by the learning rate parameter.
-	\item Batch size tells us how much data is changed during 1 cycle (one epoch) of training. Larger batch sizes could lead to faster training, but with a trade off for lower accuracy or overfitting. The best size will depend on a number of variables, such as the size of the training dataset, the complexity of the model, and the available computational resources.
-	\item Epochs define the number times that the learning algorithm will work through the entire training dataset. Every sample in the training dataset has had a chance to update the internal model parameters after one epoch. One or more batches make up an epoch.
-\end{itemize}
-
-
-
-\subsection*{Optimalizators of Neural Networks}
-\begin{itemize}
-	\item Gradient Descent
-	\item Stochastic Gradient Descent
-	\item Adam
-\end{itemize}
 
 
 %for a neural network 
