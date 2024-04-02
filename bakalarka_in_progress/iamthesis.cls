@@ -277,6 +277,7 @@ Study programme:     & Process Control    \\
 Study field:         & Cybernetics \\
 Training workspace:        &\thesisinst   \\
 Thesis supervisor:   & \thesissupervisor \\
+Consultant: & Ing. Patrik Valábek\\
 \end{tabular}	
 \fi		
 \end{small}

@@ -1,0 +1,150 @@
+\begin{thebibliography}{10}
+
+\bibitem{tensorflow2015-whitepaper}
+Mart\'{i}n Abadi, Ashish Agarwal, Paul Barham, Eugene Brevdo, Zhifeng Chen,
+  Craig Citro, Greg~S. Corrado, Andy Davis, Jeffrey Dean, Matthieu Devin,
+  Sanjay Ghemawat, Ian Goodfellow, Andrew Harp, Geoffrey Irving, Michael Isard,
+  Yangqing Jia, Rafal Jozefowicz, Lukasz Kaiser, Manjunath Kudlur, Josh
+  Levenberg, Dandelion Man\'{e}, Rajat Monga, Sherry Moore, Derek Murray, Chris
+  Olah, Mike Schuster, Jonathon Shlens, Benoit Steiner, Ilya Sutskever, Kunal
+  Talwar, Paul Tucker, Vincent Vanhoucke, Vijay Vasudevan, Fernanda Vi\'{e}gas,
+  Oriol Vinyals, Pete Warden, Martin Wattenberg, Martin Wicke, Yuan Yu, and
+  Xiaoqiang Zheng.
+\newblock {TensorFlow}: Large-scale machine learning on heterogeneous systems,
+  2015.
+\newblock Software available from tensorflow.org.
+
+\bibitem{mediapipe2019blog}
+Google~AI Blog.
+\newblock Mediapipe: On-device, real time hand tracking, 2019.
+\newblock
+  \href{https://ai.googleblog.com/2019/08/on-devicereal-time-hand-tracking-with.html}{Blog
+  Post} Accessed: December, 2023.
+
+\bibitem{a16080361}
+Ahmed Eid and Friedhelm Schwenker.
+\newblock Visual static hand gesture recognition using convolutional neural
+  network.
+\newblock {\em Algorithms}, 16(8):361, 2023.
+\newblock \href{https://www.mdpi.com/1999-4893/16/8/361}{Journal Article} DOI:
+  10.3390/a16080361.
+
+\bibitem{escote2021djitellopy}
+D.~F. Escoté.
+\newblock djitellopy, 2021.
+\newblock \href{https://github.com/damiafuentes/DJITelloPy}{GitHub Repository}.
+
+\bibitem{girshick2014rich}
+Ross Girshick, Jeff Donahue, Trevor Darrell, and Jitendra Malik.
+\newblock Rich feature hierarchies for accurate object detection and semantic
+  segmentation.
+\newblock In {\em Proceedings of the IEEE conference on computer vision and
+  pattern recognition}, pages 580--587, 2014.
+
+\bibitem{isola2017image}
+Phillip Isola, Jun-Yan Zhu, Tinghui Zhou, and Alexei~A. Efros.
+\newblock Image-to-image translation with conditional adversarial networks.
+\newblock In {\em Proceedings of the IEEE conference on computer vision and
+  pattern recognition}, pages 1125--1134, 2017.
+
+\bibitem{LiZhang2022}
+Y~Li and P~Zhang.
+\newblock Static hand gesture recognition based on hierarchical decision and
+  classification of finger features.
+\newblock {\em Science Progress}, 105(1), 2022.
+
+\bibitem{DBLP:journals/corr/abs-1708-02002}
+Tsung{-}Yi Lin, Priya Goyal, Ross~B. Girshick, Kaiming He, and Piotr
+  Doll{\'{a}}r.
+\newblock Focal loss for dense object detection.
+\newblock {\em CoRR}, abs/1708.02002, 2017.
+
+\bibitem{liu2016ssd}
+Wei Liu, Dragomir Anguelov, Dumitru Erhan, Christian Szegedy, Scott Reed,
+  Cheng-Yang Fu, and Alexander~C. Berg.
+\newblock Ssd: Single shot multibox detector.
+\newblock In {\em European conference on computer vision}, pages 21--37.
+  Springer, 2016.
+
+\bibitem{lopez2019gesture}
+Carmen L{\'o}pez-Casado, Enrique Bauzano, Irene Rivas-Blanco, Carlos~J
+  P{\'e}rez-del Pulgar, and V{\'\i}ctor~F Mu{\~n}oz.
+\newblock A gesture recognition algorithm for hand-assisted laparoscopic
+  surgery.
+\newblock {\em Sensors}, 19(23):5182, 2019.
+
+\bibitem{mediapipe2023source}
+MediaPipe.
+\newblock Mediapipehands, 2023.
+\newblock
+  \href{https://github.com/google/mediapipe/tree/master/mediapipe/python/solutions}{MediaPipeHands
+  Source Code} Accessed: November 2023.
+
+\bibitem{recognition_model}
+Joe Minichino.
+\newblock Opencv mediapipe hand gesture recognition, 2022.
+\newblock
+  \href{https://github.com/techfort/opencv-mediapipe-hand-gesture-recognition.git}{Project
+  Repository on GitHub} Accessed: December 2023.
+
+\bibitem{nielsenneural}
+Michael~A. Nielsen.
+\newblock Neural networks and deep learning, 2018.
+
+\bibitem{park2014hand}
+JungSoo Park, Hyo-Rim Choi, JunYoung Kim, and TaeYong Kim.
+\newblock Hand pose recognition by using masked zernike moments.
+\newblock In {\em 2014 International Conference on Computer Vision Theory and
+  Applications (VISAPP)}, volume~1, pages 551--556. IEEE, 2014.
+
+\bibitem{priyal2013robust}
+S~Padam Priyal and Prabin~Kumar Bora.
+\newblock A robust static hand gesture recognition system using geometry based
+  normalizations and krawtchouk moments.
+\newblock {\em Pattern Recognition}, 46(8):2202--2219, 2013.
+
+\bibitem{redmon2016you}
+Joseph Redmon, Santosh Divvala, Ross Girshick, and Ali Farhadi.
+\newblock You only look once: Unified, real-time object detection.
+\newblock In {\em Proceedings of the IEEE conference on computer vision and
+  pattern recognition}, pages 779--788, 2016.
+
+\bibitem{ronneberger2015u}
+Olaf Ronneberger, Philipp Fischer, and Thomas Brox.
+\newblock U-net: Convolutional networks for biomedical image segmentation.
+\newblock In {\em International Conference on Medical image computing and
+  computer-assisted intervention}, pages 234--241. Springer, 2015.
+
+\bibitem{tello2023specs}
+RYZE.
+\newblock Tello specs, 2023.
+\newblock \href{https://www.ryzerobotics.com/tello/specs}{TELLO Specifications}
+  Accessed: December 2023.
+
+\bibitem{sandler2018mobilenetv2}
+Mark Sandler, Andrew Howard, Menglong Zhu, Andrey Zhmoginov, and Liang-Chieh
+  Chen.
+\newblock Mobilenetv2: Inverted residuals and linear bottlenecks.
+\newblock In {\em Proceedings of the IEEE conference on computer vision and
+  pattern recognition}, pages 4510--4520, 2018.
+
+\bibitem{opencv_mediapipe_hand_gesture_recognition}
+techfort.
+\newblock {OpenCV-MediaPipe Hand Gesture Recognition}.
+\newblock
+  \url{https://github.com/techfort/opencv-mediapipe-hand-gesture-recognition},
+  2023.
+
+\bibitem{article}
+Tong Zhang, Huifeng Lin, Zhaojie Ju, and Chenguang Yang.
+\newblock Hand gesture recognition in complex background based on convolutional
+  pose machine and fuzzy gaussian mixture models.
+\newblock {\em International Journal of Fuzzy Systems}, 22, 03 2020.
+
+\bibitem{zhao2020mediapipe}
+F.~Zhao, V.~Bazarevsky, A.~Vakunov, et~al.
+\newblock Mediapipe hands: On-device real-time hand tracking, 2020.
+\newblock \href{https://arxiv.org/pdf/2006.10214.pdf}{Research Paper} Google
+  Research, USA.
+
+\end{thebibliography}

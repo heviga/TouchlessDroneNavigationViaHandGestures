@@ -1,11 +1,101 @@
 \chapter{Practical Part}
-\subsection{Data Collection}
-Actually, many datasets that contain images of hand gestures are publicly available to use. In this project, we recorded our data. We did so with the MediaPipe hand-tracking model. We achieved this by capturing camera footage of each gesture being held for a certain period of time and moving around for variety. During the capture process, we pressed a key to label each gesture. Our dataset consisted of over 5000 samples. The different hand conditions for dataset samples include images from both the right and left hand, palms facing forward or backward towards the camera, and various degrees of hand position captured by the camera.
+In our task, we heavily worked with MediaPipe. We used it for data collection, face recognition, and finally gesture recognition. 
 
- The model outputs x, y, and z coordinates of hand landmark points from images, with only x and y coordinates necessary and sufficient for training the final model. As a result, the z coordinates were eliminated, and the remaining x and y coordinates of hand landmarks for various hand signs are stored in a csv file for each hand landmark.  The coordinates in Figure \ref{fig:saved_csv} represent the data points used to generate the final dataset and train the final model. The first column represents the label of a gesture, the next two columns are coordinates of landmark 0 at the wrist, and so on. Csv contains many combinations of landmark coordinates for each gesture.
+\section{Mediapipe}
+MediaPipe is a framework used to create machine learning pipelines for time-series data like video and audio. Google initially developed it to process real-time video and audio analysis on YouTube \cite{mediapipe2019blog}. In 2019, the public release allowed researchers and developers to incorporate MediaPipe into their projects. Unlike other machine learning frameworks that require high computing power, MediaPipe can run efficiently on devices with low power, such as Android and IoT devices. It consists of the MediaPipe framework and MediaPipe solutions. The MediaPipe framework is developed using C++, Java, and Objective C programming. MediaPipe solutions include 16 pre-trained TensorFlow and TensorFlow Lite models built on top of the MediaPipe framework for specific use cases.
+\subsection*{MediaPipe Hands}
+MediaPipe Hands is a solution that tracks hands in real time. The problem of detecting hands is somewhat intricate. The model must be able to recognize hands and it must function across a wide range of hand sizes with a big scale span so it must be robust. It is rather difficult to identify hands based just on their visual traits since hands lack high-contrast patterns.% found on faces, such as those surrounding the lips and eyes.
+
+MediaPipe Hands utilizes a combination of object detection, classification, and regression to recognize and track hands within a given image or video frame. The pipeline consists of two convolutional neural network models: a palm detector and a hand landmark model.
+
+
+The palm detector is a single-shot detector model that uses an orientated hand-bounding box to locate palms on a whole input image. This is done before landmark detection because it is easier to estimate bounding boxes of rigid objects like palms than detecting hands with articulated fingers. It ignores many aspect ratios and so the bounding boxes are only squared. The model uses both classification (hands, no hands), and object detection (predicting a bounding box around the detected hand), a focal loss \cite{DBLP:journals/corr/abs-1708-02002} It was trained on data, containing 700 images of 14 geographical subregions, from both men and women.
+
+
+The Hand Landmark Model runs subsequently with the palm detection model and uses regression to precisely localize 21 3D (x, y, z) coordinates within the hand region. Each landmark has a specific location on the hand that can vary within the pixel grid of an image. To capture the exact position, continuous values are used, allowing the model to indicate precisely where each landmark is located on the hand in terms of its x and y (and possibly z) coordinates within the image. The hands move and rotate freely, leading to a wide range of possible positions and orientations for each landmark. Continuous values are used because they make it possible to track hand gestures and movements more precisely. These gestures and movements may involve tiny changes to position and orientation that would be lost in discretized values.
+The model is resilient to self-occlusions and partially visible hands, and it learns a consistent internal hand posture representation. The results from the model contain 21 hand landmarks consisting of x, y, and z, a hand flag that indicates the likelihood that a hand is present in the input image, and a binary system of handedness, e.g. left or right hand.
+The coordinates x and y for each landmark are normalized \ref{sec:norm} to [0, 1] by image width and height. 
+
+The model was trained both on real-world and synthetic datasets, noting that the wrist point was learned only from synthetic images. More than 30,000 manually annotated real-world images were used and the model is very robust, allowing it to detect and map hand landmark points accurately, even on partially visible hands in most cases. In Figure
+\ref{fig:landmark_both_hands} my hands are not facing upfront but the model still finds all the landmarks for both hands. If tracking 2 hands, it also shows which one is left or right with different colors.
+
+For encountering a tracking failure, There was also another model output created for tracking failures. It generates the likelihood that the given crop contains a hand that is reasonably aligned. The detector is triggered to reset tracking if the score falls below a predetermined threshold.
+
+\begin{figure}
+	\centering
+	\includegraphics[width = 0.5\textwidth]{images/landmarks_both_hands.png}
+	\caption{Hand landmarks model output}
+	\label{fig:landmark_both_hands}
+\end{figure}
+
+\subsubsection*{Data Normalization}\label{sec:norm}
+The MediaPipe hand landmarks model provides coordinates for hand landmark points based on the position of pixels containing those points in an image. As a result, the coordinates of two images of the same hand sign with different placements in the frame can have significantly different distances between them. This makes it more challenging to train the model.
+
+To solve this problem, the wrist's landmark point has been considered with coordinates [0,0], and the coordinates of all other landmark points were adjusted accordingly.
+First, the coordinates' values of the wrist's landmark point are subtracted from all coordinates' values.
+
+Then, the coordinates were normalized to be between 0 and 1 by dividing them by the largest absolute value of the difference. Finally, the normalized coordinates were collected in the landmarks list. The coordinate normalization procedure is shown in Figure \ref{fig:normalization}.
 
 
 \begin{figure}
+	\centering
+	\includegraphics[width = 0.85\textwidth]{images/normalise.pdf}
+	\caption{Process of normalization of landmark coordinates}
+	\label{fig:normalization}
+\end{figure}
+
+\subsection*{MediaPipe Face}
+With support for multiple faces and six landmarks (left eye, right eye, nose tip, mouth, left eye region, and right eye region), MediaPipe Face Detection is a quick solution for face detection. Mediapipe BlazeFace is a compact and efficient face detector designed for mobile GPU inference, that serves as its foundation. Because of its real-time performance, the detector can be used with any live viewfinder experience that needs a precise facial region of interest as an input for other task-specific models, like face region segmentation, facial feature or expression classification, and 3D facial int estimation (like MediaPipe Face Mesh). BlazeFace leverages an enhanced tie resolution technique as an alternative to a GPU-friendly anchor mechanism adapted from Single Shot MultiBox Detector (SSD) and a lightweight feature extraction network that is similar to but different from MobileNetV1/V2.
+
+
+\begin{figure}[ht]
+	\centering
+	\begin{minipage}{0.5\textwidth}
+		\centering
+		\includegraphics[width=0.5\textwidth]{images/face_detection_good.png}
+		%   \caption{Landmarks for pose estimation model by MediaPipe}
+	\end{minipage}% <-- This percentage sign denotes the end of a minipage
+	\begin{minipage}{0.5\textwidth}
+		\centering
+		\includegraphics[width=0.5\textwidth]{images/face_detection.png}
+		%   \caption{U-Net segmentation on an image from Oxford-IIIT Pet Dataset (Parkhi et al, 2012).}
+	\end{minipage}
+	\caption{Outputs of face detection model with different lightings}
+	\label{fig:face_detections} % This label can now be used to reference both images together
+\end{figure}
+
+
+\section{Data Collection}
+The flow of this project is as follows: the drone flies off, and we process the image that is captured by the drone's camera. Using multiple models for detecting, classifying, and localizing features in the image, after detecting a face, our model returns a prediction of a gesture and the drone executes the corresponding command in real time. The logic of the process is presented in Figure \ref{fig:flowchart}
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width = 0.9\textwidth]{images/flowchart.pdf}
+	\caption{Logic in the recognition process}
+	\label{fig:flowchart}
+\end{figure}
+
+
+In order to make predictions, we had to train our model with data. Since we decided to use hand gestures, we had to collect the data ourselves. After finishing the training, we established drone commands and tested our program.
+
+Although there are many publicly accessible datasets that contain pictures of hand gestures, we chose to collect our own data using the MediaPipe hand-tracking model. To do this, we recorded video footage of various hand gestures being held for a specific duration and moved around to increase diversity. Because the MediaPipe models are open-sourced and many developers use them for various projects, there are also numerous programs available for capturing and labeling gestures, like \cite{opencv_mediapipe_hand_gesture_recognition}. During the recording process, we labeled each gesture by pressing a key. Our dataset includes over 5000 samples, including images of both right and left hands, palms facing forward or backward toward the camera, and various degrees of hand positions captured by the camera.
+
+\begin{figure}
+	\centering
+	\includegraphics[width = \textwidth]{images/all_gestures.pdf}
+	\caption{Gestures used in this project.}
+	\label{fig:all_gestures}
+\end{figure}
+
+
+Our final dataset has 8 total classes. It demonstrates the efficacy of the model and minimizes the risk of error commands that could lead to unsafe situations. The gestures are shown in Figure \ref{fig:all_gestures}.
+
+
+The hand-tracking model used for data collection, outputs x, y, and z coordinates of hand landmark points from images, but only x and y coordinates are necessary for training the final model. Therefore, we eliminated the z coordinates. After normalization \ref{sec:norm}, we stored the remaining x and y coordinates of hand landmarks for various hand signs in a csv file for each hand landmark. The coordinates displayed in Figure \ref{fig:saved_csv} represent the data points used to generate the final dataset and train the final model. The first column denotes the gesture label, the next two columns indicate the coordinates of landmark 0 at the wrist, and so on. Our csv file contains many combinations of landmark coordinates for each gesture.
+
+
+\begin{figure}[h]
 	\centering
 	\includegraphics[width = \textwidth]{images/gesture_laandmarks-cropped.pdf}
 	\caption{A selection of the saved csv file}
@@ -13,33 +103,157 @@ Actually, many datasets that contain images of hand gestures are publicly availa
 \end{figure}
 
 
-\subsection{Model}
-
-\subsubsection*{Training the Model}
-
-2 modely na rozonavanie gest - aplm a landmark points\\
-
-
-After creating the dataset, the next task is to train a feedforward neural network with the data.
-We used an available model by MediaPipe. %SEM DAT NEJAKU REFERENCIU
-The neural network (NN) has one input layer and one output layer, along with five hidden layers. These hidden layers include three dense layers and two dropout layers. The dense layers perform matrix-vector multiplication in the background, while the dropout layers reduce overfitting by randomly modifying the outgoing edges of hidden layer neurons and resetting them to 0 at each iteration during the training process.
-The output layer of the NN has the same number of neurons as the possible hand gestures it can recognize. Each neuron represents a specific hand gesture and produces an output value indicating the probability of that gesture being present in the input.
-Figure \ref{fig:layers} shows the model's configuration. The model was built using an Adam optimizer, which is efficient and suitable for training models with large data and parameters. The loss function used was Sparse Categorical Crossentropy, which measures the loss between actual and predicted labels. The accuracy metric was used to evaluate the model, indicating how often the prediction matches the actual label. The training model was initially set to have only 4 hidden layers, but the training accuracy didn't exceed 90\%. After updating to 5, without any other change, we got satisfactory results. The training accuracy obtained was 99.48\% and the calculated loss was 0.031.
-\begin{figure}
+\section{Model}
+\begin{figure}[ht]
 	\centering
-	\includegraphics[width = 0.65\textwidth]{images/model_summ.png}
-	\caption{Configuration of the used feedforward neural network}
-	\label{fig:layers}
+	\begin{tikzpicture}[
+		scale = 0.7,
+		every node/.style={scale=0.6},
+		plain/.style={
+			draw=none,
+			fill=none,
+		},
+		cir/.style={
+			draw,
+			circle,
+			inner sep=8.5pt
+		},
+		dot/.style={
+			draw,
+			shape=circle,
+			minimum size=3pt,
+			inner sep=0,
+			fill=black
+		},
+		net/.style={
+			matrix of nodes,
+			nodes={
+				draw,
+				circle,
+				inner sep=8.5pt
+			},
+			nodes in empty cells,
+			column sep=1cm,
+			row sep=-5pt
+		},
+		arrow/.style={-Latex}
+		]
+		\matrix[net] (mat)%10x5
+		{
+			|[plain]| \parbox{1.5cm}{\centering Input\\layer}
+			& |[plain]| \parbox{1.5cm}{\centering Hidden\\layer}
+			& |[plain]| \parbox{1.5cm}{\centering Hidden\\layer 2}
+			& |[plain]| \parbox{1.5cm}{\centering Hidden\\layer 3}
+			& |[plain]| \parbox{1.5cm}{\centering Output\\layer} \\
+			|[cir]| &           |[plain]| &     |[plain]| &         |[plain]| &             |[cir]| \\
+			|[plain]| &         |[plain]| &     |[plain]| &         |[plain]| &               |[plain]| \\
+			|[cir]| &           |[cir]| &       |[cir]| &         |[cir]| &             |[cir]| \\
+			|[plain]| &         |[plain]| &       |[plain]| &           |[plain]| &               |[plain]| \\
+			|[plain]| &         |[dot]| &       |[dot]| &           |[dot]| &               |[cir]| \\
+			|[dot]| &           |[plain]|   &     |[plain]| &           |[plain]| &               |[plain]| \\
+			|[plain]| &         |[dot]| &     |[dot]| &         |[dot]| &             |[cir]| \\
+			|[dot]| &           |[plain]| &       |[plain]| &           |[plain]| &               |[plain]| \\
+			|[plain]| &         |[dot]| &     |[dot]| &         |[dot]| &             |[cir]| \\
+			|[dot]| &           |[plain]| &     |[plain]| &         |[plain]| &             |[plain]| \\
+			|[plain]| &         |[cir]| &       |[cir]| &           |[cir]| &               |[cir]| \\
+			|[plain]| &         |[plain]| &     |[plain]| &         |[plain]| &             |[plain]| \\
+			|[cir]| &           |[plain]| &     |[plain]| &         |[plain]| &             |[cir]| \\
+			|[plain]| &         |[plain]| &     |[plain]| &         |[plain]| &             |[plain]| \\
+			|[plain]| &         |[plain]| &     |[plain]| &         |[plain]| &             |[cir]| \\
+			|[plain]| &         |[plain]| &     |[plain]| &         |[plain]| &             |[plain]| \\
+		};
+		
+		% Connect the 'cir' nodes from Input Layer to Hidden Layer 1
+		\draw[arrow] (mat-2-1) -- (mat-4-2);
+		\draw[arrow] (mat-2-1) -- (mat-12-2);
+		\draw[arrow] (mat-4-1) -- (mat-12-2);
+		\draw[arrow] (mat-4-1) -- (mat-4-2);
+		\draw[arrow] (mat-14-1) -- (mat-4-2);
+		\draw[arrow] (mat-14-1) -- (mat-12-2);
+		
+		% Connect the 'cir' nodes from Hidden Layer 1 to Hidden Layer 2
+		\draw[arrow] (mat-4-2) -- (mat-4-3);
+		\draw[arrow] (mat-4-2) -- (mat-12-3);
+		\draw[arrow] (mat-12-2) -- (mat-12-3);
+		\draw[arrow] (mat-12-2) -- (mat-4-3);
+		
+		
+		% Connect the 'cir' nodes from Hidden Layer 2 to Hidden Layer 3
+		\draw[arrow] (mat-4-3) -- (mat-4-4);
+		\draw[arrow] (mat-4-3) -- (mat-12-4);
+		\draw[arrow] (mat-12-3) -- (mat-12-4);
+		\draw[arrow] (mat-12-3) -- (mat-4-4);
+		
+		% Connect the 'cir' nodes from Hidden Layer 3 to Output Layer
+		\draw[arrow] (mat-4-4) -- (mat-2-5);
+		\draw[arrow] (mat-4-4) -- (mat-4-5);
+		\draw[arrow] (mat-4-4) -- (mat-6-5);
+		\draw[arrow] (mat-4-4) -- (mat-8-5);
+		\draw[arrow] (mat-4-4) -- (mat-10-5);
+		\draw[arrow] (mat-4-4) -- (mat-12-5);
+		\draw[arrow] (mat-4-4) -- (mat-14-5);
+		\draw[arrow] (mat-4-4) -- (mat-16-5);
+		
+		\draw[arrow] (mat-12-4) -- (mat-2-5);
+		\draw[arrow] (mat-12-4) -- (mat-4-5);
+		\draw[arrow] (mat-12-4) -- (mat-6-5);
+		\draw[arrow] (mat-12-4) -- (mat-8-5);
+		\draw[arrow] (mat-12-4) -- (mat-10-5);
+		\draw[arrow] (mat-12-4) -- (mat-12-5);
+		\draw[arrow] (mat-12-4) -- (mat-14-5);
+		\draw[arrow] (mat-12-4) -- (mat-16-5);
+		
+		
+		% Labels for cir nodes
+		% Incoming arrows with labels for the input layer 'cir' nodes
+		\draw[arrow] ([xshift=-1cm]mat-2-1.west) -- (mat-2-1) node[above, midway] {I1 };
+		\draw[arrow] ([xshift=-1cm]mat-4-1.west) -- (mat-4-1) node[above, midway] {I2 };
+		\draw[arrow] ([xshift=-1cm]mat-14-1.west) -- (mat-14-1) node[above, midway] {I42 };
+		
+		\node[above=0.5cm of mat-5-2] (hidden11) {H1};
+		\node[above=0.7cm of mat-17-2] (hidden12) {H256};
+		
+		\node[above= 0.5cm of mat-5-3] (hidden21) {H1};
+		\node[above= 0.7cm of mat-17-3] (hidden22) {H128};
+		
+		\node[above=0.5cm of mat-5-4] (hidden31) {H1};
+		\node[above=0.7cm of mat-17-4] (hidden32) {H64};
+		
+		\draw[arrow] (mat-2-5.east) -- ([xshift=1cm]mat-2-5.east) node[above, midway] {0};
+		\draw[arrow] (mat-4-5.east) -- ([xshift=1cm]mat-4-5.east) node[above, midway] {1};
+		\draw[arrow] (mat-6-5.east) -- ([xshift=1cm]mat-6-5.east) node[above, midway] {2};
+		\draw[arrow] (mat-8-5.east) -- ([xshift=1cm]mat-8-5.east) node[above, midway] {3};
+		\draw[arrow] (mat-10-5.east) -- ([xshift=1cm]mat-10-5.east) node[above, midway] {4};
+		\draw[arrow] (mat-12-5.east) -- ([xshift=1cm]mat-12-5.east) node[above, midway] {5};
+		\draw[arrow] (mat-14-5.east) -- ([xshift=1cm]mat-14-5.east) node[above, midway] {6};
+		\draw[arrow] (mat-16-5.east) -- ([xshift=1cm]mat-16-5.east) node[above, midway] {7};
+		
+		% ... (rest of your output labels)
+		
+		
+	\end{tikzpicture}
+	\caption{Neural network architecture.}
+	\label{fig:neural_network}
 \end{figure}
 
-\subsubsection*{Face Recognition Model}
+The model we used for gesture recognition is a fully connected feedforward neural network. The model is adjusted to work with data output by KeyPointClassifier. KeyPointClassifier is a class that processes data of MediaPipe Hands models. The data are then sent to our gesture classifier.
+
+
+%\begin{figure}
+%	\centering
+%	\includegraphics[width = 0.65\textwidth]{images/model_summ.png}
+%	\caption{Configuration of the used feedforward neural network}
+%	\label{fig:layers}
+%\end{figure}
+The following is a report on training our neural network with the data. We utilized a model, which comprises one input layer and one output layer, along with five hidden layers consisting of three dense layers and two dropout layers. The sequential application of dropout and dense layers with ReLU activation acts as a mechanism to prevent overfitting while allowing the model to make nonlinear mappings. The output layer of the neural network comprises neurons equivalent to the number of hand gestures it can recognize - 8. The configuration of the model is depicted in Figure \ref{fig:layers}. The was trained with a dataset split into training and testing sets, and was designed using the Adam optimizer, which is efficient and appropriate for training models with large data and parameters. The Sparse Categorical Crossentropy loss function was utilized to evaluate the loss between predicted and actual labels, while accuracy was used as the evaluation metric to determine how frequently the prediction matches the actual label. The training was halt by early stopping when the validation loss stopped to decrease and then converted into TensorFlow Lite to reduce its size. Initially, the training model was set to have only four hidden layers (2 dense layers). However, the training accuracy failed to exceed 90\%. Consequently, we updated the model to have five hidden layers (with 3 dense layers), without any other modifications and obtained satisfactory results. The training accuracy achieved was 99.48\%, and the calculated loss was 0.031.
 
 
 
 
-\subsubsection*{Results and analysis of the model}
 
-The  \text{classification\_report} and  \text{confusion\_matrix} libraries from scikit-learn were used for quantitative analysis of the test dataset. The \text{classification\_report} library produces an evaluation report of our model with accuracy, precision, recall, and F1 score matrices. Additionally, the 'support' matrix represents the model's real-time recognition performance.
+\section{Results}
+
+To perform a quantitative analysis of the test dataset, we employed the  \text{classification\_report} and  \text{confusion\_matrix} libraries from scikit-learn. The \text{classification\_report} library produced an assessment report of our model with accuracy, precision, recall, and F1 score matrices. Additionally, the support matrix represents the model's real-time recognition performance.
 
 
 \begin{figure}
@@ -50,52 +264,50 @@ The  \text{classification\_report} and  \text{confusion\_matrix} libraries from 
 \end{figure}
 
 
-Precision is the ratio of correctly predicted positive observations to the total predicted positive observations.
+Precision is the ratio of correctly predicted positive observations to the total predicted positive observations. 
 
 The accuracy matrix calculates the number of correctly predicted labels by the model from the entire dataset (Eq.\ref{eq:accuracy}). 
-The precision matrix, on the other hand, measures the model's accuracy out of the predicted positives. It calculates the number of actual positives in the predicted positives and is an excellent measure to consider when the False Positive (FP) cost is high. Equation \ref{eq:precision} depicts the mathematical formula of the precision matrix.
+The precision matrix measures the model's accuracy out of the predicted positives. It calculates the number of actual positives in the predicted positives and is an excellent measure to consider when the False Positive (FP) cost is high. Equation \ref{eq:precision} depicts the mathematical formula of the precision matrix.
 
 The recall matrix measures the number of predictions our model correctly labels as positives. It is a measure considered when false negatives have high costs. The mathematical formulation of the recall matrix is Equation \ref{eq:recall}. 
 
 The F1 score is calculated by combining both precision and recall, as shown in Equation \ref{eq:f1_score}. It is their harmonic mean.
 
 Support is the number of samples in each class. 
-The macro average of precision, recall and F1-score shows the average performance of the system across all classes, while the weighted average takes into account the class imbalance by weighting the metrics based on the number of samples in each class.
-Additionally, the loss value of 0.0310 (not shown) indicates how well the model is minimizing its errors during training.
+The macro-average of precision, recall and F1-score demonstrates the system's average performance across all classes, while the weighted average takes into account the class imbalance by weighting the metrics based on the number of samples in each class. Additionally, the loss value of 0.0310 (not shown) indicates how efficiently the model is minimizing its errors during training.
 
 The classification report of the implemented model in detail is shown in Figure \ref{fig:report}. 
 
 
 \begin{equation}
 	\text{accuracy} = \frac{TP + TN}{TP + TN + FP +FN}
- \label{eq:accuracy}
+	\label{eq:accuracy}
 \end{equation}
 
 \begin{equation}
 	\text{precision} = \frac{TP}{TP + FP}
-  \label{eq:precision}
+	\label{eq:precision}
 \end{equation}
 \begin{equation}
 	\text{recall} = \frac{TP}{TP + FN}
-  \label{eq:recall}
+	\label{eq:recall}
 \end{equation}
 
 \begin{equation}
 	\text{F1 score} = \frac{2 P  R}{P+ R} 
- \label{eq:f1_score}
+	\label{eq:f1_score}
 \end{equation}
 
 In the equations (\ref{eq:accuracy}), (\ref{eq:precision}), (\ref{eq:recall}), and (\ref{eq:f1_score}), TP, TN, FP, and FN represent True Positive, True Negative, False Positive,
 and False Negative, respectively.
 
-The confusion matrix is a performance measure used in machine learning, particularly in classification tasks. In Python, the scikit-learn library can be used to create a confusion matrix. To obtain the datasets for the experiment, we collected and pre-processed the data before using it to predict hand gestures. The confusion matrix was used to observe the accuracy achieved by the model. The confusion matrix of the used model is shown in Fig \ref{fig:confusion_matrix}. On the x-axis are predicted labels versus on the y-axis are actual labels.
+The confusion matrix is a key performance metric used in machine learning, particularly in classification tasks. By utilizing the scikit-learn library in Python, one can create a confusion matrix. To conduct our experiment on predicting hand gestures, we obtained and pre-processed the necessary datasets. The confusion matrix was then utilized to evaluate the accuracy of our model, which is illustrated in Figure \ref{fig:confusion_matrix}. The x-axis represents predicted labels, while the y-axis represents actual labels.
 
-
-Through the confusion matrix, we can determine which gestures are being recognized wrongly. For example, we can see that gesture 2 was 11 times misinterpreted as a gesture number 6. The recall of gesture 2 can then be calculated with Equation \ref{eq:recall2}:
+Through the confusion matrix, we can pinpoint which gestures are being incorrectly recognized. For instance, we observed that gesture 2 was misinterpreted as gesture 6 a total of 11 times. We can further calculate the recall of gesture 2 utilizing Equation \ref{eq:recall2}:
 
 \begin{equation}
 	\text{recall(2)} = \frac{545}{545 + 11}
-  \label{eq:recall2}
+	\label{eq:recall2}
 \end{equation}
 
 
@@ -109,35 +321,43 @@ Through the confusion matrix, we can determine which gestures are being recogniz
 
 The system's performance is satisfactory, with almost perfect precision, recall, and F1-score in most classes, as well as high accuracy and weighted average.
 
+\subsection*{Demos}
+In the beginning, we tried to recognize only 4 gestures.
+
 \subsection{Drone Implementation}
 
-The Tello drone is a small quadcopter with a vision positioning system and an onboard camera. It is controlled by a laptop computer using Wi-Fi or a smartphone using 2.4 GHz. Using Python, it is easy to utilize the functions of the Tello library. This library has built-in functions for interacting with the drone, managing communication, handling state changes, and controlling the drone through a series of events.
+The Tello drone is a compact quadcopter equipped with a vision positioning system and an onboard camera. It can be operated through a laptop computer via Wi-Fi or a smartphone using 2.4 GHz. The Tello library, which can be easily accessed with Python, contains a range of built-in functions for managing communication with the drone, handling state changes, and controlling the drone through a series of events.
 
-In our program, Tello starts taking commands after a key press and recognizes a gesture every 5 seconds. This way it can comfortably execute a command before recognizing it again. After adjusting speeds and sleep times, the Tello drone executed the received commands practically immediately and consistently.
+Our program prompts the Tello drone to begin executing commands after a key press and identifies a gesture every 5 seconds. This allows for the comfortable execution of a command before recognizing the next one. After tweaking speeds and sleep times, the Tello drone executed the received commands rapidly and consistently.
 
-In table \ref{tab:gesture_commands} are displayed commands used in the project. We assigned them to the labels of our gestures. The gestures we use are shown in Fig \ref{fig:all_gestures} 
-
+Table \ref{tab:gesture_commands} lists the commands used in our project, which were assigned to the labels of our gestures. The gestures we utilized can be found in Figure \ref{fig:all_gestures}.
 
 \begin{table}[ht]
-\centering
-\begin{tabular}{ll}
-\toprule
-Gesture Label & Command \\
-\midrule
-0 - Palm& Move along y-axis (forward velocity) \\
-1 - Fist& Move along -y-axis (backward velocity) \\
-2 - Rock& Flip forward (upward velocity) \\
-3 - Ok & Take-off or land (depending on whether in flight or landed) \\
-4 - Peace& Takes a picture (saves in png) \\
-5 - Like& Rotate 360$^\circ$ \\
-6 - Up& Move up (ascending velocity) \\
-7 - Down & Move down (descending velocity)\\
-\bottomrule
-\end{tabular}
-\caption{Gesture commands for drone control}
-\label{tab:gesture_commands}
+	\centering
+	\begin{tabular}{ll}
+		\toprule
+		Gesture Label & Command \\
+		\midrule
+		0 - Palm& Move along the y-axis (forward velocity) \\
+		1 - Fist& Move along -y-axis (backward velocity) \\
+		2 - Rock& Flip forward (upward velocity) \\
+		3 - OK & Take-off or land (depending on whether in flight or landed) \\
+		4 - Peace& Takes a picture (saves in png) \\
+		5 - Like& Rotate 360$^\circ$ \\
+		6 - Up& Move up (ascending velocity) \\
+		7 - Down & Move down (descending velocity)\\
+		\bottomrule
+	\end{tabular}
+	\caption{Gesture commands for drone control}
+	\label{tab:gesture_commands}
 \end{table}
 
+
+
 In addition, if we are not recognizing any gesture, the drone is ready to land on the palm. Because the drone can execute most of the commands only while flying, it takes off at the start of the program. It can also take off with gesture 4, so the program doesn't have to be reset.
+
+
+
+
 
 
