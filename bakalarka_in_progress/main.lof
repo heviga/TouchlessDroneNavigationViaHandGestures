@@ -19,5 +19,11 @@
 \contentsline {figure}{\numberline {3.6}{\ignorespaces A selection of the saved csv file}}{25}{figure.caption.23}%
 \contentsline {figure}{\numberline {3.7}{\ignorespaces Neural network architecture.}}{26}{figure.caption.24}%
 \contentsline {figure}{\numberline {3.8}{\ignorespaces Classification report of the model}}{27}{figure.caption.25}%
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Confusion matrix of the model}}{29}{figure.caption.26}%
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Confusion matrix of the model}}{28}{figure.caption.26}%
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Training and validation loss curves for a neural network model utilizing the ReLU activation function.}}{29}{figure.caption.27}%
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Comparative analysis of different optimizers.}}{30}{figure.caption.28}%
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Training and validation accuracy over epochs for different initial learning rates using the Adam optimizer.}}{31}{figure.caption.29}%
+\contentsline {figure}{\numberline {3.13}{\ignorespaces The effect of batch size on model loss during training and validation.}}{31}{figure.caption.30}%
+\contentsline {figure}{\numberline {3.14}{\ignorespaces Model loss using the ReLU activation function plotted over 1000 epochs without early stopping.}}{32}{figure.caption.31}%
+\contentsline {figure}{\numberline {3.15}{\ignorespaces Drone used in this project.}}{33}{figure.caption.32}%
 \addvspace {10\p@ }

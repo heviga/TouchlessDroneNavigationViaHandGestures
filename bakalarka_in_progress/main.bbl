@@ -135,6 +135,12 @@ techfort.
   \url{https://github.com/techfort/opencv-mediapipe-hand-gesture-recognition},
   2023.
 
+\bibitem{DBLP:journals/corr/abs-2006-08517}
+Yang You, Yuhui Wang, Huan Zhang, Zhao Zhang, James Demmel, and Cho{-}Jui
+  Hsieh.
+\newblock The limit of the batch size.
+\newblock {\em CoRR}, abs/2006.08517, 2020.
+
 \bibitem{article}
 Tong Zhang, Huifeng Lin, Zhaojie Ju, and Chenguang Yang.
 \newblock Hand gesture recognition in complex background based on convolutional
