@@ -327,7 +327,7 @@ This output is often called an activation $a$. It represents the sum of all neur
 \section{Learning}
 
 During training, a function is passed from one neuron to another, either through a function \ref{eq:forpass} for hidden and output layers or through a weighted sum function \ref{eq:weighted_sum} for the input layer. This is known as the forward pass. When the end of the network is reached, the feed-forward is also completed.\newline
-The used dataset is commonly split into a training set, on which the model trains, and a validation set, that evaluates the output of the model. 
+The used dataset is commonly split into a training set, on which the model trains, and a validation set, that evaluates the output of the model. Our particular model uses $75\%$ as the training data.. 
 As the true results are known during the training phase, the error can be calculated by comparing the actual and predicted values. Cost functions are used to obtain an error value.\newline
 %cost functions
 There are many loss functions used, based on the nature of the problem. A few of them are: mean squared error, used for regression tasks, binary cross entropy, and categorical cross entropy.
@@ -378,7 +378,9 @@ In ML, minimizing the cost (loss) function is done by optimizers. Common optimiz
 \textbf{Gradient Descent} is a fundamental optimization algorithm used in classification problems and linear regression. It calculates the first derivatives of the cost function to find the minimum. 
 Each negative gradient component provides two pieces of information. The sign indicates whether the corresponding input vector component should be increased or decreased. Importantly, the relative magnitudes of all the components indicate which changes are more significant for the cost function output.
 However, Gradient Descent may sometimes be trapped in a local minimum and unable to determine the global minimum.\\
+
 \textbf{Stochastic gradient} descent algorithms are a variant of the gradient descent method used in ML. In stochastic gradient descent, instead of computing the gradient using all the observations, only a small random sample of the training data is used to estimate the gradient. This method can significantly reduce the computation time, making it a useful approach in many machine learning applications.\\
+
 \textbf{Adam} is convenient for most convex optimization problems with large datasets. It combines adaptive methods and momentum methods, where it takes into account the moving average of the gradient's first and second-order moments. This allows it to effectively adapt the learning rates for each parameter.
 It is an extension of stochastic gradient descent.\newline
 Minimizing the cost functions means a better performance on all samples. The algorithm for computing the gradient efficiently is called the backpropagation.
@@ -611,6 +613,24 @@ The goal is to stop co-adaptation, which occurs when a neural network becomes ov
 \end{figure}
 \newline An intuitive technique for training just enough is early stopping. It prevents the model from learning on a 'noised' dataset. When training, after every epoch, the model is evaluated using a validation dataset. The training process is terminated if the model's performance on the validation dataset begins to drop (for example, if loss starts to rise or accuracy starts to fall).
 
+
+\section{Gesture Recognition}
+Gesture recognition is a branch of computer science and language technology that aims to mathematically comprehend human gestures. A gesture can originate from any physical movement or emotion, but it usually appears on the hands or face. \cite{smith2022hand} Gesture recognition is essential to the development of a desirable alternative to popular methods of human-computer interaction.
+
+ Besides computer vision-based gesture recognition techniques, the non-vision-based recognition requires other devices (such as gloves) to gather data. \cite{bhuyan2017review}
+A data glove is a particular type of wired glove that is worn by a person and has tactile switches or sensors that attach to the glove's fingers or joints. To determine whether a hand is open or closed and whether certain finger joints are straight or twisted, optical goniometers, tactile switches, and resistance sensors measure the twisting of joints with basic measurements. Results are sent to a computer, which maps them to gestures and interprets them. One advantage of a basic device is that no kind of pre-processing is required. The technology was used since 1990s with very limited processing power and showed promise  regardless of the limitation of manoeuvrability because of cables that were used to connect the data glove to the computer. \cite{premaratne2014human}
+\\
+In contrast to earlier gloves, some gloves made with wireless technology can now be worn comfortably thanks to technological advancements. Over the years, gloves have been divided into two categories: active data gloves and passive data gloves. An active data glove is made up of numerous sensors that track joint movements, accelerate objects, and communicate with the host computer using either wired or wireless technology. It is known that these gloves limit the wearer's capacity for innovation. In contrast, a passive data glove just has colors or pointers that help cameras and other devices recognize your finger. There are no sensors built into the glove.\\
+
+\textbf{CyberGlove II}\label{txt:glove}\\
+Because the hand's joints can flex in different ways, the CyberGlove was designed to carry data inputs. The glove has eighteen sensors, as depicted in Figure \ref{fig:glove}. These include four capture sensors, two twist sensors on each finger, and sensors to measure the thumb limit, palm arch, wrist flexion, and wrist capture. A different version of this device has 22 sensors total, including four capture sensors, three flexion sensors for each finger, a palm arch sensor, and sensors for measuring the flexion and capture of the wrist. One glove version allows the user to write, type, and grasp small objects with their fingertips open. CyberGlove motion capture system has been continuously used in numerous applications, including biomechanics, animation, virtual reality, and digital prototype evaluation.
+
+\begin{figure}[h]
+	\centering
+		\includegraphics[width=0.85\textwidth]{images/cyberglove.png}
+		\caption{Cyberglove II}
+		\label{fig:glove}
+\end{figure}
 
 
 

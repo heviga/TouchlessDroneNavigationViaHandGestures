@@ -14,12 +14,44 @@ Mart\'{i}n Abadi, Ashish Agarwal, Paul Barham, Eugene Brevdo, Zhifeng Chen,
   2015.
 \newblock Software available from tensorflow.org.
 
+\bibitem{inproceedings}
+Timo Ahonen, Abdenour Hadid, and Matti Pietikäinen.
+\newblock Face recognition with local binary patterns.
+\newblock volume 3021, pages 469--481, 05 2004.
+
+\bibitem{10.1007/11744023_32}
+Herbert Bay, Tinne Tuytelaars, and Luc Van~Gool.
+\newblock Surf: Speeded up robust features.
+\newblock In Ale{\v{s}} Leonardis, Horst Bischof, and Axel Pinz, editors, {\em
+  Computer Vision -- ECCV 2006}, pages 404--417, Berlin, Heidelberg, 2006.
+  Springer Berlin Heidelberg.
+
+\bibitem{bazarevsky2019blazeface}
+Valentin Bazarevsky, Yury Kartynnik, Andrey Vakunov, Karthik Raveendran, and
+  Matthias Grundmann.
+\newblock Blazeface: Sub-millisecond neural face detection on mobile gpus,
+  2019.
+
+\bibitem{bhuyan2017review}
+M.~K. Bhuyan, M.~K. Bhuyan, and A.~Gogoi.
+\newblock A review on hand gesture recognition techniques, challenges, and
+  applications.
+\newblock {\em International Journal of Signal Processing, Image Processing and
+  Pattern Recognition}, 10(2):175--190, 2017.
+
 \bibitem{mediapipe2019blog}
 Google~AI Blog.
 \newblock Mediapipe: On-device, real time hand tracking, 2019.
 \newblock
   \href{https://ai.googleblog.com/2019/08/on-devicereal-time-hand-tracking-with.html}{Blog
   Post} Accessed: December, 2023.
+
+\bibitem{doi:10.1080/08839514.2023.2176607}
+Sheng-Kuan Wang Victor R.L. Shen Yi-Chih Tung Frank H.C.~Shen Cheng-Ying~Yang,
+  Yi-Nan~Lin and Chun-Hsiang Huang.
+\newblock Smart control of home appliances using hand gesture recognition in an
+  iot-enabled system.
+\newblock {\em Applied Artificial Intelligence}, 37(1):2176607, 2023.
 
 \bibitem{a16080361}
 Ahmed Eid and Friedhelm Schwenker.
@@ -41,11 +73,29 @@ Ross Girshick, Jeff Donahue, Trevor Darrell, and Jitendra Malik.
 \newblock In {\em Proceedings of the IEEE conference on computer vision and
   pattern recognition}, pages 580--587, 2014.
 
+\bibitem{touchlessdronecontrol}
+Hedviga.
+\newblock Touchlessdronecontrol, 2024.
+\newblock
+  \href{https://github.com/heviga/TouchlessDroneControll/blob/main/mediapipe-python-sample-main/mediapipe-python-sample-main/predictions.py}{Project
+  Repository on GitHub} Accessed: December 2023.
+
+\bibitem{howard2017mobilenets}
+Andrew~G. Howard, Menglong Zhu, Bo~Chen, Dmitry Kalenichenko, Weijun Wang,
+  Tobias Weyand, Marco Andreetto, and Hartwig Adam.
+\newblock Mobilenets: Efficient convolutional neural networks for mobile vision
+  applications, 2017.
+
 \bibitem{isola2017image}
 Phillip Isola, Jun-Yan Zhu, Tinghui Zhou, and Alexei~A. Efros.
 \newblock Image-to-image translation with conditional adversarial networks.
 \newblock In {\em Proceedings of the IEEE conference on computer vision and
   pattern recognition}, pages 1125--1134, 2017.
+
+\bibitem{articlefr}
+Ladislav Lenc and Pavel Král.
+\newblock Automatic face recognition system based on the sift features.
+\newblock {\em Computers \& Electrical Engineering}, 46, 02 2015.
 
 \bibitem{LiZhang2022}
 Y~Li and P~Zhang.
@@ -65,6 +115,12 @@ Wei Liu, Dragomir Anguelov, Dumitru Erhan, Christian Szegedy, Scott Reed,
 \newblock Ssd: Single shot multibox detector.
 \newblock In {\em European conference on computer vision}, pages 21--37.
   Springer, 2016.
+
+\bibitem{Liu_2016}
+Wei Liu, Dragomir Anguelov, Dumitru Erhan, Christian Szegedy, Scott Reed,
+  Cheng-Yang Fu, and Alexander~C. Berg.
+\newblock {\em SSD: Single Shot MultiBox Detector}, page 21–37.
+\newblock Springer International Publishing, 2016.
 
 \bibitem{lopez2019gesture}
 Carmen L{\'o}pez-Casado, Enrique Bauzano, Irene Rivas-Blanco, Carlos~J
@@ -97,6 +153,17 @@ JungSoo Park, Hyo-Rim Choi, JunYoung Kim, and TaeYong Kim.
 \newblock In {\em 2014 International Conference on Computer Vision Theory and
   Applications (VISAPP)}, volume~1, pages 551--556. IEEE, 2014.
 
+\bibitem{premaratne2014chapter2}
+P.~Premaratne.
+\newblock {\em Chapter 2: Human Computer Interaction Using Hand Gestures},
+  chapter~2.
+\newblock Springer, Singapore, 2014 edition, 2014.
+
+\bibitem{premaratne2014human}
+P.~Premaratne.
+\newblock {\em Human Computer Interaction Using Hand Gestures}.
+\newblock Springer, Singapore, 2014 edition, 2014.
+
 \bibitem{priyal2013robust}
 S~Padam Priyal and Prabin~Kumar Bora.
 \newblock A robust static hand gesture recognition system using geometry based
@@ -128,6 +195,18 @@ Mark Sandler, Andrew Howard, Menglong Zhu, Andrey Zhmoginov, and Liang-Chieh
 \newblock In {\em Proceedings of the IEEE conference on computer vision and
   pattern recognition}, pages 4510--4520, 2018.
 
+\bibitem{sharma2015evolution}
+P.~K. Sharma and S.~Sharma.
+\newblock Evolution of hand gesture recognition: A review.
+\newblock {\em International Journal of Engineering and Computer Science},
+  4(1):9963, Jan 2015.
+
+\bibitem{smith2022hand}
+J.~D. Smith and A.~B. Johnson.
+\newblock Hand gesture recognition using computer vision techniques.
+\newblock {\em International Journal of Computer Science}, 10(2):123--145,
+  2022.
+
 \bibitem{opencv_mediapipe_hand_gesture_recognition}
 techfort.
 \newblock {OpenCV-MediaPipe Hand Gesture Recognition}.
@@ -152,5 +231,12 @@ F.~Zhao, V.~Bazarevsky, A.~Vakunov, et~al.
 \newblock Mediapipe hands: On-device real-time hand tracking, 2020.
 \newblock \href{https://arxiv.org/pdf/2006.10214.pdf}{Research Paper} Google
   Research, USA.
+
+\bibitem{CARIKCI2012118}
+M.üge Çarıkçı and Figen Özen.
+\newblock A face recognition system based on eigenfaces method.
+\newblock {\em Procedia Technology}, 1:118--123, 2012.
+\newblock First World Conference on Innovation and Computer Sciences (INSODE
+  2011).
 
 \end{thebibliography}

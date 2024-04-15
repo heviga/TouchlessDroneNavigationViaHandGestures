@@ -9,21 +9,23 @@
 \contentsline {figure}{\numberline {2.5}{\ignorespaces Softmax/Sigmoid function and Rectifier function.}}{11}{figure.caption.12}%
 \contentsline {figure}{\numberline {2.6}{\ignorespaces An example structure for backpropagation.}}{14}{figure.caption.15}%
 \contentsline {figure}{\numberline {2.7}{\ignorespaces Structure of neural network}}{16}{figure.caption.16}%
-\contentsline {figure}{\numberline {2.8}{\ignorespaces Visualization of dropout.}}{17}{figure.caption.17}%
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Visualization of dropout.}}{18}{figure.caption.17}%
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Cyberglove II}}{19}{figure.caption.18}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Hand landmarks model output}}{21}{figure.caption.18}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Process of normalization of landmark coordinates}}{22}{figure.caption.19}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Outputs of face detection model with different lightings}}{22}{figure.caption.20}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Logic in the recognition process}}{24}{figure.caption.21}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Gestures used in this project.}}{25}{figure.caption.22}%
-\contentsline {figure}{\numberline {3.6}{\ignorespaces A selection of the saved csv file}}{25}{figure.caption.23}%
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Neural network architecture.}}{26}{figure.caption.24}%
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Classification report of the model}}{27}{figure.caption.25}%
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Confusion matrix of the model}}{28}{figure.caption.26}%
-\contentsline {figure}{\numberline {3.10}{\ignorespaces Training and validation loss curves for a neural network model utilizing the ReLU activation function.}}{29}{figure.caption.27}%
-\contentsline {figure}{\numberline {3.11}{\ignorespaces Comparative analysis of different optimizers.}}{30}{figure.caption.28}%
-\contentsline {figure}{\numberline {3.12}{\ignorespaces Training and validation accuracy over epochs for different initial learning rates using the Adam optimizer.}}{31}{figure.caption.29}%
-\contentsline {figure}{\numberline {3.13}{\ignorespaces The effect of batch size on model loss during training and validation.}}{31}{figure.caption.30}%
-\contentsline {figure}{\numberline {3.14}{\ignorespaces Model loss using the ReLU activation function plotted over 1000 epochs without early stopping.}}{32}{figure.caption.31}%
-\contentsline {figure}{\numberline {3.15}{\ignorespaces Drone used in this project.}}{33}{figure.caption.32}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Hand landmarks model output}}{23}{figure.caption.19}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Process of normalization of landmark coordinates}}{24}{figure.caption.20}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Outputs of face detection model with different lightings}}{24}{figure.caption.21}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Logic in the recognition process.}}{26}{figure.caption.22}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Gestures used in this project.}}{27}{figure.caption.23}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces A selection of the saved csv file}}{27}{figure.caption.24}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Neural network architecture.}}{28}{figure.caption.25}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Classification report of the model}}{29}{figure.caption.26}%
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Confusion matrix of the model}}{30}{figure.caption.27}%
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Training and validation loss curves for a neural network model utilizing the ReLU activation function.}}{31}{figure.caption.28}%
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Comparative analysis of different optimizers.}}{32}{figure.caption.29}%
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Training and validation accuracy over epochs for different initial learning rates using the Adam optimizer.}}{33}{figure.caption.30}%
+\contentsline {figure}{\numberline {3.13}{\ignorespaces The effect of batch size on model loss during training and validation.}}{34}{figure.caption.31}%
+\contentsline {figure}{\numberline {3.14}{\ignorespaces Model loss using the ReLU activation function plotted over 1000 epochs without early stopping.}}{34}{figure.caption.32}%
+\contentsline {figure}{\numberline {3.15}{\ignorespaces Drone used in this project.}}{36}{figure.caption.33}%
+\contentsline {figure}{\numberline {3.16}{\ignorespaces Outputs of FaceBlaze and Face Landmarker model.}}{38}{figure.caption.35}%
 \addvspace {10\p@ }

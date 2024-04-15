@@ -15,44 +15,62 @@ Reallocating 'name_of_file' (item size: 1) to 6 items.
 The style file: plain.bst
 Reallocating 'name_of_file' (item size: 1) to 8 items.
 Database file #1: bibfile.bib
-You've used 23 entries,
+Repeated entry---line 435 of file bibfile.bib
+ : @inproceedings{inproceedings
+ :                             ,
+I'm skipping whatever remains of this entry
+Too many commas in name 1 of "Cheng-Ying Yang, Yi-Nan Lin, Sheng-Kuan Wang, Victor R.L. Shen, Yi-Chih Tung, Frank H.C. Shen and Chun-Hsiang Huang" for entry doi:10.1080/08839514.2023.2176607
+while executing---line 1049 of file plain.bst
+Too many commas in name 1 of "Cheng-Ying Yang, Yi-Nan Lin, Sheng-Kuan Wang, Victor R.L. Shen, Yi-Chih Tung, Frank H.C. Shen and Chun-Hsiang Huang" for entry doi:10.1080/08839514.2023.2176607
+while executing---line 1049 of file plain.bst
+Too many commas in name 1 of "Cheng-Ying Yang, Yi-Nan Lin, Sheng-Kuan Wang, Victor R.L. Shen, Yi-Chih Tung, Frank H.C. Shen and Chun-Hsiang Huang" for entry doi:10.1080/08839514.2023.2176607
+while executing---line 1049 of file plain.bst
+Warning--empty booktitle in inproceedings
+Too many commas in name 1 of "Cheng-Ying Yang, Yi-Nan Lin, Sheng-Kuan Wang, Victor R.L. Shen, Yi-Chih Tung, Frank H.C. Shen and Chun-Hsiang Huang" for entry doi:10.1080/08839514.2023.2176607
+while executing---line 1090 of file plain.bst
+Too many commas in name 1 of "Cheng-Ying Yang, Yi-Nan Lin, Sheng-Kuan Wang, Victor R.L. Shen, Yi-Chih Tung, Frank H.C. Shen and Chun-Hsiang Huang" for entry doi:10.1080/08839514.2023.2176607
+while executing---line 1090 of file plain.bst
+Too many commas in name 1 of "Cheng-Ying Yang, Yi-Nan Lin, Sheng-Kuan Wang, Victor R.L. Shen, Yi-Chih Tung, Frank H.C. Shen and Chun-Hsiang Huang" for entry doi:10.1080/08839514.2023.2176607
+while executing---line 1090 of file plain.bst
+You've used 37 entries,
             2118 wiz_defined-function locations,
-            630 strings with 9146 characters,
-and the built_in function-call counts, 9251 in all, are:
-= -- 854
-> -- 602
-< -- 8
-+ -- 242
-- -- 216
-* -- 656
-:= -- 1526
-add.period$ -- 72
-call.type$ -- 23
-change.case$ -- 176
+            705 strings with 11655 characters,
+and the built_in function-call counts, 14170 in all, are:
+= -- 1321
+> -- 862
+< -- 13
++ -- 345
+- -- 303
+* -- 995
+:= -- 2330
+add.period$ -- 114
+call.type$ -- 37
+change.case$ -- 259
 chr.to.int$ -- 0
-cite$ -- 23
-duplicate$ -- 299
-empty$ -- 634
-format.name$ -- 216
-if$ -- 1922
+cite$ -- 38
+duplicate$ -- 484
+empty$ -- 1008
+format.name$ -- 303
+if$ -- 2964
 int.to.chr$ -- 0
-int.to.str$ -- 23
-missing$ -- 14
-newline$ -- 118
-num.names$ -- 46
-pop$ -- 225
+int.to.str$ -- 37
+missing$ -- 28
+newline$ -- 187
+num.names$ -- 76
+pop$ -- 327
 preamble$ -- 1
-purify$ -- 153
+purify$ -- 223
 quote$ -- 0
-skip$ -- 258
+skip$ -- 406
 stack$ -- 0
-substring$ -- 402
-swap$ -- 96
-text.length$ -- 8
+substring$ -- 652
+swap$ -- 145
+text.length$ -- 13
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 92
-warning$ -- 0
-while$ -- 71
-width$ -- 25
-write$ -- 250
+type$ -- 142
+warning$ -- 1
+while$ -- 113
+width$ -- 39
+write$ -- 404
+(There were 7 error messages)
