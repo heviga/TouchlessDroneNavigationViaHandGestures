@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.27)  15 APR 2024 13:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.27)  16 APR 2024 11:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1688,7 +1688,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 
 pdfTeX warning: pdflatex.exe (file ./images/steps.pdf): PDF inclusion: found PD
 F version <1.7>, but at most version <1.5> allowed
-<images/steps.pdf, id=296, 2249.40375pt x 398.38837pt>
+<images/steps.pdf, id=299, 2249.40375pt x 398.38837pt>
 File: images/steps.pdf Graphic file (type pdf)
 <use images/steps.pdf>
 Package pdftex.def Info: images/steps.pdf  used on input line 19.
@@ -1733,12 +1733,12 @@ been already used, duplicate ignored
                    \relax 
 l.37 
       [4] [5]
-<images/cat_class.jpg, id=376, 441.65pt x 451.6875pt>
+<images/cat_class.jpg, id=379, 441.65pt x 451.6875pt>
 File: images/cat_class.jpg Graphic file (type jpg)
 <use images/cat_class.jpg>
 Package pdftex.def Info: images/cat_class.jpg  used on input line 58.
 (pdftex.def)             Requested size: 103.96269pt x 106.31888pt.
-<images/catanddog_detect.jpg, id=377, 542.025pt x 447.6725pt>
+<images/catanddog_detect.jpg, id=380, 542.025pt x 447.6725pt>
 File: images/catanddog_detect.jpg Graphic file (type jpg)
 <use images/catanddog_detect.jpg>
 Package pdftex.def Info: images/catanddog_detect.jpg  used on input line 64.
@@ -1748,13 +1748,13 @@ Package pdftex.def Info: images/catanddog_detect.jpg  used on input line 64.
 LaTeX Warning: Reference `fig:segmentation' on page 7 undefined on input line 8
 1.
 
-<images/pose_landmarks_index.png, id=388, 725.71124pt x 859.21pt>
+<images/pose_landmarks_index.png, id=391, 725.71124pt x 859.21pt>
 File: images/pose_landmarks_index.png Graphic file (type png)
 <use images/pose_landmarks_index.png>
 Package pdftex.def Info: images/pose_landmarks_index.png  used on input line 91
 .
 (pdftex.def)             Requested size: 100.25204pt x 118.6891pt.
-<images/dog.png, id=389, 854.2314pt x 411.939pt>
+<images/dog.png, id=392, 854.2314pt x 411.939pt>
 File: images/dog.png Graphic file (type png)
 <use images/dog.png>
 Package pdftex.def Info: images/dog.png  used on input line 97.
@@ -1815,7 +1815,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 620--624
  []
 
 [18]
-<images/cyberglove.png, id=491, 853.1875pt x 422.57875pt>
+<images/cyberglove.png, id=494, 853.1875pt x 422.57875pt>
 File: images/cyberglove.png Graphic file (type png)
 <use images/cyberglove.png>
 Package pdftex.def Info: images/cyberglove.png  used on input line 630.
@@ -1831,7 +1831,7 @@ Package pdftex.def Info: images/cyberglove.png  used on input line 630.
 ]
 Chapter 3.
 [21]
-<images/landmarks_both_hands.png, id=511, 732.93825pt x 516.12825pt>
+<images/landmarks_both_hands.png, id=514, 732.93825pt x 516.12825pt>
 File: images/landmarks_both_hands.png Graphic file (type png)
 <use images/landmarks_both_hands.png>
 Package pdftex.def Info: images/landmarks_both_hands.png  used on input line 26
@@ -1841,19 +1841,19 @@ Package pdftex.def Info: images/landmarks_both_hands.png  used on input line 26
 
 pdfTeX warning: pdflatex.exe (file ./images/normalise.pdf): PDF inclusion: foun
 d PDF version <1.7>, but at most version <1.5> allowed
-<images/normalise.pdf, id=518, 489.28395pt x 248.34079pt>
+<images/normalise.pdf, id=521, 489.28395pt x 248.34079pt>
 File: images/normalise.pdf Graphic file (type pdf)
 <use images/normalise.pdf>
 Package pdftex.def Info: images/normalise.pdf  used on input line 42.
 (pdftex.def)             Requested size: 315.60951pt x 160.18805pt.
 [23 <./images/landmarks_both_hands.png>]
-<images/face_detection_good.png, id=529, 301.125pt x 452.892pt>
+<images/face_detection_good.png, id=532, 301.125pt x 452.892pt>
 File: images/face_detection_good.png Graphic file (type png)
 <use images/face_detection_good.png>
 Package pdftex.def Info: images/face_detection_good.png  used on input line 55.
 
 (pdftex.def)             Requested size: 92.82565pt x 139.60725pt.
-<images/face_detection.png, id=530, 305.943pt x 455.90324pt>
+<images/face_detection.png, id=533, 305.943pt x 455.90324pt>
 File: images/face_detection.png Graphic file (type png)
 <use images/face_detection.png>
 Package pdftex.def Info: images/face_detection.png  used on input line 60.
@@ -1866,16 +1866,16 @@ _detection.png>]
 
 pdfTeX warning: pdflatex.exe (file ./images/flowchart.pdf): PDF inclusion: foun
 d PDF version <1.7>, but at most version <1.5> allowed
-<images/flowchart.pdf, id=587, 408.727pt x 527.0691pt>
+<images/flowchart.pdf, id=590, 408.727pt x 527.0691pt>
 File: images/flowchart.pdf Graphic file (type pdf)
 <use images/flowchart.pdf>
 Package pdftex.def Info: images/flowchart.pdf  used on input line 74.
-(pdftex.def)             Requested size: 334.1701pt x 430.92877pt.
+(pdftex.def)             Requested size: 371.30264pt x 478.81332pt.
 
 
 pdfTeX warning: pdflatex.exe (file ./images/all_gestures.pdf): PDF inclusion: f
 ound PDF version <1.7>, but at most version <1.5> allowed
-<images/all_gestures.pdf, id=589, 1747.52875pt x 669.80237pt>
+<images/all_gestures.pdf, id=592, 1747.52875pt x 669.80237pt>
 File: images/all_gestures.pdf Graphic file (type pdf)
 <use images/all_gestures.pdf>
 Package pdftex.def Info: images/all_gestures.pdf  used on input line 86.
@@ -1884,7 +1884,7 @@ Package pdftex.def Info: images/all_gestures.pdf  used on input line 86.
 
 pdfTeX warning: pdflatex.exe (file ./images/gesture_laandmarks-cropped.pdf): PD
 F inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<images/gesture_laandmarks-cropped.pdf, id=593, 453.23328pt x 135.15494pt>
+<images/gesture_laandmarks-cropped.pdf, id=596, 453.23328pt x 135.15494pt>
 File: images/gesture_laandmarks-cropped.pdf Graphic file (type pdf)
 <use images/gesture_laandmarks-cropped.pdf>
 Package pdftex.def Info: images/gesture_laandmarks-cropped.pdf  used on input l
@@ -1904,7 +1904,7 @@ Overfull \hbox (11.49596pt too wide) in paragraph at lines 256--257
 aset, we em-ployed the []
  []
 
-<images/classific_report.png, id=670, 358.941pt x 260.172pt>
+<images/classific_report.png, id=673, 358.941pt x 260.172pt>
 File: images/classific_report.png Graphic file (type png)
 <use images/classific_report.png>
 Package pdftex.def Info: images/classific_report.png  used on input line 261.
@@ -1914,26 +1914,26 @@ Underfull \vbox (badness 6445) has occurred while \output is active []
 
  [28]
 [29 <./images/classific_report.png>]
-<images/confusion_matrix.pdf, id=693, 407.60278pt x 364.9635pt>
+<images/confusion_matrix.pdf, id=696, 407.60278pt x 364.9635pt>
 File: images/confusion_matrix.pdf Graphic file (type pdf)
 <use images/confusion_matrix.pdf>
 Package pdftex.def Info: images/confusion_matrix.pdf  used on input line 307.
 (pdftex.def)             Requested size: 241.34444pt x 216.10066pt.
  [30 <./images/confusion_matrix.pdf>]
-<images/model_loss_relu.png, id=704, 645.3711pt x 361.35pt>
+<images/model_loss_relu.png, id=707, 645.3711pt x 361.35pt>
 File: images/model_loss_relu.png Graphic file (type png)
 <use images/model_loss_relu.png>
 Package pdftex.def Info: images/model_loss_relu.png  used on input line 329.
 (pdftex.def)             Requested size: 371.30264pt x 207.90144pt.
 
 [31 <./images/model_loss_relu.png>]
-<images/optimizers_comparison.png, id=713, 1107.8991pt x 433.62pt>
+<images/optimizers_comparison.png, id=716, 1107.8991pt x 433.62pt>
 File: images/optimizers_comparison.png Graphic file (type png)
 <use images/optimizers_comparison.png>
 Package pdftex.def Info: images/optimizers_comparison.png  used on input line 3
 41.
 (pdftex.def)             Requested size: 371.30264pt x 145.3248pt.
-<images/adam_learning_rates_comparison.png, id=715, 1081.1592pt x 433.62pt>
+<images/adam_learning_rates_comparison.png, id=718, 1081.1592pt x 433.62pt>
 File: images/adam_learning_rates_comparison.png Graphic file (type png)
 <use images/adam_learning_rates_comparison.png>
 Package pdftex.def Info: images/adam_learning_rates_comparison.png  used on inp
@@ -1943,13 +1943,13 @@ ut line 352.
 Underfull \vbox (badness 3701) has occurred while \output is active []
 
  [32 <./images/optimizers_comparison.png>]
-<images/batch_sizes_comparison.png, id=722, 898.3161pt x 505.89pt>
+<images/batch_sizes_comparison.png, id=725, 898.3161pt x 505.89pt>
 File: images/batch_sizes_comparison.png Graphic file (type png)
 <use images/batch_sizes_comparison.png>
 Package pdftex.def Info: images/batch_sizes_comparison.png  used on input line 
 363.
 (pdftex.def)             Requested size: 371.30264pt x 209.09903pt.
-<images/model_loss_over_1000_epochs.png, id=725, 631.6398pt x 361.35pt>
+<images/model_loss_over_1000_epochs.png, id=728, 631.6398pt x 361.35pt>
 File: images/model_loss_over_1000_epochs.png Graphic file (type png)
 <use images/model_loss_over_1000_epochs.png>
 Package pdftex.def Info: images/model_loss_over_1000_epochs.png  used on input 
@@ -1964,10 +1964,10 @@ LaTeX Warning: Text page 34 contains only floats.
 
 [34 <./images/batch_sizes_comparison.png> <./images/model_loss_over_1000_epochs
 .png>]
-<images/drone.jpg, id=737, 1505.625pt x 925.4575pt>
+<images/drone.jpg, id=740, 1505.625pt x 925.4575pt>
 File: images/drone.jpg Graphic file (type jpg)
 <use images/drone.jpg>
-Package pdftex.def Info: images/drone.jpg  used on input line 394.
+Package pdftex.def Info: images/drone.jpg  used on input line 393.
 (pdftex.def)             Requested size: 222.78384pt x 136.9345pt.
 
 
@@ -1977,19 +1977,29 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 Underfull \vbox (badness 1038) has occurred while \output is active []
 
  [35]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+<images/palm_drone.png, id=747, 778.107pt x 522.15076pt>
+File: images/palm_drone.png Graphic file (type png)
+<use images/palm_drone.png>
+Package pdftex.def Info: images/palm_drone.png  used on input line 430.
+(pdftex.def)             Requested size: 157.80475pt x 105.89429pt.
+<images/ok_drone.png, id=748, 819.06pt x 532.99126pt>
+File: images/ok_drone.png Graphic file (type png)
+<use images/ok_drone.png>
+Package pdftex.def Info: images/ok_drone.png  used on input line 435.
+(pdftex.def)             Requested size: 157.80475pt x 102.6845pt.
 
- [36 <./images/drone.jpg>]
-<images/face_landmark.png, id=756, 441.65pt x 241.90375pt>
+[36 <./images/drone.jpg>]
+<images/face_landmark.png, id=762, 441.65pt x 241.90375pt>
 File: images/face_landmark.png Graphic file (type png)
 <use images/face_landmark.png>
-Package pdftex.def Info: images/face_landmark.png  used on input line 441.
+Package pdftex.def Info: images/face_landmark.png  used on input line 455.
 (pdftex.def)             Requested size: 297.04324pt x 162.70584pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) [37] [38 <./images/face_landmark.png>]
+) [37 <./images/palm_drone.png> <./images/ok_drone.png>] [38 <./images/face_lan
+dmark.png>]
 \openout2 = `content/conclusions.aux'.
 
  (content/conclusions.tex
@@ -2039,10 +2049,10 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 96D8696ACD5144DFAB82437FEF95D739;2212.
  ) 
 Here is how much of TeX's memory you used:
- 49143 strings out of 474462
- 1151031 string characters out of 5742883
+ 49159 strings out of 474462
+ 1151446 string characters out of 5742883
  1978998 words of memory out of 5000000
- 70159 multiletter control sequences out of 15000+600000
+ 70174 multiletter control sequences out of 15000+600000
  690910 words of font info for 245 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  90i,17n,94p,1630b,2092s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -2064,9 +2074,9 @@ s/ivadu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb><C:/Us
 ers/ivadu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Us
 ers/ivadu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy7.pfb><C:/Use
 rs/ivadu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
-Output written on main.pdf (62 pages, 9245025 bytes).
+Output written on main.pdf (62 pages, 10931644 bytes).
 PDF statistics:
- 950 PDF objects out of 1000 (max. 8388607)
- 172 named destinations out of 1000 (max. 500000)
- 76578 words of extra memory for PDF output out of 89155 (max. 10000000)
+ 958 PDF objects out of 1000 (max. 8388607)
+ 173 named destinations out of 1000 (max. 500000)
+ 76588 words of extra memory for PDF output out of 89155 (max. 10000000)
 

@@ -34,7 +34,7 @@ Too many commas in name 1 of "Cheng-Ying Yang, Yi-Nan Lin, Sheng-Kuan Wang, Vict
 while executing---line 1090 of file plain.bst
 You've used 37 entries,
             2118 wiz_defined-function locations,
-            705 strings with 11655 characters,
+            705 strings with 11657 characters,
 and the built_in function-call counts, 14170 in all, are:
 = -- 1321
 > -- 862

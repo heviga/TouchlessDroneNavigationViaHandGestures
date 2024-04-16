@@ -71,7 +71,7 @@ The flow of this project is as follows: the drone flies off, and we process the 
 
 \begin{figure}
 	\centering
-	\includegraphics[width = 0.9\textwidth]{images/flowchart.pdf}
+	\includegraphics[width = \textwidth]{images/flowchart.pdf}
 	\caption{Logic in the recognition process.}
 	\label{fig:flowchart}
 \end{figure}
@@ -380,8 +380,7 @@ The importance of implementing early stopping as a regularization technique (lik
 
 \section{Drone Implementation}
 
-The Tello drone is a compact quadcopter that boasts an advanced vision positioning system and a high-resolution (8 mp) onboard camera, designed to capture stunning aerial photographs and videos. It offers versatile operating options, allowing users to control it through a laptop computer or a smartphone. The drone connects to devices using Wi-Fi, which facilitates a stable and fast connection essential for real-time video streaming and responsive flight control. Additionally, it supports the 2.4 GHz frequency band for remote control, a widely used standard that ensures reliable communication over distances. The drone has other built-in functions like range finder, barometer, LED or vision system. It is fitted with a single accelerometer and 3- axis magnetometer (which can get the drone orientation), a pressure
-and IR-based altitude detector. The Tello drone is compatible with a dedicated smartphone application available on both Android and iOS platforms. This app unlocks a number of intuitive flight modes, easy-to-use controls, and creative functions.
+The Tello drone is a compact quadcopter that boasts an advanced vision positioning system and a high-resolution (8 mp) onboard camera, designed to capture stunning aerial photographs and videos. It offers versatile operating options, allowing users to control it through a laptop computer or a smartphone. The drone connects to devices using Wi-Fi, which facilitates a stable and fast connection essential for real-time video streaming and responsive flight control. Additionally, it supports the 2.4 GHz frequency band for remote control, a widely used standard that ensures reliable communication over distances. The drone has other built-in functions like a range finder, barometer, LED, or vision system. It is fitted with a single accelerometer and 3-axis magnetometer (which can get the drone orientation), a pressure, and an IR-based altitude detector. The Tello drone is compatible with a dedicated smartphone application available on both Android and iOS platforms. This app unlocks several intuitive flight modes, easy-to-use controls, and creative functions.
 
 The Tello library is a toolkit crafted to seamlessly integrate with Python. It's specifically designed for developers and hobbyists, offering easy access and control over the Tello drone's functionalities. With a comprehensive array of built-in functions, the library manages communication protocols with the drone, allowing for real-time transmission of control commands and reception of status updates. This ensures a smooth and responsive piloting experience.
 
@@ -424,17 +423,32 @@ Table \ref{tab:gesture_commands} lists the commands used in our project, which w
 
 Our program prompts the Tello drone to begin executing commands after a key press and identifies a gesture every 5 seconds. This allows for the comfortable execution of a command before recognizing the next one. After tweaking speeds and sleep times, the Tello drone executed the received commands rapidly and consistently.
 
+\begin{figure}[ht]
+	\centering
+	\begin{minipage}{0.5\textwidth}
+		\centering
+		\includegraphics[width=0.85\textwidth]{images/palm_drone.png}
+		%   \caption{Landmarks for pose estimation model by MediaPipe}
+	\end{minipage}% <-- This percentage sign denotes the end of a minipage
+	\begin{minipage}{0.5\textwidth}
+		\centering
+		\includegraphics[width=0.85\textwidth]{images/ok_drone.png}
+		%   \caption{U-Net segmentation on an image from Oxford-IIIT Pet Dataset (Parkhi et al, 2012).}
+	\end{minipage}
+	\caption{Gesture recognition shots from the drone camera.}
+	\label{fig:drone_detections} % This label can now be used to reference both images together
+\end{figure}
+
+In Figure \ref{fig:drone_detections} we can observe the various gestures identified by the drone's camera. Upon recognizing the 'Palm' gesture, the drone would proceed to move backward. In the subsequent image, we see the drone on the ground, and upon recognizing the 'Ok' gesture, it would take off to a predetermined altitude.
 In addition, if we are not recognizing any gesture, the drone is ready to land on the palm. Because the drone can execute most of the commands only while flying, it takes off at the start of the program. It can also take off with gesture 4, so the program doesn't have to be reset.
 
 
 \section{Future Work}
-Moving forward with our work, there's lot of space for the project's expansion. Since we already have a good classifier for gestures, we can use our model not only for the drone, but also for other applications like smart home control, sign language translation, multimedia control or security systems.\newline One simple study \cite{doi:10.1080/08839514.2023.2176607} used their gesture recognizer and ESP8266 microcontroller to send commands to home appliances, using gestures to control a simple LED light (turning  it on, off, setting a brightness and color).
+Moving forward with our work, there is ample room for the expansion of the project. We have developed a good gesture classifier that can be utilized for other applications besides drones, such as smart home control, sign language translation, multimedia control, or security systems. For example, a previous study \cite{doi:10.1080/08839514.2023.2176607} used a gesture recognizer and ESP8266 microcontroller to control home appliances using gestures to adjust a simple LED light, turning it on/off, setting its brightness and color.
 
-If we went in the direction of implementing face recognition, we'd find many popular face recognition systems. Facial recognition systems are common in many aspects of modern life, making authentification processes easier, without the need of passwords or physical IDs.
-Examples of algorithms used for face recognition include Eigenfaces \cite{CARIKCI2012118}, Local Binary Patterns Histograms (LBPH) \cite{inproceedings}, Fisherfaces, Scale Invariant Feature Transform (SIFT) \cite{articlefr}, and Speed Up Robust Features (SURF) \cite{10.1007/11744023_32}. Commonly, face recognition projects use LBPH algorithm integrated within the OpenCV library. For face detection alone, the Haar Cascade classifier by Paul Viola and Michael Jones \cite{inproceedings} is the first choice.
+If we decide to implement face recognition, there are many popular face recognition systems available that we can use. Facial recognition systems are widely used in modern life, making authentication processes easier without the need for passwords or physical IDs. Some examples of algorithms used for face recognition include Eigenfaces \cite{CARIKCI2012118}, Local Binary Patterns Histograms (LBPH) \cite{inproceedings}, Fisherfaces, Scale-Invariant Feature Transform (SIFT) \cite{articlefr}, and Speed Up Robust Features (SURF) \cite{10.1007/11744023_32}. The Haar Cascade classifier by Paul Viola and Michael Jones \cite{inproceedings} is the first choice for face detection alone.
 
-Since we work with Mediapipe it was the first choice to try use their Face Landmarker for extracting 478 3-dimensional face landmarks. This model works along with the BlazeFace detection model, as well as Face mesh model. The difference of ooutputs of each model is shown in Figure \ref{fig:face_landmark}.
-We applied these model in similar ways as we did with the hand models, using spatial positions of the landmarks. Firstly, we collected our data, labeling each capture of face with a label. Then, we trained the model, which was a simple KNN model to predict the person in the picture. Since we don't have a large database (only tried with 2 people, since the prediction is real-time, the data consisted only of close people), it's hard to conclude whether the model would be sufficient for higher usage. However, it shows an alternate way for the face recognition, using only Mediapipe models. The face recognition model is saved in our repository \cite{touchlessdronecontrol}. 
+Since we are using Mediapipe, we opted to use their Face Landmarker model to extract 478 3-dimensional face landmarks. This model works in conjunction with the BlazeFace detection model and the Face mesh model. Figure \ref{fig:face_landmark} shows the difference in outputs of each model. We applied these models in a similar way as we did with the hand models, using spatial positions of the landmarks. Firstly, we collected our data, labeling each capture of the face with a label. Then, we trained a simple KNN model to predict the person in the picture. However, since our database is not large (as we only tested with two people, and the prediction is real-time), it is difficult to conclude whether the model is sufficient for higher usage. Nevertheless, it demonstrates an alternative way for face recognition using only Mediapipe models. The face recognition model is saved in our repository \cite{touchlessdronecontrol}.
 
 \begin{figure}[h]
 	\centering

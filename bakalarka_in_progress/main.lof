@@ -27,5 +27,6 @@
 \contentsline {figure}{\numberline {3.13}{\ignorespaces The effect of batch size on model loss during training and validation.}}{34}{figure.caption.31}%
 \contentsline {figure}{\numberline {3.14}{\ignorespaces Model loss using the ReLU activation function plotted over 1000 epochs without early stopping.}}{34}{figure.caption.32}%
 \contentsline {figure}{\numberline {3.15}{\ignorespaces Drone used in this project.}}{36}{figure.caption.33}%
-\contentsline {figure}{\numberline {3.16}{\ignorespaces Outputs of FaceBlaze and Face Landmarker model.}}{38}{figure.caption.35}%
+\contentsline {figure}{\numberline {3.16}{\ignorespaces Gesture recognition shots from the drone camera.}}{37}{figure.caption.35}%
+\contentsline {figure}{\numberline {3.17}{\ignorespaces Outputs of FaceBlaze and Face Landmarker model.}}{38}{figure.caption.36}%
 \addvspace {10\p@ }
