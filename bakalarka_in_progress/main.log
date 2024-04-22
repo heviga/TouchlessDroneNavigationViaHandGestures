@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.27)  16 APR 2024 11:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.27)  23 APR 2024 01:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1590,7 +1590,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 [3] [4]
-<content/zadanie.png, id=102, 419.166pt x 466.74374pt>
+<content/zadanie.png, id=134, 419.166pt x 466.74374pt>
 File: content/zadanie.png Graphic file (type png)
 <use content/zadanie.png>
 Package pdftex.def Info: content/zadanie.png  used on input line 74.
@@ -1688,22 +1688,22 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 
 pdfTeX warning: pdflatex.exe (file ./images/steps.pdf): PDF inclusion: found PD
 F version <1.7>, but at most version <1.5> allowed
-<images/steps.pdf, id=299, 2249.40375pt x 398.38837pt>
+<images/steps.pdf, id=351, 2249.40375pt x 398.38837pt>
 File: images/steps.pdf Graphic file (type pdf)
 <use images/steps.pdf>
-Package pdftex.def Info: images/steps.pdf  used on input line 19.
+Package pdftex.def Info: images/steps.pdf  used on input line 25.
 (pdftex.def)             Requested size: 371.30264pt x 65.75555pt.
-)
+
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.119 \include{content/introduction}
-                                     [1
+l.28 \end{figure}
+                  [1
 
 
 
-]
+])
 pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
 been already used, duplicate ignored
 <to be read again> 
@@ -1720,7 +1720,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.18 
+l.10 
       [3
 
 
@@ -1731,232 +1731,193 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.37 
-      [4] [5]
-<images/cat_class.jpg, id=379, 441.65pt x 451.6875pt>
+l.34 \subsection{Image Classifiaction}
+                                       [4] [5]
+<images/cat_class.jpg, id=444, 441.65pt x 451.6875pt>
 File: images/cat_class.jpg Graphic file (type jpg)
 <use images/cat_class.jpg>
-Package pdftex.def Info: images/cat_class.jpg  used on input line 58.
+Package pdftex.def Info: images/cat_class.jpg  used on input line 60.
 (pdftex.def)             Requested size: 103.96269pt x 106.31888pt.
-<images/catanddog_detect.jpg, id=380, 542.025pt x 447.6725pt>
+<images/catanddog_detect.jpg, id=445, 542.025pt x 447.6725pt>
 File: images/catanddog_detect.jpg Graphic file (type jpg)
 <use images/catanddog_detect.jpg>
-Package pdftex.def Info: images/catanddog_detect.jpg  used on input line 64.
+Package pdftex.def Info: images/catanddog_detect.jpg  used on input line 66.
 (pdftex.def)             Requested size: 124.75603pt x 103.03764pt.
- [6 <./images/cat_class.jpg> <./images/catanddog_detect.jpg>]
-
-LaTeX Warning: Reference `fig:segmentation' on page 7 undefined on input line 8
-1.
-
-<images/pose_landmarks_index.png, id=391, 725.71124pt x 859.21pt>
+ [6]
+<images/pose_landmarks_index.png, id=462, 725.71124pt x 859.21pt>
 File: images/pose_landmarks_index.png Graphic file (type png)
 <use images/pose_landmarks_index.png>
-Package pdftex.def Info: images/pose_landmarks_index.png  used on input line 91
+Package pdftex.def Info: images/pose_landmarks_index.png  used on input line 93
 .
 (pdftex.def)             Requested size: 100.25204pt x 118.6891pt.
-<images/dog.png, id=392, 854.2314pt x 411.939pt>
+<images/dog.png, id=463, 854.2314pt x 411.939pt>
 File: images/dog.png Graphic file (type png)
 <use images/dog.png>
-Package pdftex.def Info: images/dog.png  used on input line 97.
+Package pdftex.def Info: images/dog.png  used on input line 99.
 (pdftex.def)             Requested size: 178.22368pt x 85.94402pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 6461) has occurred while \output is active []
 
- [7 <./images/pose_landmarks_index.png> <./images/dog.png>]
-Underfull \vbox (badness 1442) has occurred while \output is active []
-
- [8{C:/Users/ivadu/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.e
-nc}{C:/Users/ivadu/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{
-C:/Users/ivadu/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}]
- [9{C:/Users/ivadu/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.e
-nc}]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[10]
-Underfull \vbox (badness 6493) has occurred while \output is active []
-
- [11]
-[12]
-Underfull \hbox (badness 10000) in paragraph at lines 378--381
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 382--383
-
- []
-
-
-Underfull \vbox (badness 4899) has occurred while \output is active []
-
- [13]
-[14] [15]
-Overfull \hbox (2.30823pt too wide) in paragraph at lines 502--502
+ [7 <./images/cat_class.jpg> <./images/catanddog_detect.jpg>] [8{C:/Users/ivadu
+/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Users/ivadu
+/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/ivadu/App
+Data/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc} <./images/pose_lan
+dmarks_index.png> <./images/dog.png>]
+Overfull \hbox (2.30823pt too wide) in paragraph at lines 214--214
  []\T1/lmr/m/n/10 (-20) Hidden 
  []
 
 
-Overfull \hbox (2.85529pt too wide) in paragraph at lines 503--503
+Overfull \hbox (2.85529pt too wide) in paragraph at lines 215--215
  []\T1/lmr/m/n/10 (-20) Output 
  []
 
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 5
-35.
-(C:\Users\ivadu\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
-File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-) [16]
-Underfull \vbox (badness 4792) has occurred while \output is active []
-
- [17{C:/Users/ivadu/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc
-}]
-Underfull \hbox (badness 10000) in paragraph at lines 620--624
+[9] [10{C:/Users/ivadu/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-math
+sy.enc}] [11] [12] [13]
+Underfull \hbox (badness 10000) in paragraph at lines 445--448
 
  []
 
-[18]
-<images/cyberglove.png, id=494, 853.1875pt x 422.57875pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 449--450
+
+ []
+
+[14] [15] [16] [17] [18]
+Underfull \hbox (badness 10000) in paragraph at lines 646--650
+
+ []
+
+[19]
+<images/cyberglove.png, id=577, 853.1875pt x 422.57875pt>
 File: images/cyberglove.png Graphic file (type png)
 <use images/cyberglove.png>
-Package pdftex.def Info: images/cyberglove.png  used on input line 630.
+Package pdftex.def Info: images/cyberglove.png  used on input line 656.
 (pdftex.def)             Requested size: 315.60951pt x 156.31944pt.
-) [19 <./images/cyberglove.png>]
+) [20 <./images/cyberglove.png>]
 \openout2 = `content/practical_part.aux'.
 
- (content/practical_part.tex [20
-
-
-
-
-]
+ (content/practical_part.tex
 Chapter 3.
-[21]
-<images/landmarks_both_hands.png, id=514, 732.93825pt x 516.12825pt>
+[21
+
+
+
+
+] [22]
+<images/landmarks_both_hands.png, id=597, 732.93825pt x 516.12825pt>
 File: images/landmarks_both_hands.png Graphic file (type png)
 <use images/landmarks_both_hands.png>
-Package pdftex.def Info: images/landmarks_both_hands.png  used on input line 26
+Package pdftex.def Info: images/landmarks_both_hands.png  used on input line 25
 .
 (pdftex.def)             Requested size: 185.65132pt x 130.73283pt.
- [22]
+
 
 pdfTeX warning: pdflatex.exe (file ./images/normalise.pdf): PDF inclusion: foun
 d PDF version <1.7>, but at most version <1.5> allowed
-<images/normalise.pdf, id=521, 489.28395pt x 248.34079pt>
+<images/normalise.pdf, id=599, 489.28395pt x 248.34079pt>
 File: images/normalise.pdf Graphic file (type pdf)
 <use images/normalise.pdf>
-Package pdftex.def Info: images/normalise.pdf  used on input line 42.
+Package pdftex.def Info: images/normalise.pdf  used on input line 41.
 (pdftex.def)             Requested size: 315.60951pt x 160.18805pt.
 [23 <./images/landmarks_both_hands.png>]
-<images/face_detection_good.png, id=532, 301.125pt x 452.892pt>
+<images/face_detection_good.png, id=609, 301.125pt x 452.892pt>
 File: images/face_detection_good.png Graphic file (type png)
 <use images/face_detection_good.png>
-Package pdftex.def Info: images/face_detection_good.png  used on input line 55.
+Package pdftex.def Info: images/face_detection_good.png  used on input line 54.
 
 (pdftex.def)             Requested size: 92.82565pt x 139.60725pt.
-<images/face_detection.png, id=533, 305.943pt x 455.90324pt>
+<images/face_detection.png, id=610, 305.943pt x 455.90324pt>
 File: images/face_detection.png Graphic file (type png)
 <use images/face_detection.png>
-Package pdftex.def Info: images/face_detection.png  used on input line 60.
+Package pdftex.def Info: images/face_detection.png  used on input line 59.
 (pdftex.def)             Requested size: 92.82565pt x 138.32332pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [24 <./images/normalise.pdf> <./images/face_detection_good.png> <./images/face
-_detection.png>]
 
 pdfTeX warning: pdflatex.exe (file ./images/flowchart.pdf): PDF inclusion: foun
 d PDF version <1.7>, but at most version <1.5> allowed
-<images/flowchart.pdf, id=590, 408.727pt x 527.0691pt>
+<images/flowchart.pdf, id=612, 408.727pt x 527.0691pt>
 File: images/flowchart.pdf Graphic file (type pdf)
 <use images/flowchart.pdf>
-Package pdftex.def Info: images/flowchart.pdf  used on input line 74.
+Package pdftex.def Info: images/flowchart.pdf  used on input line 73.
 (pdftex.def)             Requested size: 371.30264pt x 478.81332pt.
 
+Underfull \vbox (badness 5064) has occurred while \output is active []
+
+ [24 <./images/normalise.pdf>]
 
 pdfTeX warning: pdflatex.exe (file ./images/all_gestures.pdf): PDF inclusion: f
 ound PDF version <1.7>, but at most version <1.5> allowed
-<images/all_gestures.pdf, id=592, 1747.52875pt x 669.80237pt>
+<images/all_gestures.pdf, id=668, 1747.52875pt x 669.80237pt>
 File: images/all_gestures.pdf Graphic file (type pdf)
 <use images/all_gestures.pdf>
-Package pdftex.def Info: images/all_gestures.pdf  used on input line 86.
+Package pdftex.def Info: images/all_gestures.pdf  used on input line 85.
 (pdftex.def)             Requested size: 371.30264pt x 142.30812pt.
 
 
 pdfTeX warning: pdflatex.exe (file ./images/gesture_laandmarks-cropped.pdf): PD
 F inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<images/gesture_laandmarks-cropped.pdf, id=596, 453.23328pt x 135.15494pt>
+<images/gesture_laandmarks-cropped.pdf, id=672, 453.23328pt x 135.15494pt>
 File: images/gesture_laandmarks-cropped.pdf Graphic file (type pdf)
 <use images/gesture_laandmarks-cropped.pdf>
 Package pdftex.def Info: images/gesture_laandmarks-cropped.pdf  used on input l
-ine 100.
+ine 99.
 (pdftex.def)             Requested size: 371.30264pt x 110.72464pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [25]
-[26 <./images/flowchart.pdf>] [27 <./images/all_gestures.pdf> <./images/gesture
-_laandmarks-cropped.pdf>]
-Overfull \hbox (11.49596pt too wide) in paragraph at lines 256--257
+[25 <./images/face_detection_good.png> <./images/face_detection.png>] [26 <./im
+ages/flowchart.pdf>] [27 <./images/all_gestures.pdf> <./images/gesture_laandmar
+ks-cropped.pdf>]
+Overfull \hbox (11.49596pt too wide) in paragraph at lines 255--256
 []\T1/lmr/m/n/10 (-20) To per-form a quan-ti-ta-tive anal-y-sis of the test dat
 aset, we em-ployed the []
  []
 
-<images/classific_report.png, id=673, 358.941pt x 260.172pt>
+[28]
+<images/classific_report.png, id=755, 358.941pt x 260.172pt>
 File: images/classific_report.png Graphic file (type png)
 <use images/classific_report.png>
-Package pdftex.def Info: images/classific_report.png  used on input line 261.
+Package pdftex.def Info: images/classific_report.png  used on input line 260.
 (pdftex.def)             Requested size: 241.34444pt x 174.93362pt.
-
-Underfull \vbox (badness 6445) has occurred while \output is active []
-
- [28]
-[29 <./images/classific_report.png>]
-<images/confusion_matrix.pdf, id=696, 407.60278pt x 364.9635pt>
+ [29 <./images/classific_report.png>]
+<images/confusion_matrix.pdf, id=774, 407.60278pt x 364.9635pt>
 File: images/confusion_matrix.pdf Graphic file (type pdf)
 <use images/confusion_matrix.pdf>
-Package pdftex.def Info: images/confusion_matrix.pdf  used on input line 307.
+Package pdftex.def Info: images/confusion_matrix.pdf  used on input line 306.
 (pdftex.def)             Requested size: 241.34444pt x 216.10066pt.
  [30 <./images/confusion_matrix.pdf>]
-<images/model_loss_relu.png, id=707, 645.3711pt x 361.35pt>
+<images/model_loss_relu.png, id=785, 645.3711pt x 361.35pt>
 File: images/model_loss_relu.png Graphic file (type png)
 <use images/model_loss_relu.png>
-Package pdftex.def Info: images/model_loss_relu.png  used on input line 329.
+Package pdftex.def Info: images/model_loss_relu.png  used on input line 328.
 (pdftex.def)             Requested size: 371.30264pt x 207.90144pt.
 
 [31 <./images/model_loss_relu.png>]
-<images/optimizers_comparison.png, id=716, 1107.8991pt x 433.62pt>
+<images/optimizers_comparison.png, id=794, 1107.8991pt x 433.62pt>
 File: images/optimizers_comparison.png Graphic file (type png)
 <use images/optimizers_comparison.png>
 Package pdftex.def Info: images/optimizers_comparison.png  used on input line 3
-41.
+40.
 (pdftex.def)             Requested size: 371.30264pt x 145.3248pt.
-<images/adam_learning_rates_comparison.png, id=718, 1081.1592pt x 433.62pt>
+<images/adam_learning_rates_comparison.png, id=796, 1081.1592pt x 433.62pt>
 File: images/adam_learning_rates_comparison.png Graphic file (type png)
 <use images/adam_learning_rates_comparison.png>
 Package pdftex.def Info: images/adam_learning_rates_comparison.png  used on inp
-ut line 352.
+ut line 351.
 (pdftex.def)             Requested size: 371.30264pt x 148.91756pt.
-
-Underfull \vbox (badness 3701) has occurred while \output is active []
-
  [32 <./images/optimizers_comparison.png>]
-<images/batch_sizes_comparison.png, id=725, 898.3161pt x 505.89pt>
+<images/batch_sizes_comparison.png, id=803, 898.3161pt x 505.89pt>
 File: images/batch_sizes_comparison.png Graphic file (type png)
 <use images/batch_sizes_comparison.png>
 Package pdftex.def Info: images/batch_sizes_comparison.png  used on input line 
-363.
+362.
 (pdftex.def)             Requested size: 371.30264pt x 209.09903pt.
-<images/model_loss_over_1000_epochs.png, id=728, 631.6398pt x 361.35pt>
+<images/model_loss_over_1000_epochs.png, id=806, 631.6398pt x 361.35pt>
 File: images/model_loss_over_1000_epochs.png Graphic file (type png)
 <use images/model_loss_over_1000_epochs.png>
 Package pdftex.def Info: images/model_loss_over_1000_epochs.png  used on input 
-line 374.
+line 373.
 (pdftex.def)             Requested size: 371.30264pt x 212.4172pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 1077) has occurred while \output is active []
 
  [33 <./images/adam_learning_rates_comparison.png>]
 
@@ -1964,10 +1925,10 @@ LaTeX Warning: Text page 34 contains only floats.
 
 [34 <./images/batch_sizes_comparison.png> <./images/model_loss_over_1000_epochs
 .png>]
-<images/drone.jpg, id=740, 1505.625pt x 925.4575pt>
+<images/drone.jpg, id=818, 1505.625pt x 925.4575pt>
 File: images/drone.jpg Graphic file (type jpg)
 <use images/drone.jpg>
-Package pdftex.def Info: images/drone.jpg  used on input line 393.
+Package pdftex.def Info: images/drone.jpg  used on input line 392.
 (pdftex.def)             Requested size: 222.78384pt x 136.9345pt.
 
 
@@ -1977,22 +1938,22 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 Underfull \vbox (badness 1038) has occurred while \output is active []
 
  [35]
-<images/palm_drone.png, id=747, 778.107pt x 522.15076pt>
+<images/palm_drone.png, id=825, 778.107pt x 522.15076pt>
 File: images/palm_drone.png Graphic file (type png)
 <use images/palm_drone.png>
-Package pdftex.def Info: images/palm_drone.png  used on input line 430.
+Package pdftex.def Info: images/palm_drone.png  used on input line 429.
 (pdftex.def)             Requested size: 157.80475pt x 105.89429pt.
-<images/ok_drone.png, id=748, 819.06pt x 532.99126pt>
+<images/ok_drone.png, id=826, 819.06pt x 532.99126pt>
 File: images/ok_drone.png Graphic file (type png)
 <use images/ok_drone.png>
-Package pdftex.def Info: images/ok_drone.png  used on input line 435.
+Package pdftex.def Info: images/ok_drone.png  used on input line 434.
 (pdftex.def)             Requested size: 157.80475pt x 102.6845pt.
 
 [36 <./images/drone.jpg>]
-<images/face_landmark.png, id=762, 441.65pt x 241.90375pt>
+<images/face_landmark.png, id=840, 441.65pt x 241.90375pt>
 File: images/face_landmark.png Graphic file (type png)
 <use images/face_landmark.png>
-Package pdftex.def Info: images/face_landmark.png  used on input line 455.
+Package pdftex.def Info: images/face_landmark.png  used on input line 454.
 (pdftex.def)             Requested size: 297.04324pt x 162.70584pt.
 
 
@@ -2021,9 +1982,9 @@ Chapter 4.
 
 
 
-] [42] [43]
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 2
-14.
+]
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
+01.
 
 (C:\Users\ivadu\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
@@ -2032,8 +1993,8 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-) [44]
-
+ [42]
+[43] [44]) [45] 
 enddocument/afterlastpage: lastpage setting LastPage.
 (main.aux (content/introduction.aux) (content/theory.aux)
 (content/practical_part.aux) (content/conclusions.aux) (content/resume.aux))
@@ -2041,21 +2002,17 @@ enddocument/afterlastpage: lastpage setting LastPage.
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-13>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 96D8696ACD5144DFAB82437FEF95D739;2212.
+(rerunfilecheck)             Checksum: EE8241C642C0FCD0FD0FF46D95B00173;3475.
  ) 
 Here is how much of TeX's memory you used:
- 49159 strings out of 474462
- 1151446 string characters out of 5742883
+ 49176 strings out of 474462
+ 1151388 string characters out of 5742883
  1978998 words of memory out of 5000000
- 70174 multiletter control sequences out of 15000+600000
- 690910 words of font info for 245 fonts, out of 8000000 for 9000
+ 70173 multiletter control sequences out of 15000+600000
+ 690888 words of font info for 246 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,17n,94p,1630b,2092s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,17n,94p,1687b,2092s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/ivadu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pf
 b><C:/Users/ivadu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pf
 b><C:/Users/ivadu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmcsc10.p
@@ -2074,9 +2031,9 @@ s/ivadu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb><C:/Us
 ers/ivadu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Us
 ers/ivadu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy7.pfb><C:/Use
 rs/ivadu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
-Output written on main.pdf (62 pages, 10931644 bytes).
+Output written on main.pdf (63 pages, 10951928 bytes).
 PDF statistics:
- 958 PDF objects out of 1000 (max. 8388607)
- 173 named destinations out of 1000 (max. 500000)
- 76588 words of extra memory for PDF output out of 89155 (max. 10000000)
+ 1041 PDF objects out of 1200 (max. 8388607)
+ 192 named destinations out of 1000 (max. 500000)
+ 74604 words of extra memory for PDF output out of 89155 (max. 10000000)
 

@@ -14,10 +14,26 @@ Mart\'{i}n Abadi, Ashish Agarwal, Paul Barham, Eugene Brevdo, Zhifeng Chen,
   2015.
 \newblock Software available from tensorflow.org.
 
+\bibitem{datasetssss}
+Zaman Abbood, Mohammed Al-Turfi, and Laythkamil Almajmaie.
+\newblock An abbreviated review of deep learning-based image classification
+  models.
+\newblock {\em Indonesian Journal of Electrical Engineering and Computer
+  Science}, 30:491, 04 2023.
+
 \bibitem{inproceedings}
 Timo Ahonen, Abdenour Hadid, and Matti Pietikäinen.
 \newblock Face recognition with local binary patterns.
 \newblock volume 3021, pages 469--481, 05 2004.
+
+\bibitem{land9100346}
+Shahab~S. Band, Saeid Janizadeh, Sunil Saha, Kaustuv Mukherjee,
+  Saeid~Khosrobeigi Bozchaloei, Artemi Cerdà, Manouchehr Shokri, and
+  Amirhosein Mosavi.
+\newblock Evaluating the efficiency of different regression, decision tree, and
+  bayesian machine learning algorithms in spatial piping erosion susceptibility
+  using alos/palsar data.
+\newblock {\em Land}, 9(10), 2020.
 
 \bibitem{10.1007/11744023_32}
 Herbert Bay, Tinne Tuytelaars, and Luc Van~Gool.
@@ -46,6 +62,11 @@ Google~AI Blog.
   \href{https://ai.googleblog.com/2019/08/on-devicereal-time-hand-tracking-with.html}{Blog
   Post} Accessed: December, 2023.
 
+\bibitem{CERRI201439}
+Ricardo Cerri, Rodrigo~C. Barros, and André~C.P.L.F. {de Carvalho}.
+\newblock Hierarchical multi-label classification using local neural networks.
+\newblock {\em Journal of Computer and System Sciences}, 80(1):39--56, 2014.
+
 \bibitem{doi:10.1080/08839514.2023.2176607}
 Sheng-Kuan Wang Victor R.L. Shen Yi-Chih Tung Frank H.C.~Shen Cheng-Ying~Yang,
   Yi-Nan~Lin and Chun-Hsiang Huang.
@@ -72,6 +93,13 @@ Ross Girshick, Jeff Donahue, Trevor Darrell, and Jitendra Malik.
   segmentation.
 \newblock In {\em Proceedings of the IEEE conference on computer vision and
   pattern recognition}, pages 580--587, 2014.
+
+\bibitem{mediapipePoseLandmarker}
+Google.
+\newblock Mediapipe pose landmarker.
+\newblock
+  \url{https://developers.google.com/mediapipe/solutions/vision/pose_landmarker}.
+\newblock Accessed: [insert date here].
 
 \bibitem{touchlessdronecontrol}
 Hedviga.
@@ -153,6 +181,13 @@ JungSoo Park, Hyo-Rim Choi, JunYoung Kim, and TaeYong Kim.
 \newblock In {\em 2014 International Conference on Computer Vision Theory and
   Applications (VISAPP)}, volume~1, pages 551--556. IEEE, 2014.
 
+\bibitem{decisiontree}
+Tomas Pranckevicius and Virginijus Marcinkevičius.
+\newblock Comparison of naive bayes, random forest, decision tree, support
+  vector machines, and logistic regression classifiers for text reviews
+  classification.
+\newblock {\em Baltic Journal of Modern Computing}, 5, 01 2017.
+
 \bibitem{premaratne2014chapter2}
 P.~Premaratne.
 \newblock {\em Chapter 2: Human Computer Interaction Using Hand Gestures},
@@ -175,6 +210,11 @@ Joseph Redmon, Santosh Divvala, Ross Girshick, and Ali Farhadi.
 \newblock You only look once: Unified, real-time object detection.
 \newblock In {\em Proceedings of the IEEE conference on computer vision and
   pattern recognition}, pages 779--788, 2016.
+
+\bibitem{Reyad2023}
+Mohamed Reyad, Amany~M. Sarhan, and M.~Arafa.
+\newblock A modified adam algorithm for deep neural network optimization.
+\newblock {\em Neural Computing and Applications}, 35(23):17095--17112, 2023.
 
 \bibitem{ronneberger2015u}
 Olaf Ronneberger, Philipp Fischer, and Thomas Brox.
@@ -213,6 +253,12 @@ techfort.
 \newblock
   \url{https://github.com/techfort/opencv-mediapipe-hand-gesture-recognition},
   2023.
+
+\bibitem{Turner2016}
+Alexander~P. Turner, Patrick Larkin, and Kyle Hourigan.
+\newblock 3d computational fluid dynamics simulations of swimmer's hand
+  velocity, hand orientation, and finger spread.
+\newblock {\em PLOS ONE}, 11(3):e0152173, 2016.
 
 \bibitem{DBLP:journals/corr/abs-2006-08517}
 Yang You, Yuhui Wang, Huan Zhang, Zhao Zhang, James Demmel, and Cho{-}Jui

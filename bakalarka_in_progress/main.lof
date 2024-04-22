@@ -2,19 +2,19 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {1.1}{\ignorespaces Steps of the process}}{2}{figure.caption.7}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Comparison of classification (left) with output: 'Cat' and object detection (right) with output: 'Cat, Dog' and their localization with bounding boxes }}{6}{figure.caption.8}%
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Landmarks for pose estimation model by MediaPipe and U-Net segmentation on an image from Oxford-IIIT Pet Dataset (Parkhi et al, 2012).}}{7}{figure.caption.9}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Comparison of classification (left) with output: 'Cat' and object detection (right) with output: 'Cat, Dog' and their localization with bounding boxes }}{7}{figure.caption.8}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Landmarks for pose estimation model by MediaPipe and U-Net segmentation on an image from Oxford-IIIT Pet Dataset (Parkhi et al, 2012).}}{8}{figure.caption.9}%
 \contentsline {figure}{\numberline {2.3}{\ignorespaces Schematic representation of a neuron with inputs, weights, a bias, an activation function, and an output.}}{8}{figure.caption.10}%
-\contentsline {figure}{\numberline {2.4}{\ignorespaces A diagram of the NN softmax classification process.}}{10}{figure.caption.11}%
-\contentsline {figure}{\numberline {2.5}{\ignorespaces Softmax/Sigmoid function and Rectifier function.}}{11}{figure.caption.12}%
-\contentsline {figure}{\numberline {2.6}{\ignorespaces An example structure for backpropagation.}}{14}{figure.caption.15}%
-\contentsline {figure}{\numberline {2.7}{\ignorespaces Structure of neural network}}{16}{figure.caption.16}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Structure of neural network}}{9}{figure.caption.11}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces A diagram of the NN softmax classification process.}}{11}{figure.caption.12}%
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Softmax/Sigmoid function and Rectifier function.}}{11}{figure.caption.13}%
+\contentsline {figure}{\numberline {2.7}{\ignorespaces An example structure for backpropagation.}}{15}{figure.caption.16}%
 \contentsline {figure}{\numberline {2.8}{\ignorespaces Visualization of dropout.}}{18}{figure.caption.17}%
-\contentsline {figure}{\numberline {2.9}{\ignorespaces Cyberglove II}}{19}{figure.caption.18}%
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Cyberglove II}}{20}{figure.caption.18}%
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Hand landmarks model output}}{23}{figure.caption.19}%
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Process of normalization of landmark coordinates}}{24}{figure.caption.20}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Outputs of face detection model with different lightings}}{24}{figure.caption.21}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Outputs of face detection model with different lightings}}{25}{figure.caption.21}%
 \contentsline {figure}{\numberline {3.4}{\ignorespaces Logic in the recognition process.}}{26}{figure.caption.22}%
 \contentsline {figure}{\numberline {3.5}{\ignorespaces Gestures used in this project.}}{27}{figure.caption.23}%
 \contentsline {figure}{\numberline {3.6}{\ignorespaces A selection of the saved csv file}}{27}{figure.caption.24}%
