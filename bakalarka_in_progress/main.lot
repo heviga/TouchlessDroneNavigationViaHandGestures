@@ -2,5 +2,8 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Gesture commands for drone control}}{36}{table.caption.34}%
+\contentsline {table}{\numberline {3.1}{\ignorespaces A selection of the saved csv file}}{26}{table.caption.23}%
+\contentsline {table}{\numberline {3.2}{\ignorespaces Classification Report}}{28}{table.caption.25}%
+\contentsline {table}{\numberline {3.3}{\ignorespaces Comparison of optimizers, learning rates, and batch sizes across training epochs, with validation loss and epochs where learning plateaus.}}{33}{table.caption.31}%
+\contentsline {table}{\numberline {3.4}{\ignorespaces Gesture commands for drone control}}{37}{table.caption.35}%
 \addvspace {10\p@ }

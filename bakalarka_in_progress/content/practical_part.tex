@@ -1,9 +1,9 @@
 \chapter{Practical Part}
-In this chapter we discuss the implementation of a gesture recognition system utilizing the MediaPipe framework. We look into our neural network model, its results with a comprehensive analysis of the model's performance. Furthermore, the chapter includes a comparison of various machine learning optimizers, highlighting their impact on the training dynamics and outcomes of the model. We also discus how the gesture recognition model is applied in real-world scenarios, controlling a Tello drone through recognized gestures. This practical application demonstrates how gestures can directly influence drone behavior for tasks such as navigation and interaction, bridging the gap between theoretical development and real-world application.
+In this chapter, we discuss the implementation of a gesture recognition system utilizing the MediaPipe framework. We look into our neural network model and its results with a comprehensive analysis of the model's performance. Furthermore, the chapter includes a comparison of various machine learning optimizers, highlighting their impact on the training dynamics and outcomes of the model. We also discuss how the gesture recognition model is applied in real-world scenarios, controlling a Tello drone through recognized gestures. This practical application demonstrates how gestures can directly influence drone behavior for tasks such as navigation and interaction, bridging the gap between theoretical development and real-world application.
 \section{Mediapipe}
 MediaPipe is a framework used to create machine learning pipelines for time-series data like video and audio. Google initially developed it to process real-time video and audio analysis on YouTube \cite{mediapipe2019blog}. In 2019, the public release allowed researchers and developers to incorporate MediaPipe into their projects. Unlike other machine learning frameworks that require high computing power, MediaPipe can run efficiently on devices with low power, such as Android and IoT devices. It consists of the MediaPipe framework and MediaPipe solutions. The MediaPipe framework is developed using C++, Java, and Objective C programming. MediaPipe solutions include 16 pre-trained TensorFlow and TensorFlow Lite models built on top of the MediaPipe framework for specific use cases.
 \subsection{MediaPipe Hands}
-MediaPipe Hands is a solution that tracks hands in real time. The problem of detecting hands is somewhat intricate. The model must be able to recognize hands and it must function across a wide range of hand sizes with a big scale span so it must be robust. It is rather difficult to identify hands based just on their visual traits since hands lack high-contrast patterns.% found on faces, such as those surrounding the lips and eyes.
+MediaPipe Hands is a solution that tracks hands in real-time. The problem of detecting hands is somewhat intricate. The model must be able to recognize hands and it must function across a wide range of hand sizes with a big scale span so it must be robust. It is rather difficult to identify hands based just on their visual traits since hands lack high-contrast patterns.% found on faces, such as those surrounding the lips and eyes.
 
 MediaPipe Hands utilizes a combination of object detection, classification, and regression to recognize and track hands within a given image or video frame. The pipeline consists of two convolutional neural network models: a palm detector and a hand landmark model.
 
@@ -26,6 +26,10 @@ For encountering a tracking failure, There was also another model output created
 	\caption{Hand landmarks model output}
 	\label{fig:landmark_both_hands}
 \end{figure}
+
+% Ensure the subsection does not end with the figure
+\par~
+\newline
 
 \subsubsection*{Data Normalization}\label{sec:norm}
 The MediaPipe hand landmarks model provides coordinates for hand landmark points based on the position of pixels containing those points in an image. As a result, the coordinates of two images of the same hand sign with different placements in the frame can have significantly different distances between them. This makes it more challenging to train the model.
@@ -65,22 +69,11 @@ With support for multiple faces and six landmarks (left eye, right eye, nose tip
 
 
 \section{Data Collection}
-The flow of this project is as follows: the drone flies off, and we process the image that is captured by the drone's camera. Using multiple models for detecting, classifying, and localizing features in the image, after detecting a face, our model returns a prediction of a gesture and the drone executes the corresponding command in real time. The logic of the process is presented in Figure \ref{fig:flowchart}
-
-
-\begin{figure}
-	\centering
-	\includegraphics[width = \textwidth]{images/flowchart.pdf}
-	\caption{Logic in the recognition process.}
-	\label{fig:flowchart}
-\end{figure}
-
 
 To make predictions, we had to train our model with data. Since we decided to use hand gestures, we had to collect the data ourselves. After finishing the training, we established drone commands and tested our program.
 
-Although many publicly accessible datasets contain pictures of hand gestures, we chose to collect our data using the MediaPipe hand-tracking model. To do this, we recorded video footage of various hand gestures being held for a specific duration and moved around to increase diversity. Because the MediaPipe models are open-sourced and many developers use them for various projects, there are also numerous programs available for capturing and labeling gestures, like \cite{opencv_mediapipe_hand_gesture_recognition}. During the recording process, we labeled each gesture by pressing a key. Our dataset includes over 5000 samples, including images of both right and left hands, palms facing forward or backward toward the camera, and various degrees of hand positions captured by the camera.
-
-\begin{figure}
+Although many publicly accessible datasets contain pictures of hand gestures, we chose to collect our data using the MediaPipe hand-tracking model. To do this, we recorded video footage of various hand gestures being held for a specific duration and moved around to increase diversity. Because the MediaPipe models are open-sourced and many developers use them for various projects, there are also numerous programs available for capturing and labeling gestures, like \cite{opencv_mediapipe_hand_gesture_recognition}.
+\begin{figure}[h!]
 	\centering
 	\includegraphics[width = \textwidth]{images/all_gestures.pdf}
 	\caption{Gestures used in this project.}
@@ -88,18 +81,25 @@ Although many publicly accessible datasets contain pictures of hand gestures, we
 \end{figure}
 
 
+ During the recording process, we labeled each gesture by pressing a key. Our dataset includes over 5000 samples, including images of both right and left hands, palms facing forward or backward toward the camera, and various degrees of hand positions captured by the camera.
+
+
+
 Our final dataset has 8 total classes. It demonstrates the efficacy of the model and minimizes the risk of error commands that could lead to unsafe situations. The gestures are shown in Figure \ref{fig:all_gestures}.
 
 
-The hand-tracking model used for data collection, outputs x, y, and z coordinates of hand landmark points from images, but only x and y coordinates are necessary for training the final model. Therefore, we eliminated the z coordinates. After normalization \ref{sec:norm}, we stored the remaining x and y coordinates of hand landmarks for various hand signs in a csv file for each hand landmark. The coordinates displayed in Figure \ref{fig:saved_csv} represent the data points used to generate the final dataset and train the final model. The first column denotes the gesture label, the next two columns indicate the coordinates of landmark 0 at the wrist, and so on. Our csv file contains many combinations of landmark coordinates for each gesture.
-
-
-\begin{figure}[h]
+\begin{table}[h]
 	\centering
-	\includegraphics[width = \textwidth]{images/gesture_laandmarks-cropped.pdf}
 	\caption{A selection of the saved csv file}
-	\label{fig:saved_csv}
-\end{figure}
+	\includegraphics[width = \textwidth]{images/gesture_laandmarks-cropped.pdf}
+	\label{tab:saved_csv} % Use tab: prefix for table labels
+\end{table}
+
+
+The hand-tracking model used for data collection, outputs x, y, and z coordinates of hand landmark points from images, but only x and y coordinates are necessary for training the final model. Therefore, we eliminated the z coordinates. After normalization \ref{sec:norm}, we stored the remaining x and y coordinates of hand landmarks for various hand signs in a csv file for each hand landmark. The coordinates displayed in Figure \ref{tab:saved_csv} represent the data points used to generate the final dataset and train the final model. The first column denotes the gesture label, the next two columns indicate the coordinates of landmark 0 at the wrist, and so on. Our csv file contains many combinations of landmark coordinates for each gesture.
+
+ 
+
 
 
 \section{Model}
@@ -255,13 +255,29 @@ The following is a report on training our neural network with the data. We utili
 To perform a quantitative analysis of the test dataset, we employed the  \text{classification report} and  \text{confusion matrix} libraries from scikit-learn. The \text{classification report} library produced an assessment report of our model with accuracy, precision, recall, and F1 score matrices. Additionally, the support matrix represents the model's real-time recognition performance.
 
 
-\begin{figure}
-	\centering
-	\includegraphics[width = 0.65\textwidth]{images/classific_report.png}
-	\caption{Classification report of the model}
-	\label{fig:report}
-\end{figure}
 
+\begin{table}[h]
+	\centering
+		\caption{Classification Report}
+	\renewcommand{\arraystretch}{1.35} % Adjusts the row height
+	\begin{tabular}{lcccc}
+		\hline
+		\textbf{Class}       & \textbf{Precision} & \textbf{Recall} & \textbf{F1-Score} & \textbf{Support} \\ \hline
+		0                    & 0.99               & 1.00            & 0.99              & 622              \\
+		1                    & 1.00               & 0.99            & 1.00              & 508              \\
+		2                    & 1.00               & 0.98            & 0.99              & 556              \\
+		3                    & 1.00               & 0.99            & 1.00              & 759              \\
+		4                    & 1.00               & 1.00            & 1.00              & 621              \\
+		5                    & 1.00               & 1.00            & 1.00              & 673              \\
+		6                    & 0.98               & 1.00            & 0.99              & 666              \\
+		7                    & 1.00               & 1.00            & 1.00              & 603              \\
+		\textit{accuracy}    &                   & 0.99            &                 & 5008             \\
+		\textit{macro avg}   & 1.00               & 0.99            & 0.99              & 5008             \\
+		\textit{weighted avg} & 0.99               & 0.99            & 0.99              & 5008             \\ \hline
+	\end{tabular}
+
+	\label{tab:report}
+\end{table}
 
 Precision is the ratio of correctly predicted positive observations to the total predicted positive observations. 
 
@@ -273,8 +289,8 @@ The recall matrix measures the number of predictions our model correctly labels 
 The F1 score is calculated by combining both precision and recall, as shown in Equation \ref{eq:f1_score}. It is their harmonic mean.
 
 Support is the number of samples in each class. 
-The macro-average of precision, recall and F1-score demonstrates the system's average performance across all classes, while the weighted average takes into account the class imbalance by weighting the metrics based on the number of samples in each class.\newline
- Additionally, the loss value of $3.09\%$ (not shown) indicates how efficiently the model is minimizing its errors during training, while overall accuracy stands at $99.62\%$
+The macro-average of precision, recall, and F1-score demonstrates the system's average performance across all classes, while the weighted average takes into account the class imbalance by weighting the metrics based on the number of samples in each class.\newline
+Additionally, the loss value of $3.09\%$ (not shown) indicates how efficiently the model is minimizing its errors during training, while overall accuracy stands at $99.62\%$
 
 The classification report of the implemented model in detail is shown in Figure \ref{fig:report}. 
 
@@ -301,13 +317,6 @@ The classification report of the implemented model in detail is shown in Figure 
 In the equations (\ref{eq:accuracy}), (\ref{eq:precision}), (\ref{eq:recall}), and (\ref{eq:f1_score}), TP, TN, FP, and FN represent True Positive, True Negative, False Positive,
 and False Negative, respectively.
 
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width = 0.65\textwidth]{images/confusion_matrix.pdf}
-	\caption{Confusion matrix of the model}
-	\label{fig:confusion_matrix}
-\end{figure}
-
 
 The confusion matrix is a key performance metric used in machine learning, particularly in classification tasks. By utilizing the scikit-learn library in Python, one can create a confusion matrix. To conduct our experiment on predicting hand gestures, we obtained and pre-processed the necessary datasets. The confusion matrix was then utilized to evaluate the accuracy of our model, which is illustrated in Figure \ref{fig:confusion_matrix}. The x-axis represents predicted labels, while the y-axis represents actual labels.
 
@@ -323,7 +332,16 @@ Through the confusion matrix, we can pinpoint which gestures are being incorrect
 The system's performance is satisfactory, with almost perfect precision, recall, and F1-score in most classes, as well as high accuracy and weighted average.
 
 To find the model's performance from a loss validation standpoint, we can plot its progress throughout the epochs.
-\begin{figure}[ht!]
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width = 0.65\textwidth]{images/confusion_matrix.pdf}
+	\caption{Confusion matrix of the model}
+	\label{fig:confusion_matrix}
+\end{figure}
+
+
+\begin{figure}[h!]
 	\centering
 	\includegraphics[width=\textwidth]{images/model_loss_relu.png}
 	\caption{Training and validation loss curves for a neural network model utilizing the ReLU activation function.}
@@ -357,16 +375,55 @@ We researched different batch sizes, ranging from 16 to 1024, to find the right 
 
 After considering all the options, we chose a batch size of 128. This size balances fast convergence with stable loss decrease and efficiently learns from the data. It is a good compromise between the noise observed in smaller batch sizes and the slow convergence observed in larger ones. The loss curve for a batch size of 128 is consistent, which means that our model has strong generalization performance. Therefore, we selected this batch size for our final model training.
 
-\begin{figure}[ht!]
+\begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{images/batch_sizes_comparison.png}
 	\caption{The effect of batch size on model loss during training and validation.}
 	\label{fig:batch_sizes}
 \end{figure}
 
+To sum up the importance of hyperparameters, we can look at the learning rate, as well as the number of epochs needed for the training. The comparisons of the impact of the hyperparameters on learning rate and epochs are shown in table \ref{tab:comparison_across_epochs}. It's important to note, that these exact models weren't used in our project, but the comparisons were done with our data.
+
+
+\begin{table}[h!]
+	\centering
+		\caption{Comparison of optimizers, learning rates, and batch sizes across training epochs, with validation loss and epochs where learning plateaus.}
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		\textbf{Parameter} & \textbf{Option} & \textbf{Validation Loss} & \textbf{Epochs} \\
+		\hline
+		\multirow{2}{*}{Optimizer} & SGD & 0.209 & 840 \\
+		\cline{2-4}
+		& Adam & 0.063 & 98 \\
+		\hline
+		\multirow{3}{*}{Learning Rate} & 0.001 & 0.112 & 73 \\
+		\cline{2-4}
+		& 0.0001 & 0.12 & 200 \\
+		\cline{2-4}
+		& 1e-5 & 0.18 & 1000 \\
+		\hline
+		\multirow{5}{*}{Batch Size} & 16 & 0.112 & 46 \\
+		\cline{2-4}
+		& 64 & 0.114 & 72 \\
+		\cline{2-4}
+		& 128 &  0.11& 77 \\
+		\cline{2-4}
+		& 256 &  0.12  & 94 \\
+		\cline{2-4}
+		& 512 & 0.113 & 80 \\
+		\cline{2-4}
+		& 1024 & 0.119 & 167 \\
+		\hline
+	\end{tabular}
+
+	\label{tab:comparison_across_epochs}
+\end{table}
+
+
+
+
 Figure \ref{fig:epochs} shows the model's loss over 1000 epochs when using the ReLU activation function. The training loss decreases rapidly in the initial epochs, indicating the model is learning quickly and stabilizing. However, the validation loss fluctuates significantly throughout the training process, particularly in later epochs. This suggests that the model may be capturing noise or overfitting to the training data, continuing to learn beyond achieving minimal loss on the validation set.
 
-The importance of implementing early stopping as a regularization technique (like in figure \ref{fig:model_loss_relu}) is underscored by this extended training. Without it, the model risks wasting computational resources and reducing its ability to generalize. The increasing divergence between training and validation loss after several hundred epochs reinforces the need for early stopping to halt training when the model ceases to improve in generalization to validation data.
 
 \begin{figure}[ht!]
 	\centering
@@ -374,10 +431,19 @@ The importance of implementing early stopping as a regularization technique (lik
 	\caption{Model loss using the ReLU activation function plotted over 1000 epochs without early stopping.}
 	\label{fig:epochs}
 \end{figure}
-
-
+The importance of implementing early stopping as a regularization technique (like in figure \ref{fig:model_loss_relu}) is underscored by this extended training. Without it, the model risks wasting computational resources and reducing its ability to generalize. The increasing divergence between training and validation loss after several hundred epochs reinforces the need for early stopping to halt training when the model ceases to improve in generalization to validation data.
 
 \section{Drone Implementation}
+
+The flow of this project is as follows: the drone flies off, and we process the image that is captured by the drone's camera. Using multiple models for detecting, classifying, and localizing features in the image, after detecting a face, our model returns a prediction of a gesture and the drone executes the corresponding command in real time. The logic of the process is presented in Figure \ref{fig:flowchart}
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width =1.1 \textwidth]{images/flowchart.pdf}
+	\caption{Logic in the recognition process.}
+	\label{fig:flowchart}
+\end{figure}
 
 The Tello drone is a compact quadcopter that boasts an advanced vision positioning system and a high-resolution (8 mp) onboard camera, designed to capture stunning aerial photographs and videos. It offers versatile operating options, allowing users to control it through a laptop computer or a smartphone. The drone connects to devices using Wi-Fi, which facilitates a stable and fast connection essential for real-time video streaming and responsive flight control. Additionally, it supports the 2.4 GHz frequency band for remote control, a widely used standard that ensures reliable communication over distances. The drone has other built-in functions like a range finder, barometer, LED, or vision system. It is fitted with a single accelerometer and 3-axis magnetometer (which can get the drone orientation), a pressure, and an IR-based altitude detector. The Tello drone is compatible with a dedicated smartphone application available on both Android and iOS platforms. This app unlocks several intuitive flight modes, easy-to-use controls, and creative functions.
 
@@ -402,6 +468,7 @@ Table \ref{tab:gesture_commands} lists the commands used in our project, which w
 
 \begin{table}[ht]
 	\centering
+		\caption{Gesture commands for drone control}
 	\begin{tabular}{ll}
 		\toprule
 		Gesture Label & Command \\
@@ -416,7 +483,7 @@ Table \ref{tab:gesture_commands} lists the commands used in our project, which w
 		7 - Down & Move down (descending velocity)\\
 		\bottomrule
 	\end{tabular}
-	\caption{Gesture commands for drone control}
+
 	\label{tab:gesture_commands}
 \end{table}
 
@@ -447,15 +514,19 @@ Moving forward with our work, there is ample room for the expansion of the proje
 
 If we decide to implement face recognition, there are many popular face recognition systems available that we can use. Facial recognition systems are widely used in modern life, making authentication processes easier without the need for passwords or physical IDs. Some examples of algorithms used for face recognition include Eigenfaces \cite{CARIKCI2012118}, Local Binary Patterns Histograms (LBPH) \cite{inproceedings}, Fisherfaces, Scale-Invariant Feature Transform (SIFT) \cite{articlefr}, and Speed Up Robust Features (SURF) \cite{10.1007/11744023_32}. The Haar Cascade classifier by Paul Viola and Michael Jones \cite{inproceedings} is the first choice for face detection alone.
 
-Since we are using Mediapipe, we opted to use their Face Landmarker model to extract 478 3-dimensional face landmarks. This model works in conjunction with the BlazeFace detection model and the Face mesh model. Figure \ref{fig:face_landmark} shows the difference in outputs of each model. We applied these models in a similar way as we did with the hand models, using spatial positions of the landmarks. Firstly, we collected our data, labeling each capture of the face with a label. Then, we trained a simple KNN model to predict the person in the picture. However, since our database is not large (as we only tested with two people, and the prediction is real-time), it is difficult to conclude whether the model is sufficient for higher usage. Nevertheless, it demonstrates an alternative way for face recognition using only Mediapipe models. The face recognition model is saved in our repository \cite{touchlessdronecontrol}.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.8\textwidth]{images/face_landmark.png}
-	\caption{Outputs of FaceBlaze and Face Landmarker model.}
+	\caption{Outputs of FaceBlaze and Face Landmark model.}
 	\label{fig:face_landmark}
 \end{figure}
 
+\par~
+\newline
 
+
+
+Since we are using Mediapipe, we opted to use their Face Landmark model to extract 478 3-dimensional face landmarks. This model works in conjunction with the BlazeFace detection model and the Face mesh model. Figure \ref{fig:face_landmark} shows the difference in outputs of each model. We applied these models in a similar way as we did with the hand models, using spatial positions of the landmarks. Firstly, we collected our data, labeling each capture of the face with a label. Then, we trained a simple KNN model to predict the person in the picture. However, since our database is not large (as we only tested with two people, and the prediction is real-time), it is difficult to conclude whether the model is sufficient for higher usage. Nevertheless, it demonstrates an alternative way for face recognition using only Mediapipe models. The face recognition model is saved in our repository \cite{touchlessdronecontrol}.
 
 
