@@ -23,7 +23,7 @@ For encountering a tracking failure, There was also another model output created
 \begin{figure}
 	\centering
 	\includegraphics[width = 0.5\textwidth]{images/landmarks_both_hands.png}
-	\caption{Hand landmarks model output.}
+	\caption{Hand landmarks model output of non-ideal picture input.}
 	\label{fig:landmark_both_hands}
 \end{figure}
 
@@ -43,12 +43,14 @@ Then, the coordinates were normalized to be between 0 and 1 by dividing them by 
 \begin{figure}
 	\centering
 	\includegraphics[width = 0.85\textwidth]{images/normalise.pdf}
-	\caption{Process of normalization of landmark coordinates.}
+	\caption{Process of normalization of three landmark coordinates.}
+		
 	\label{fig:normalization}
 \end{figure}
 
 \subsection{MediaPipe Face}
-With support for multiple faces and six landmarks (left eye, right eye, nose tip, mouth, left eye region, and right eye region), MediaPipe Face Detection is a quick solution for face detection. Mediapipe BlazeFace \cite{bazarevsky2019blazeface} is a compact and efficient face detector designed for mobile GPU inference, that serves as its foundation, detecting only a few landmarks on the face and drawing a bounding box. Because of its real-time performance, the detector can be used with any live viewfinder experience that needs a precise facial region of interest as an input for other task-specific models, like face region segmentation, facial feature or expression classification, and 3D facial geometry estimation (like MediaPipe Face Mesh). BlazeFace leverages a resolution technique as an alternative to a GPU-friendly anchor mechanism adapted from Single Shot MultiBox Detector (SSD) \cite{Liu_2016} and a lightweight feature extraction network that is similar to MobileNetV1/V2 \cite{howard2017mobilenets}. With BlazeFace in use, we can get outputs shown in Figure \ref{fig:face_detections}, also outputting the confidence of the face.
+With support for multiple faces and six landmarks (left eye, right eye, nose tip, mouth, left eye region, and right eye region), MediaPipe Face Detection is a quick solution for face detection. Mediapipe BlazeFace \cite{bazarevsky2019blazeface} is a compact and efficient face detector designed for mobile GPU inference, that serves as its foundation, detecting only a few landmarks on the face and drawing a bounding box. Because of its real-time performance, the detector can be used with any live viewfinder experience that needs a precise facial region of interest as an input for other task-specific models, like face region segmentation, facial feature or expression classification, and 3D facial geometry estimation (like MediaPipe Face Mesh). BlazeFace leverages a resolution technique as an alternative to a GPU-friendly anchor mechanism adapted from Single Shot MultiBox Detector (SSD) \cite{Liu_2016} and a lightweight feature extraction network that is similar to MobileNetV1/V2 \cite{howard2017mobilenets}. With BlazeFace in use,
+ we can get outputs shown in Figure \ref{fig:face_detections}, also outputting the confidence of the face. 
 
 
 \begin{figure}[ht]
@@ -63,7 +65,7 @@ With support for multiple faces and six landmarks (left eye, right eye, nose tip
 		\includegraphics[width=0.5\textwidth]{images/face_detection.png}
 		%   \caption{U-Net segmentation on an image from Oxford-IIIT Pet Dataset (Parkhi et al, 2012).}
 	\end{minipage}
-	\caption{Outputs of face detection model with different lightings}
+	\caption[Outputs of the MediaPipe face detection model]{Outputs of the MediaPipe face detection model under different lighting conditions. Images are from an available database and were captured using the MediaPipe live face detection web application. \url{https://mediapipe-studio.webapps.google.com/demo/face_detector}}
 	\label{fig:face_detections} % This label can now be used to reference both images together
 \end{figure}
 
@@ -445,7 +447,8 @@ The flow of this project is as follows: the drone flies off, and we process the 
 	\label{fig:flowchart}
 \end{figure}
 
-The Tello drone is a compact quadcopter that boasts an advanced vision positioning system and a high-resolution (8 mp) onboard camera, designed to capture aerial photographs and videos. It offers versatile operating options, allowing users to control it through a laptop computer or a smartphone. The drone connects to devices using Wi-Fi, which facilitates a stable and fast connection essential for real-time video streaming and responsive flight control. Additionally, it supports the 2.4 GHz frequency band for remote control, a widely used standard that ensures reliable communication over distances. The drone has other built-in functions like a range finder, barometer, LED, or vision system. It is fitted with a single accelerometer and 3-axis magnetometer (which can get the drone orientation), a pressure, and an IR-based altitude detector. The Tello drone is compatible with a dedicated smartphone application available on both Android and iOS platforms. This app unlocks several intuitive flight modes, easy-to-use controls, and creative functions.
+The Tello drone is a compact quadcopter that boasts an advanced vision positioning system and a high-resolution (8 mp) onboard camera, designed to capture aerial photographs and videos \cite{tello2023specs}.
+ It offers versatile operating options, allowing users to control it through a laptop computer or a smartphone. The drone connects to devices using Wi-Fi, which facilitates a stable and fast connection essential for real-time video streaming and responsive flight control. Additionally, it supports the 2.4 GHz frequency band for remote control, a widely used standard that ensures reliable communication over distances. The drone has other built-in functions like a range finder, barometer, LED, or vision system. It is fitted with a single accelerometer and 3-axis magnetometer (which can get the drone orientation), a pressure, and an IR-based altitude detector. The Tello drone is compatible with a dedicated smartphone application available on both Android and iOS platforms. This app unlocks several intuitive flight modes, easy-to-use controls, and creative functions.
 
 The Tello library is a toolkit crafted to seamlessly integrate with Python. It's specifically designed for developers and hobbyists, offering easy access and control over the Tello drone's functionalities. With a comprehensive array of built-in functions, the library manages communication protocols with the drone, allowing for real-time transmission of control commands and reception of status updates. This ensures a smooth and responsive piloting experience.
 
@@ -456,7 +459,7 @@ The library's event-driven control allows the execution of code in response to s
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width = 0.6\textwidth]{images/drone.jpg}
-	\caption{Drone used in this project.}
+	\caption{Tello drone used in this project.}
 	\label{fig:tello}
 \end{figure}
 

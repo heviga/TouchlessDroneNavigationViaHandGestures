@@ -16,6 +16,7 @@
 \contentsline {paragraph}{Mean squared error}{13}{paragraph*.14}%
 \contentsline {paragraph}{Crossentropy function}{13}{paragraph*.15}%
 \contentsline {subsection}{\numberline {2.4.2}Hyperparameters of Neural Networks}{17}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}Regulations of Neural Network}{18}{subsection.2.4.3}%
 \contentsline {section}{\numberline {2.5}Gesture Recognition}{19}{section.2.5}%
 \contentsline {chapter}{\numberline {3}Practical Part}{21}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Mediapipe}{21}{section.3.1}%
@@ -29,4 +30,4 @@
 \contentsline {section}{\numberline {3.6}Future Work}{38}{section.3.6}%
 \contentsline {chapter}{\numberline {4}Conclusions}{41}{chapter.4}%
 \contentsline {chapter}{\numberline {A}Resumé}{43}{appendix.A}%
-\contentsline {chapter}{Bibliography}{45}{appendix.A}%
+\contentsline {chapter}{Bibliography}{46}{Item.13}%

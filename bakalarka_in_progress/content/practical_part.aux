@@ -8,18 +8,18 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1.1}MediaPipe Hands}{21}{subsection.3.1.1}\protected@file@percent }
 \citation{DBLP:journals/corr/abs-1708-02002}
 \citation{GoogleHandLandmarker}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Hand landmarks model output.}}{23}{figure.caption.19}\protected@file@percent }
-\newlabel{fig:landmark_both_hands}{{3.1}{23}{Hand landmarks model output}{figure.caption.19}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Hand landmarks model output of non-ideal picture input.}}{23}{figure.caption.19}\protected@file@percent }
+\newlabel{fig:landmark_both_hands}{{3.1}{23}{Hand landmarks model output of non-ideal picture input}{figure.caption.19}{}}
 \newlabel{sec:norm}{{3.1.1}{23}{}{figure.caption.19}{}}
 \citation{bazarevsky2019blazeface}
 \citation{Liu_2016}
 \citation{howard2017mobilenets}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Process of normalization of landmark coordinates.}}{24}{figure.caption.20}\protected@file@percent }
-\newlabel{fig:normalization}{{3.2}{24}{Process of normalization of landmark coordinates}{figure.caption.20}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Process of normalization of three landmark coordinates.}}{24}{figure.caption.20}\protected@file@percent }
+\newlabel{fig:normalization}{{3.2}{24}{Process of normalization of three landmark coordinates}{figure.caption.20}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1.2}MediaPipe Face}{24}{subsection.3.1.2}\protected@file@percent }
 \citation{opencv_mediapipe_hand_gesture_recognition}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Outputs of face detection model with different lightings}}{25}{figure.caption.21}\protected@file@percent }
-\newlabel{fig:face_detections}{{3.3}{25}{Outputs of face detection model with different lightings}{figure.caption.21}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Outputs of the MediaPipe face detection model}}{25}{figure.caption.21}\protected@file@percent }
+\newlabel{fig:face_detections}{{3.3}{25}{Outputs of the MediaPipe face detection model}{figure.caption.21}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.2}Data Collection}{25}{section.3.2}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces Hand gestures using the MediaPipe Landmark Model, using the following gestures: Palm, Fist, Rock, Ok, Like, Up, Down, and Peace.}}{26}{figure.caption.22}\protected@file@percent }
 \newlabel{fig:all_gestures}{{3.4}{26}{Hand gestures using the MediaPipe Landmark Model, using the following gestures: Palm, Fist, Rock, Ok, Like, Up, Down, and Peace}{figure.caption.22}{}}
@@ -37,7 +37,7 @@
 \newlabel{eq:f1_score}{{3.4}{29}{Results}{equation.3.4.4}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.6}{\ignorespaces Confusion matrix displaying the performance of the classification model across 8 classes. The x-axis represents the predicted class labels, while the y-axis shows the true class labels. The diagonal cells, highlighted in darker shades, indicate the number of correct predictions for each class, with the off-diagonal cells showing the instances of misclassifications.}}{30}{figure.caption.26}\protected@file@percent }
 \newlabel{fig:confusion_matrix}{{3.6}{30}{Confusion matrix displaying the performance of the classification model across 8 classes. The x-axis represents the predicted class labels, while the y-axis shows the true class labels. The diagonal cells, highlighted in darker shades, indicate the number of correct predictions for each class, with the off-diagonal cells showing the instances of misclassifications}{figure.caption.26}{}}
-\newlabel{eq:recall2}{{3.5}{30}{Results}{equation.3.4.5}{}}
+\newlabel{eq:recall2}{{3.5}{31}{Results}{equation.3.4.5}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.7}{\ignorespaces Training and validation loss curves for a neural network model utilizing the ReLU activation function.}}{31}{figure.caption.27}\protected@file@percent }
 \newlabel{fig:model_loss_relu}{{3.7}{31}{Training and validation loss curves for a neural network model utilizing the ReLU activation function}{figure.caption.27}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.4.1}Comparisons}{31}{subsection.3.4.1}\protected@file@percent }
@@ -47,6 +47,7 @@
 \newlabel{fig:learning_rates}{{3.9}{32}{Training and validation accuracy over epochs for different initial learning rates using the Adam optimizer}{figure.caption.29}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.10}{\ignorespaces The effect of batch size on model loss during training and validation.}}{33}{figure.caption.30}\protected@file@percent }
 \newlabel{fig:batch_sizes}{{3.10}{33}{The effect of batch size on model loss during training and validation}{figure.caption.30}{}}
+\citation{tello2023specs}
 \@writefile{lot}{\contentsline {table}{\numberline {3.3}{\ignorespaces Comparison of optimizers, learning rates, and batch sizes across training epochs, with validation loss and the number of epochs until learning plateaus.}}{34}{table.caption.31}\protected@file@percent }
 \newlabel{tab:comparison_across_epochs}{{3.3}{34}{Comparison of optimizers, learning rates, and batch sizes across training epochs, with validation loss and the number of epochs until learning plateaus}{table.caption.31}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.5}Drone Implementation}{34}{section.3.5}\protected@file@percent }
@@ -54,8 +55,8 @@
 \newlabel{fig:epochs}{{3.11}{35}{Model loss using the ReLU activation function plotted over 1000 epochs without early stopping}{figure.caption.32}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.12}{\ignorespaces Logic in the recognition process.}}{36}{figure.caption.33}\protected@file@percent }
 \newlabel{fig:flowchart}{{3.12}{36}{Logic in the recognition process}{figure.caption.33}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.13}{\ignorespaces Drone used in this project.}}{37}{figure.caption.34}\protected@file@percent }
-\newlabel{fig:tello}{{3.13}{37}{Drone used in this project}{figure.caption.34}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.13}{\ignorespaces Tello drone used in this project.}}{37}{figure.caption.34}\protected@file@percent }
+\newlabel{fig:tello}{{3.13}{37}{Tello drone used in this project}{figure.caption.34}{}}
 \citation{doi:10.1080/08839514.2023.2176607}
 \@writefile{lot}{\contentsline {table}{\numberline {3.4}{\ignorespaces  Hand gesture labels and corresponding drone commands. }}{38}{table.caption.35}\protected@file@percent }
 \newlabel{tab:gesture_commands}{{3.4}{38}{Hand gesture labels and corresponding drone commands}{table.caption.35}{}}
@@ -103,5 +104,5 @@
 \setcounter{section@level}{0}
 \setcounter{Item}{9}
 \setcounter{Hfootnote}{0}
-\setcounter{bookmark@seq@number}{26}
+\setcounter{bookmark@seq@number}{27}
 }
