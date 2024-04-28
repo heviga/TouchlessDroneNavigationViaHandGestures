@@ -82,11 +82,10 @@ The example used is in applying visual effects like background blurring and make
 
 The second picture in Figure \ref{fig:segmentation} uses the U-Net architecture. It's a convolutional neural network that was specifically designed to be used in Biomedical Imaging. A pre-trained model MobileNetV2 \cite{sandler2018mobilenetv2} is used as a lightweight, efficient feature extractor for the input image. It would analyze the photo of the dog and create a set of feature maps highlighting important visual attributes like edges, textures, and shapes relevant to the segmentation task. Then, with the feature maps provided by MobileNetV2, U-Net would take on the task of image segmentation. Its architecture, designed to work with fewer data points and to be precise in delineating object boundaries, would use the feature maps to generate a predicted mask. It would attempt to closely replicate the true mask by classifying each pixel as belonging to the dog or the background. A Pix2Pix \cite{isola2017image} model is then used to generate a segmented image that tries to match the true mask, learning the mapping from the input image to the segmentation mask during training.
 
-For this task, it is also possible to use interactive segmentation, which divides the image into two regions: the selected object and everything else. It receives a location in an image, calculates the object's boundaries at that location, and returns image data that defines the object's area.
 
+\clearpage
 
-
-\begin{figure}[ht]
+\begin{figure}[ht!]
 	\centering
 	\begin{minipage}{0.3\textwidth}
 		\centering
@@ -104,9 +103,72 @@ For this task, it is also possible to use interactive segmentation, which divide
 	\label{fig:segmentation} % This label can now be used to reference both images together
 \end{figure}
 
+For this task, it is also possible to use interactive segmentation, which divides the image into two regions: the selected object and everything else. It receives a location in an image, calculates the object's boundaries at that location, and returns image data that defines the object's area.
+
+
 \section{Neural Networks}
 An artificial intelligence technique called a neural network trains computers to process information like that of the human brain. It uses connected nodes or neurons arranged in a layered pattern to mimic the organization of the human brain. Computers can utilize this adaptive approach to learn from their errors and keep getting better. As a result, artificial neural networks try to more accurately answer challenging problems, such as document summarization and face recognition.
 \newline Neural networks consist of neurons in the input layer $I_1$,.., $I_n$ connected to neurons in the output layer (neurons $O_1$,.., $O_p$) of the network. In Figure \ref{fig:neural_n_example}, where a general neural network schemes, we can see that they're joined via intermediate neurons. They're placed in hidden layers and labeled $H_1$,.., $H_m$. 'Hidden' because, in the use of neural networks, only the input and output are of concern to the user. 
+
+
+
+\begin{figure}[htp]
+	\centering
+	\begin{tikzpicture}[
+		plain/.style={
+			draw=none,
+			fill=none,
+		},
+		dot/.style={draw,shape=circle,minimum size=3pt,inner sep=0,fill=black},
+		net/.style={
+			matrix of nodes,
+			nodes={
+				draw,
+				circle,
+				inner sep=8.5pt
+			},
+			nodes in empty cells,
+			column sep=0.6cm,
+			row sep=-11pt
+		},
+		>=latex
+		]
+		\matrix[net] (mat)
+		{
+			|[plain]| \parbox{1cm}{\centering Input\\layer}
+			& |[plain]| \parbox{1cm}{\centering Hidden\\layer}
+			& |[plain]| \parbox{1cm}{\centering Output\\layer} \\
+			& |[plain]|                 \\
+			|[plain]| &            & |[plain]|    \\
+			& |[plain]|  &              \\
+			|[plain]| & |[dot]|                   \\
+			& |[plain]|  & |[dot]|      \\
+			|[plain]| & |[dot]|    & |[plain]|    \\
+			|[dot]|   & |[plain]|  & |[dot]|      \\
+			|[dot]|   & |[dot]|    & |[plain]|    \\
+			|[dot]|   & |[plain]|  &              \\
+			|[plain]| &            & |[plain]|    \\
+			& |[plain]|                 \\
+		};
+		\foreach \ai/\mi in {2/I_1, 4/I_2, 6/I_3, 12/I_n}
+		\draw[<-] (mat-\ai-1) -- node[above] {$\mi$} +(-1cm,0);
+		\foreach \ai in {2,4,6,12}
+		{\foreach \aii/\mii in {3/H_1, 11/H_m}
+			\draw[->] (mat-\ai-1) -- (mat-\aii-2) node[yshift=0.6cm] {$\mii$};
+		}
+		\foreach \ai in {3,11}
+		{  \draw[->] (mat-\ai-2) -- (mat-4-3);
+			\draw[->] (mat-4-3) -- node[above] {O$_1$} +(1cm,0);}
+		\foreach \ai in {3,11}
+		{  \draw[->] (mat-\ai-2) -- (mat-10-3);
+			\draw[->] (mat-10-3) -- node[above] {O$_p$} +(1cm,0);}
+	\end{tikzpicture}
+	
+	\caption{Structure of general neural network.}
+	\label{fig:neural_n_example}
+\end{figure}
+
+
 
 
 
@@ -185,63 +247,6 @@ Neurons are basic building components of neural networks, presented in Figure \r
 	\label{eq:weighted_sum}
 \end{equation}
 where $n$ is is number of inputs.
-
-
-\begin{figure}[htp]
-	\centering
-	\begin{tikzpicture}[
-		plain/.style={
-			draw=none,
-			fill=none,
-		},
-		dot/.style={draw,shape=circle,minimum size=3pt,inner sep=0,fill=black},
-		net/.style={
-			matrix of nodes,
-			nodes={
-				draw,
-				circle,
-				inner sep=8.5pt
-			},
-			nodes in empty cells,
-			column sep=0.6cm,
-			row sep=-11pt
-		},
-		>=latex
-		]
-		\matrix[net] (mat)
-		{
-			|[plain]| \parbox{1cm}{\centering Input\\layer}
-			& |[plain]| \parbox{1cm}{\centering Hidden\\layer}
-			& |[plain]| \parbox{1cm}{\centering Output\\layer} \\
-			& |[plain]|                 \\
-			|[plain]| &            & |[plain]|    \\
-			& |[plain]|  &              \\
-			|[plain]| & |[dot]|                   \\
-			& |[plain]|  & |[dot]|      \\
-			|[plain]| & |[dot]|    & |[plain]|    \\
-			|[dot]|   & |[plain]|  & |[dot]|      \\
-			|[dot]|   & |[dot]|    & |[plain]|    \\
-			|[dot]|   & |[plain]|  &              \\
-			|[plain]| &            & |[plain]|    \\
-			& |[plain]|                 \\
-		};
-		\foreach \ai/\mi in {2/I_1, 4/I_2, 6/I_3, 12/I_n}
-		\draw[<-] (mat-\ai-1) -- node[above] {$\mi$} +(-1cm,0);
-		\foreach \ai in {2,4,6,12}
-		{\foreach \aii/\mii in {3/H_1, 11/H_m}
-			\draw[->] (mat-\ai-1) -- (mat-\aii-2) node[yshift=0.6cm] {$\mii$};
-		}
-		\foreach \ai in {3,11}
-		{  \draw[->] (mat-\ai-2) -- (mat-4-3);
-			\draw[->] (mat-4-3) -- node[above] {O$_1$} +(1cm,0);}
-		\foreach \ai in {3,11}
-		{  \draw[->] (mat-\ai-2) -- (mat-10-3);
-			\draw[->] (mat-10-3) -- node[above] {O$_p$} +(1cm,0);}
-	\end{tikzpicture}
-	
-	\caption{Structure of neural network}
-	\label{fig:neural_n_example}
-\end{figure}
 
 
 \subsection{Activation Functions}
@@ -651,10 +656,10 @@ In contrast to earlier gloves, some gloves made with wireless technology can now
 \textbf{CyberGlove II}\label{txt:glove}\\
 Because the hand's joints can flex in different ways, the CyberGlove was designed to carry data inputs. The glove has eighteen sensors. These include four capture sensors, two twist sensors on each finger, and sensors to measure the thumb limit, palm arch, wrist flexion, and wrist capture. A different version of this device has 22 sensors total  as depicted in Figure \ref{fig:glove}, including four capture sensors, three flexion sensors for each finger, a palm arch sensor, and sensors for measuring the flexion and capture of the wrist. One glove version allows the user to write, type, and grasp small objects with their fingertips open.
 
-\begin{figure}[h]
+\begin{figure}[ht!]
 	\centering
-		\includegraphics[width=0.85\textwidth]{images/cyberglove.png}
-		\caption{Cyberglove II}
+		\includegraphics[width=0.80\textwidth]{images/cyberglove.png}
+		\caption{Cyberglove II and visualization of its sensors. }
 		\label{fig:glove}
 \end{figure}
 

@@ -28,8 +28,8 @@ For encountering a tracking failure, There was also another model output created
 \end{figure}
 
 % Ensure the subsection does not end with the figure
-\par~
-\newline
+%\par~
+%\newline
 
 \subsubsection*{Data Normalization}\label{sec:norm}
 The MediaPipe hand landmarks model provides coordinates for hand landmark points based on the position of pixels containing those points in an image. As a result, the coordinates of two images of the same hand sign with different placements in the frame can have significantly different distances between them. This makes it more challenging to train the model.
@@ -90,22 +90,25 @@ Although many publicly accessible datasets contain pictures of hand gestures, we
 Our final dataset has 8 total classes, demonstrating the efficacy of the model and minimizing the risk of error commands that could lead to unsafe situations. The gestures are shown in Figure \ref{fig:all_gestures}.
 
 
-\begin{table}[h]
-	\centering
-	\caption{A selection of the normalized hand landmark coordinates of each gesture saved csv file, with the first column containing the gesture label, and the following columns containing pairs of x and y coordinates for landmarks 0-20.}
-	\includegraphics[width = \textwidth]{images/gesture_laandmarks-cropped.pdf}
-	\label{tab:saved_csv} % Use tab: prefix for table labels
+The hand-tracking model used for data collection, outputs x and y coordinates of hand landmark points from images. After normalization described in \ref{sec:norm}, we stored the x and y coordinates of hand landmarks for various hand signs in a csv file for each hand landmark. 
+\begin{table}[ht!]
+\centering
+\caption{A selection of the normalized hand landmark coordinates of each gesture saved csv file, with the first column containing the gesture label, and the following columns containing pairs of x and y coordinates for landmarks 0-20.}
+\includegraphics[width = \textwidth]{images/gesture_laandmarks-cropped.pdf}
+\label{tab:saved_csv} % Use tab: prefix for table labels
 \end{table}
 
 
-The hand-tracking model used for data collection, outputs x and y coordinates of hand landmark points from images. After normalization described in \ref{sec:norm}, we stored the x and y coordinates of hand landmarks for various hand signs in a csv file for each hand landmark. The coordinates displayed in Table \ref{tab:saved_csv} represent the data points used to generate the final dataset and train the final model. The first column denotes the gesture label, the next two columns indicate the coordinates of landmark 0 at the wrist, and so on. Our csv file contains many combinations of landmark coordinates for each gesture.
-
- 
+The coordinates displayed in Table \ref{tab:saved_csv} represent the data points used to generate the final dataset and train the final model. The first column denotes the gesture label, the next two columns indicate the coordinates of landmark 0 at the wrist, and so on. Our csv file contains many combinations of landmark coordinates for each gesture.
 
 
 
 \section{Model}
-\begin{figure}[ht]
+
+The model we used for gesture recognition is a fully connected feedforward neural network. The model is adjusted to work with data outputed by KeyPointClassifier. KeyPointClassifier is a class that processes data of MediaPipe Hands models. The data are then sent to our gesture classifier.
+
+
+\begin{figure}[ht!]
 	\centering
 	\begin{tikzpicture}[
 		scale = 0.7,
@@ -237,7 +240,6 @@ The hand-tracking model used for data collection, outputs x and y coordinates of
 	\label{fig:neural_network}
 \end{figure}
 
-The model we used for gesture recognition is a fully connected feedforward neural network. The model is adjusted to work with data outputed by KeyPointClassifier. KeyPointClassifier is a class that processes data of MediaPipe Hands models. The data are then sent to our gesture classifier.
 
 
 %\begin{figure}
@@ -246,61 +248,127 @@ The model we used for gesture recognition is a fully connected feedforward neura
 %	\caption{Configuration of the used feedforward neural network}
 %	\label{fig:layers}
 %\end{figure}
-The following is a report on training our neural network with the data. We utilized a model, which comprises one input layer and one output layer, along with five hidden layers consisting of three dense layers and two dropout layers after the input layer and after the first hidden layer. The sequential application of dropout and dense layers with ReLU activation acts as a mechanism to prevent overfitting while allowing the model to make nonlinear mappings. The output layer of the neural network comprises neurons equivalent to the number of hand gestures it can recognize - 8. The configuration of the model is depicted in Figure \ref{fig:neural_network}. The model was trained on a dataset split into training and testing sets (our particular model uses $75\%$ as the training data) and was trained using the Adam optimizer, which is efficient and appropriate for training models with large data and parameters. The Sparse Categorical Crossentropy loss function was utilized to evaluate the loss between predicted and actual labels, while accuracy was used as the evaluation metric to determine how frequently the prediction matches the actual label. The training was halted by early stopping when the validation loss stopped to decrease and then converted into TensorFlow Lite to reduce its size. Initially, the training model was set to have only four hidden layers (2 dense layers). However, the training accuracy failed to exceed 90\%. Consequently, we updated the model to have five hidden layers (with 3 dense layers), without any other modifications and obtained satisfactory results. The training accuracy achieved was 99.62\%, and the calculated loss was 0.0309.
+The following is a report on training our neural network with the data. We utilized a model, which comprises one input layer and one output layer, along with five hidden layers consisting of three dense layers and two dropout layers after the input layer and after the first hidden layer. The sequential application of dropout and dense layers with ReLU activation acts as a mechanism to prevent overfitting while allowing the model to make nonlinear mappings. The output layer of the neural network comprises neurons equivalent to the number of hand gestures it can recognize - 8. The configuration of the model is depicted in Figure \ref{fig:neural_network}. The model was trained on a dataset split into training and testing sets (our particular model uses $75\%$ as the training data) and was trained using the Adam optimizer, which is efficient and appropriate for training models with large data and parameters. The Sparse Categorical Crossentropy loss function was utilized to evaluate the loss between predicted and actual labels, while accuracy was used as the evaluation metric to determine how frequently the prediction matches the actual label. The training was halted by early stopping when the validation loss stopped to decrease and then converted into TensorFlow Lite to reduce its size. Initially, the training model was set to have only four hidden layers (2 dense layers). However, the training accuracy failed to exceed 90\%. Consequently, we updated the model to have five hidden layers (with 3 dense layers), without any other modifications and obtained satisfactory results. The training accuracy, as mentioned in next chapter, was 99.62\%, and the calculated loss was 0.0309.
 
 
 
+
+
+%\section{Results}
+%
+%To perform a quantitative analysis of the test dataset, we employed the  \text{classification report} and  \text{confusion matrix} libraries from scikit-learn. The \text{classification report} library produced an assessment report of our model with accuracy, precision, recall, and F1 score matrices. Additionally, the support matrix represents the model's real-time recognition performance.
+%
+%
+%
+%\begin{table}[h]
+%	\centering
+%		\caption{Detailed Classification Report showcasing Precision, Recall, F1-Score, and Support for each class in the model evaluation. The table also includes overall accuracy, macro average, and weighted average scores across all classes.}
+%	\renewcommand{\arraystretch}{1.35} % Adjusts the row height
+%	\begin{tabular}{lcccc}
+%		\hline
+%		\textbf{Class}       & \textbf{Precision} & \textbf{Recall} & \textbf{F1-Score} & \textbf{Support} \\ \hline
+%		0                    & 0.99               & 1.00            & 0.99              & 622              \\
+%		1                    & 1.00               & 0.99            & 1.00              & 508              \\
+%		2                    & 1.00               & 0.98            & 0.99              & 556              \\
+%		3                    & 1.00               & 0.99            & 1.00              & 759              \\
+%		4                    & 1.00               & 1.00            & 1.00              & 621              \\
+%		5                    & 1.00               & 1.00            & 1.00              & 673              \\
+%		6                    & 0.98               & 1.00            & 0.99              & 666              \\
+%		7                    & 1.00               & 1.00            & 1.00              & 603              \\
+%		\textit{accuracy}    &                   & 0.99            &                 & 5008             \\
+%		\textit{macro avg}   & 1.00               & 0.99            & 0.99              & 5008             \\
+%		\textit{weighted avg} & 0.99               & 0.99            & 0.99              & 5008             \\ \hline
+%	\end{tabular}
+%
+%	\label{tab:report}
+%\end{table}
+%
+%Precision is the ratio of correctly predicted positive observations to the total predicted positive observations. 
+%
+%The accuracy matrix calculates the number of correctly predicted labels by the model from the entire dataset (Eq.\ref{eq:accuracy}). 
+%The precision matrix measures the model's accuracy out of the predicted positives. It calculates the number of actual positives in the predicted positives and is an excellent measure to consider when the False Positive (FP) cost is high. Equation \ref{eq:precision} depicts the mathematical formula of the precision matrix.
+%
+%The recall matrix measures the number of predictions our model correctly labels as positives. It is a measure considered when false negatives have high costs. The mathematical formulation of the recall matrix is Equation \ref{eq:recall}. 
+%
+%The F1 score is calculated by combining both precision and recall, as shown in Equation \ref{eq:f1_score}. It is their harmonic mean.
+%
+%Support is the number of samples in each class. 
+%The macro-average of precision, recall, and F1-score demonstrates the system's average performance across all classes, while the weighted average takes into account the class imbalance by weighting the metrics based on the number of samples in each class.\newline
+%Additionally, the loss value of 0.0309 (not shown) indicates how efficiently the model is minimizing its errors during training, while overall accuracy stands at $99.62\%$
+%
+%The classification report of the implemented model in detail is shown in Figure \ref{tab:report}. 
+%
+%
+%\begin{equation}
+%	\text{accuracy} = \frac{TP + TN}{TP + TN + FP +FN}
+%	\label{eq:accuracy}
+%\end{equation}
+%
+%\begin{equation}
+%	\text{precision} = \frac{TP}{TP + FP}
+%	\label{eq:precision}
+%\end{equation}
+%\begin{equation}
+%	\text{recall} = \frac{TP}{TP + FN}
+%	\label{eq:recall}
+%\end{equation}
+%
+%\begin{equation}
+%	\text{F1 score} = \frac{2 P  R}{P+ R} 
+%	\label{eq:f1_score}
+%\end{equation}
+%
+%
+%
+%In the context of equations (\ref{eq:accuracy}), (\ref{eq:precision}), (\ref{eq:recall}), and (\ref{eq:f1_score}), TP stands for True Positives, indicating the instances where the model accurately predicts the positive class. TN denotes True Negatives, capturing the correct predictions of the negative class by the model. Conversely, FP is used for False Positives, where the model erroneously labels negative instances as positive, and FN refers to False Negatives, highlighting the occasions when the model incorrectly classifies actual positive instances as negative.
+%
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[width = 0.65\textwidth]{images/confusion_matrix.pdf}
+%	\caption{Confusion matrix displaying the performance of the classification model across 8 classes. The x-axis represents the predicted class labels, while the y-axis shows the true class labels. The diagonal cells, highlighted in darker shades, indicate the number of correct predictions for each class, with the off-diagonal cells showing the instances of misclassifications.}
+%	\label{fig:confusion_matrix}
+%\end{figure}
+%
+%
+%The confusion matrix is a key performance metric used in machine learning, particularly in classification tasks. By utilizing the scikit-learn library in Python, one can create a confusion matrix. To conduct our experiment on predicting hand gestures, we obtained and pre-processed the necessary datasets. The confusion matrix was then utilized to evaluate the accuracy of our model, which is illustrated in Figure \ref{fig:confusion_matrix}. The x-axis represents predicted labels, while the y-axis represents actual labels.
+%
+%Through the confusion matrix, we can pinpoint which gestures are being incorrectly recognized. For instance, we observed that gesture 2 was misinterpreted as gesture 6 a total of 11 times. We can further calculate the recall of gesture 2 utilizing Equation \ref{eq:recall2}:
+%
+%\begin{equation}
+%	\text{recall(2)} = \frac{545}{545 + 11}
+%	\label{eq:recall2}
+%\end{equation}
+%
+%The system's performance is satisfactory, with almost perfect precision, recall, and F1-score in most classes, as well as high accuracy and weighted average.
 
 
 \section{Results}
 
-To perform a quantitative analysis of the test dataset, we employed the  \text{classification report} and  \text{confusion matrix} libraries from scikit-learn. The \text{classification report} library produced an assessment report of our model with accuracy, precision, recall, and F1 score matrices. Additionally, the support matrix represents the model's real-time recognition performance.
-
-
+To perform a quantitative analysis of the test dataset, we employed the \text{classification report} and \text{confusion matrix} libraries from scikit-learn. The \text{classification report} library produced an assessment report of our model with accuracy, precision, recall, and F1 score matrices. Additionally, the support matrix represents the model's real-time recognition performance.
 
 \begin{table}[h]
 	\centering
-		\caption{Detailed Classification Report showcasing Precision, Recall, F1-Score, and Support for each class in the model evaluation. The table also includes overall accuracy, macro average, and weighted average scores across all classes.}
+	\caption{Detailed Classification Report showcasing Precision, Recall, F1-Score, and Support for each class in the model evaluation. The table also includes overall accuracy, macro average, and weighted average scores across all classes.}
 	\renewcommand{\arraystretch}{1.35} % Adjusts the row height
 	\begin{tabular}{lcccc}
 		\hline
-		\textbf{Class}       & \textbf{Precision} & \textbf{Recall} & \textbf{F1-Score} & \textbf{Support} \\ \hline
-		0                    & 0.99               & 1.00            & 0.99              & 622              \\
-		1                    & 1.00               & 0.99            & 1.00              & 508              \\
-		2                    & 1.00               & 0.98            & 0.99              & 556              \\
-		3                    & 1.00               & 0.99            & 1.00              & 759              \\
-		4                    & 1.00               & 1.00            & 1.00              & 621              \\
-		5                    & 1.00               & 1.00            & 1.00              & 673              \\
-		6                    & 0.98               & 1.00            & 0.99              & 666              \\
-		7                    & 1.00               & 1.00            & 1.00              & 603              \\
+		\textbf{Class} & \textbf{Precision} & \textbf{Recall} & \textbf{F1-Score} & \textbf{Support} \\ \hline
+		0 & 0.99 & 1.00 & 0.99 & 622 \\
+		1 & 1.00 & 0.99 & 1.00 & 508 \\
+		2 & 1.00 & 0.98 & 0.99 & 556 \\
+		3 & 1.00 & 0.99 & 1.00 & 759 \\
+		4 & 1.00 & 1.00 & 1.00 & 621 \\
+		5 & 1.00 & 1.00 & 1.00 & 673 \\
+		6 & 0.98 & 1.00 & 0.99 & 666 \\
+		7 & 1.00 & 1.00 & 1.00 & 603 \\
 		\textit{accuracy}    &                   & 0.99            &                 & 5008             \\
 		\textit{macro avg}   & 1.00               & 0.99            & 0.99              & 5008             \\
 		\textit{weighted avg} & 0.99               & 0.99            & 0.99              & 5008             \\ \hline
 	\end{tabular}
-
 	\label{tab:report}
 \end{table}
 
-Precision is the ratio of correctly predicted positive observations to the total predicted positive observations. 
-
-The accuracy matrix calculates the number of correctly predicted labels by the model from the entire dataset (Eq.\ref{eq:accuracy}). 
-The precision matrix measures the model's accuracy out of the predicted positives. It calculates the number of actual positives in the predicted positives and is an excellent measure to consider when the False Positive (FP) cost is high. Equation \ref{eq:precision} depicts the mathematical formula of the precision matrix.
-
-The recall matrix measures the number of predictions our model correctly labels as positives. It is a measure considered when false negatives have high costs. The mathematical formulation of the recall matrix is Equation \ref{eq:recall}. 
-
-The F1 score is calculated by combining both precision and recall, as shown in Equation \ref{eq:f1_score}. It is their harmonic mean.
-
-Support is the number of samples in each class. 
-The macro-average of precision, recall, and F1-score demonstrates the system's average performance across all classes, while the weighted average takes into account the class imbalance by weighting the metrics based on the number of samples in each class.\newline
-Additionally, the loss value of 0.0309 (not shown) indicates how efficiently the model is minimizing its errors during training, while overall accuracy stands at $99.62\%$
-
-The classification report of the implemented model in detail is shown in Figure \ref{tab:report}. 
-
-
-\begin{equation}
-	\text{accuracy} = \frac{TP + TN}{TP + TN + FP +FN}
-	\label{eq:accuracy}
-\end{equation}
+Precision is the ratio of correctly predicted positive observations to the total predicted positive observations, with the formula shown in Equation \ref{eq:precision}. Recall measures the number of predictions our model correctly labels as positives, as in Equation \ref{eq:recall}, and the F1 score is calculated by combining both precision and recall, as shown in Equation \ref{eq:f1_score}. Support is the number of samples in each class. The accuracy calculates the number of correctly predicted labels by the model from the entire dataset (Eqation\ref{eq:accuracy}). The macro-average of precision, recall and F1-score demonstrates the system's average performance across all classes, while the weighted average considers the class imbalance by weighting the metrics based on the number of samples in each class.
 
 \begin{equation}
 	\text{precision} = \frac{TP}{TP + FP}
@@ -310,17 +378,23 @@ The classification report of the implemented model in detail is shown in Figure 
 	\text{recall} = \frac{TP}{TP + FN}
 	\label{eq:recall}
 \end{equation}
-
 \begin{equation}
-	\text{F1 score} = \frac{2 P  R}{P+ R} 
+	\text{F1 score} = \frac{2 \cdot P \cdot R}{P + R}
 	\label{eq:f1_score}
 \end{equation}
-
-
+\begin{equation}
+	\text{accuracy} = \frac{TP + TN}{TP + TN + FP + FN}
+	\label{eq:accuracy}
+\end{equation}
 
 In the context of equations (\ref{eq:accuracy}), (\ref{eq:precision}), (\ref{eq:recall}), and (\ref{eq:f1_score}), TP stands for True Positives, indicating the instances where the model accurately predicts the positive class. TN denotes True Negatives, capturing the correct predictions of the negative class by the model. Conversely, FP is used for False Positives, where the model erroneously labels negative instances as positive, and FN refers to False Negatives, highlighting the occasions when the model incorrectly classifies actual positive instances as negative.
 
-\begin{figure}[h]
+Additionally, the loss value of 0.0309 (not shown) indicates how efficiently the model is minimizing its errors during training, while overall accuracy stands at $99.62\%$. 
+The confusion matrix is a key performance metric used in machine learning, particularly in classification tasks. By utilizing the scikit-learn library in Python, one can create a confusion matrix. To conduct our experiment on predicting hand gestures, we obtained and pre-processed the necessary datasets.
+
+The confusion matrix was then utilized to evaluate the accuracy of our model, which is illustrated in Figure \ref{fig:confusion_matrix}. The x-axis represents predicted labels, while the y-axis represents actual labels. 
+
+\begin{figure}[ht!]
 	\centering
 	\includegraphics[width = 0.65\textwidth]{images/confusion_matrix.pdf}
 	\caption{Confusion matrix displaying the performance of the classification model across 8 classes. The x-axis represents the predicted class labels, while the y-axis shows the true class labels. The diagonal cells, highlighted in darker shades, indicate the number of correct predictions for each class, with the off-diagonal cells showing the instances of misclassifications.}
@@ -328,7 +402,12 @@ In the context of equations (\ref{eq:accuracy}), (\ref{eq:precision}), (\ref{eq:
 \end{figure}
 
 
-The confusion matrix is a key performance metric used in machine learning, particularly in classification tasks. By utilizing the scikit-learn library in Python, one can create a confusion matrix. To conduct our experiment on predicting hand gestures, we obtained and pre-processed the necessary datasets. The confusion matrix was then utilized to evaluate the accuracy of our model, which is illustrated in Figure \ref{fig:confusion_matrix}. The x-axis represents predicted labels, while the y-axis represents actual labels.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{images/model_loss_relu.png}
+	\caption{Training and validation loss curves for a neural network model utilizing the ReLU activation function.}
+	\label{fig:model_loss_relu}
+\end{figure}
 
 Through the confusion matrix, we can pinpoint which gestures are being incorrectly recognized. For instance, we observed that gesture 2 was misinterpreted as gesture 6 a total of 11 times. We can further calculate the recall of gesture 2 utilizing Equation \ref{eq:recall2}:
 
@@ -337,20 +416,21 @@ Through the confusion matrix, we can pinpoint which gestures are being incorrect
 	\label{eq:recall2}
 \end{equation}
 
+
 The system's performance is satisfactory, with almost perfect precision, recall, and F1-score in most classes, as well as high accuracy and weighted average.
+
+
+
 
 To find the model's performance from a loss validation standpoint, we can plot its progress throughout the epochs.
 
 
 
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=\textwidth]{images/model_loss_relu.png}
-	\caption{Training and validation loss curves for a neural network model utilizing the ReLU activation function.}
-	\label{fig:model_loss_relu}
-\end{figure}
 
 The graph in Figure \ref{fig:model_loss_relu} indicates a rapid decrease in loss in the initial epochs followed by a stable, low variance loss, demonstrating good model convergence without overfitting.
+
+
+
 
 \subsection{Comparisons}
 As we wanted to optimize our neural network, we conducted a comparison of the Stochastic Gradient Descent (SGD) and Adam optimizers. Figure \ref{fig:optimizers} shows that Adam achieves faster convergence, reduces loss swiftly, and maintains high accuracy, making it suitable for complex neural network training where time and resource optimization are as critical as model accuracy. On the other hand, SGD shows more gradual improvement and requires more epochs to reach comparable performance.
@@ -363,12 +443,12 @@ As we wanted to optimize our neural network, we conducted a comparison of the St
 \end{figure}
 
 
-We studied the impact of initial learning rates on Adam optimizer's performance. The initial learning rate has a significant effect on the convergence speed and training stability, as demonstrated in figure \ref{fig:learning_rates}.\newline
-The model trained with a higher initial learning rate of $0.001$ (as used in our case) converges rapidly, as indicated by a swift decline in loss and a quick rise in accuracy. However, the models with lower initial rates of $0.0001$ and $1\cdot10^{-5}$ demonstrate a more gradual improvement, with the lowest rate showcasing the most stable but slowest progression.\newline
+We studied the impact of initial learning rates on Adam optimizer's performance. The initial learning rate has a significant effect on the convergence speed and training stability, as demonstrated in figure \ref{fig:learning_rates}.
+The model trained with a higher initial learning rate of $0.001$ (as used in our case) converges rapidly, as indicated by a swift decline in loss and a quick rise in accuracy. However, the models with lower initial rates of $0.0001$ and $1\cdot10^{-5}$ demonstrate a more gradual improvement, with the lowest rate showcasing the most stable but slowest progression.
 The initial learning rate serves as a multiplier to the adaptively computed rates and determines the starting point for adjustments.
 \begin{figure}[ht!]
 	\centering
-	\includegraphics[width=\textwidth]{images/adam_learning_rates_comparison.png}
+	\includegraphics[width=0.9\textwidth]{images/adam_learning_rates_comparison.png}
 	\caption{Training and validation accuracy over epochs for different initial learning rates using the Adam optimizer.}
 	\label{fig:learning_rates}
 \end{figure}
@@ -384,10 +464,8 @@ After considering all the options, we chose a batch size of 128. This size balan
 	\label{fig:batch_sizes}
 \end{figure}
 
-To sum up the importance of hyperparameters, we can look at the learning rate, as well as the number of epochs needed for the training. The comparisons of the impact of the hyperparameters on learning rate and epochs are shown in table \ref{tab:comparison_across_epochs}. It's important to note, that these exact models weren't used in our project, but the comparisons were done with our data.
 
-
-\begin{table}[h!]
+\begin{table}[ht!]
 	\centering
 		\caption{Comparison of optimizers, learning rates, and batch sizes across training epochs, with validation loss and the number of epochs until learning plateaus.}
 	\begin{tabular}{|c|c|c|c|}
@@ -424,6 +502,10 @@ To sum up the importance of hyperparameters, we can look at the learning rate, a
 
 
 
+To sum up the importance of hyperparameters, we can look at the learning rate, as well as the number of epochs needed for the training. The comparisons of the impact of the hyperparameters on learning rate and epochs are shown in table \ref{tab:comparison_across_epochs}. It's important to note, that these exact models weren't used in our project, but the comparisons were done with our data.
+
+
+
 Figure \ref{fig:epochs} shows the model's loss over 1000 epochs when using the ReLU activation function. The training loss decreases rapidly in the initial epochs, indicating the model is learning quickly and stabilizing. However, the validation loss fluctuates significantly throughout the training process, particularly in later epochs. This suggests that the model may be capturing noise or overfitting to the training data, continuing to learn beyond achieving minimal loss on the validation set.
 
 
@@ -433,6 +515,9 @@ Figure \ref{fig:epochs} shows the model's loss over 1000 epochs when using the R
 	\caption{Model loss using the ReLU activation function plotted over 1000 epochs without early stopping.}
 	\label{fig:epochs}
 \end{figure}
+
+
+
 The importance of implementing early stopping as a regularization technique (like in figure \ref{fig:model_loss_relu}) is underscored by this extended training. Without it, the model risks wasting computational resources and reducing its ability to generalize. The increasing divergence between training and validation loss after several hundred epochs reinforces the need for early stopping to halt training when the model ceases to improve in generalization to validation data.
 
 \section{Drone Implementation}
