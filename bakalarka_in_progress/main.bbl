@@ -101,6 +101,14 @@ Google.
   \url{https://developers.google.com/mediapipe/solutions/vision/pose_landmarker}.
 \newblock Accessed: [insert date here].
 
+\bibitem{GoogleHandLandmarker}
+Google.
+\newblock Mediapipe hand landmarker.
+\newblock
+  \url{https://developers.google.com/mediapipe/solutions/vision/hand_landmarker},
+  2024.
+\newblock Accessed: date-of-access.
+
 \bibitem{touchlessdronecontrol}
 Hedviga.
 \newblock Touchless drone control, 2024.

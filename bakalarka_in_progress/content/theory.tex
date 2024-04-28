@@ -106,7 +106,7 @@ For this task, it is also possible to use interactive segmentation, which divide
 
 \section{Neural Networks}
 An artificial intelligence technique called a neural network trains computers to process information like that of the human brain. It uses connected nodes or neurons arranged in a layered pattern to mimic the organization of the human brain. Computers can utilize this adaptive approach to learn from their errors and keep getting better. As a result, artificial neural networks try to more accurately answer challenging problems, such as document summarization and face recognition.
-\newline Neural networks consist of neurons in the input layer $I_1$,.. $I_n$ connected to neurons in the output layer (neurons $O_1$,.. $O_p$) of the network. In Figure \ref{fig:neural_n_example}, where a general neural network schemes, we can see that they're joined via intermediate neurons. They're placed in hidden layers and labeled $H_1$,.. $H_m$. 'Hidden' because, in the use of neural networks, only the input and output are of concern to the user. 
+\newline Neural networks consist of neurons in the input layer $I_1$,.., $I_n$ connected to neurons in the output layer (neurons $O_1$,.., $O_p$) of the network. In Figure \ref{fig:neural_n_example}, where a general neural network schemes, we can see that they're joined via intermediate neurons. They're placed in hidden layers and labeled $H_1$,.., $H_m$. 'Hidden' because, in the use of neural networks, only the input and output are of concern to the user. 
 
 
 
@@ -398,7 +398,7 @@ The used dataset is commonly split into a training set, on which the model train
 As the true results are known during the training phase, the error can be calculated by comparing the actual and predicted values. Cost functions are used to obtain an error value.\newline
 %cost functions
 There are many loss functions used, based on the nature of the problem. A few of them are: mean squared error, used for regression tasks, binary cross entropy, and categorical cross entropy.
-\subsubsection*{Cost functions}
+\subsection{Cost functions}
 As we train the model, we’ll want to evaluate its accuracy using a cost (or loss) function. The cost function tells us about how well our algorithm models our dataset. The loss error is calculated for each training sample, while the loss function represents the whole set of $m$ samples. The cost function represents the average loss error for a sample. It is a function that assesses how well an ML model performs with a given set of data. The error between expected and predicted values is quantified by the cost function and shown as a single real number. Cost functions can be formed in a variety of ways, depending on the nature of the problem.
 \paragraph{Mean squared error}\mbox{}\\
 The commonly used loss function used for regression tasks, is the mean squared error (MSE). 
