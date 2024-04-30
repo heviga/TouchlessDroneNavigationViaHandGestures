@@ -12,69 +12,65 @@ A level-1 auxiliary file: content/conclusions.aux
 Reallocating 'name_of_file' (item size: 1) to 19 items.
 A level-1 auxiliary file: content/resume.aux
 Reallocating 'name_of_file' (item size: 1) to 6 items.
-The style file: plain.bst
+The style file: unsrt.bst
 Reallocating 'name_of_file' (item size: 1) to 8 items.
 Database file #1: bibfile.bib
-Repeated entry---line 435 of file bibfile.bib
+Repeated entry---line 325 of file bibfile.bib
  : @inproceedings{inproceedings
  :                             ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 522 of file bibfile.bib
+Repeated entry---line 402 of file bibfile.bib
  : @inproceedings{inproceedings
  :                             ,
 I'm skipping whatever remains of this entry
-Too many commas in name 1 of "Cheng-Ying Yang, Yi-Nan Lin, Sheng-Kuan Wang, Victor R.L. Shen, Yi-Chih Tung, Frank H.C. Shen and Chun-Hsiang Huang" for entry doi:10.1080/08839514.2023.2176607
-while executing---line 1049 of file plain.bst
-Too many commas in name 1 of "Cheng-Ying Yang, Yi-Nan Lin, Sheng-Kuan Wang, Victor R.L. Shen, Yi-Chih Tung, Frank H.C. Shen and Chun-Hsiang Huang" for entry doi:10.1080/08839514.2023.2176607
-while executing---line 1049 of file plain.bst
-Too many commas in name 1 of "Cheng-Ying Yang, Yi-Nan Lin, Sheng-Kuan Wang, Victor R.L. Shen, Yi-Chih Tung, Frank H.C. Shen and Chun-Hsiang Huang" for entry doi:10.1080/08839514.2023.2176607
-while executing---line 1049 of file plain.bst
+Warning--entry type for "losses" isn't style-file defined
+--line 432 of file bibfile.bib
 Warning--empty booktitle in inproceedings
 Too many commas in name 1 of "Cheng-Ying Yang, Yi-Nan Lin, Sheng-Kuan Wang, Victor R.L. Shen, Yi-Chih Tung, Frank H.C. Shen and Chun-Hsiang Huang" for entry doi:10.1080/08839514.2023.2176607
-while executing---line 1090 of file plain.bst
+while executing---line 944 of file unsrt.bst
 Too many commas in name 1 of "Cheng-Ying Yang, Yi-Nan Lin, Sheng-Kuan Wang, Victor R.L. Shen, Yi-Chih Tung, Frank H.C. Shen and Chun-Hsiang Huang" for entry doi:10.1080/08839514.2023.2176607
-while executing---line 1090 of file plain.bst
+while executing---line 944 of file unsrt.bst
 Too many commas in name 1 of "Cheng-Ying Yang, Yi-Nan Lin, Sheng-Kuan Wang, Victor R.L. Shen, Yi-Chih Tung, Frank H.C. Shen and Chun-Hsiang Huang" for entry doi:10.1080/08839514.2023.2176607
-while executing---line 1090 of file plain.bst
-You've used 45 entries,
-            2118 wiz_defined-function locations,
-            754 strings with 13377 characters,
-and the built_in function-call counts, 16693 in all, are:
-= -- 1560
-> -- 1004
-< -- 13
-+ -- 403
-- -- 351
-* -- 1181
-:= -- 2771
-add.period$ -- 140
-call.type$ -- 45
-change.case$ -- 307
+while executing---line 944 of file unsrt.bst
+You've used 34 entries,
+            1791 wiz_defined-function locations,
+            642 strings with 10191 characters,
+and the built_in function-call counts, 8253 in all, are:
+= -- 717
+> -- 400
+< -- 10
++ -- 147
+- -- 113
+* -- 491
+:= -- 1246
+add.period$ -- 104
+call.type$ -- 34
+change.case$ -- 33
 chr.to.int$ -- 0
-cite$ -- 46
-duplicate$ -- 562
-empty$ -- 1193
-format.name$ -- 351
-if$ -- 3473
+cite$ -- 35
+duplicate$ -- 372
+empty$ -- 812
+format.name$ -- 113
+if$ -- 1897
 int.to.chr$ -- 0
-int.to.str$ -- 45
-missing$ -- 34
-newline$ -- 229
-num.names$ -- 92
-pop$ -- 373
+int.to.str$ -- 34
+missing$ -- 25
+newline$ -- 172
+num.names$ -- 36
+pop$ -- 147
 preamble$ -- 1
-purify$ -- 263
+purify$ -- 0
 quote$ -- 0
-skip$ -- 462
+skip$ -- 234
 stack$ -- 0
-substring$ -- 779
-swap$ -- 153
-text.length$ -- 13
+substring$ -- 463
+swap$ -- 130
+text.length$ -- 10
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 174
+type$ -- 0
 warning$ -- 1
-while$ -- 134
-width$ -- 47
-write$ -- 493
-(There were 8 error messages)
+while$ -- 73
+width$ -- 36
+write$ -- 367
+(There were 5 error messages)

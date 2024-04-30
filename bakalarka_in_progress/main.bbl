@@ -1,30 +1,33 @@
 \begin{thebibliography}{10}
 
-\bibitem{tensorflow2015-whitepaper}
-Mart\'{i}n Abadi, Ashish Agarwal, Paul Barham, Eugene Brevdo, Zhifeng Chen,
-  Craig Citro, Greg~S. Corrado, Andy Davis, Jeffrey Dean, Matthieu Devin,
-  Sanjay Ghemawat, Ian Goodfellow, Andrew Harp, Geoffrey Irving, Michael Isard,
-  Yangqing Jia, Rafal Jozefowicz, Lukasz Kaiser, Manjunath Kudlur, Josh
-  Levenberg, Dandelion Man\'{e}, Rajat Monga, Sherry Moore, Derek Murray, Chris
-  Olah, Mike Schuster, Jonathon Shlens, Benoit Steiner, Ilya Sutskever, Kunal
-  Talwar, Paul Tucker, Vincent Vanhoucke, Vijay Vasudevan, Fernanda Vi\'{e}gas,
-  Oriol Vinyals, Pete Warden, Martin Wattenberg, Martin Wicke, Yuan Yu, and
-  Xiaoqiang Zheng.
-\newblock {TensorFlow}: Large-scale machine learning on heterogeneous systems,
-  2015.
-\newblock Software available from tensorflow.org.
+\bibitem{premaratne2014human}
+P.~Premaratne.
+\newblock {\em Human Computer Interaction Using Hand Gestures}.
+\newblock Springer, Singapore, 2014 edition, 2014.
 
-\bibitem{datasetssss}
-Zaman Abbood, Mohammed Al-Turfi, and Laythkamil Almajmaie.
-\newblock An abbreviated review of deep learning-based image classification
-  models.
-\newblock {\em Indonesian Journal of Electrical Engineering and Computer
-  Science}, 30:491, 04 2023.
+\bibitem{smith2022hand}
+J.~D. Smith and A.~B. Johnson.
+\newblock Hand gesture recognition using computer vision techniques.
+\newblock {\em International Journal of Computer Science}, 10(2):123--145,
+  2022.
 
-\bibitem{inproceedings}
-Timo Ahonen, Abdenour Hadid, and Matti Pietikäinen.
-\newblock Face recognition with local binary patterns.
-\newblock volume 3021, pages 469--481, 05 2004.
+\bibitem{mediapipe2023source}
+MediaPipe.
+\newblock Mediapipehands, 2023.
+\newblock
+  \href{https://github.com/google/mediapipe/tree/master/mediapipe/python/solutions}{MediaPipeHands
+  Source Code} Accessed: November 2023.
+
+\bibitem{nielsenneural}
+Michael~A. Nielsen.
+\newblock Neural networks and deep learning, 2018.
+
+\bibitem{decisiontree}
+Tomas Pranckevicius and Virginijus Marcinkevičius.
+\newblock Comparison of naive bayes, random forest, decision tree, support
+  vector machines, and logistic regression classifiers for text reviews
+  classification.
+\newblock {\em Baltic Journal of Modern Computing}, 5, 01 2017.
 
 \bibitem{land9100346}
 Shahab~S. Band, Saeid Janizadeh, Sunil Saha, Kaustuv Mukherjee,
@@ -35,18 +38,90 @@ Shahab~S. Band, Saeid Janizadeh, Sunil Saha, Kaustuv Mukherjee,
   using alos/palsar data.
 \newblock {\em Land}, 9(10), 2020.
 
-\bibitem{10.1007/11744023_32}
-Herbert Bay, Tinne Tuytelaars, and Luc Van~Gool.
-\newblock Surf: Speeded up robust features.
-\newblock In Ale{\v{s}} Leonardis, Horst Bischof, and Axel Pinz, editors, {\em
-  Computer Vision -- ECCV 2006}, pages 404--417, Berlin, Heidelberg, 2006.
-  Springer Berlin Heidelberg.
+\bibitem{Turner2016}
+Alexander~P. Turner, Patrick Larkin, and Kyle Hourigan.
+\newblock 3d computational fluid dynamics simulations of swimmer's hand
+  velocity, hand orientation, and finger spread.
+\newblock {\em PLOS ONE}, 11(3):e0152173, 2016.
 
-\bibitem{bazarevsky2019blazeface}
-Valentin Bazarevsky, Yury Kartynnik, Andrey Vakunov, Karthik Raveendran, and
-  Matthias Grundmann.
-\newblock Blazeface: Sub-millisecond neural face detection on mobile gpus,
-  2019.
+\bibitem{CERRI201439}
+Ricardo Cerri, Rodrigo~C. Barros, and André~C.P.L.F. {de Carvalho}.
+\newblock Hierarchical multi-label classification using local neural networks.
+\newblock {\em Journal of Computer and System Sciences}, 80(1):39--56, 2014.
+
+\bibitem{datasetssss}
+Zaman Abbood, Mohammed Al-Turfi, and Laythkamil Almajmaie.
+\newblock An abbreviated review of deep learning-based image classification
+  models.
+\newblock {\em Indonesian Journal of Electrical Engineering and Computer
+  Science}, 30:491, 04 2023.
+
+\bibitem{girshick2014rich}
+Ross Girshick, Jeff Donahue, Trevor Darrell, and Jitendra Malik.
+\newblock Rich feature hierarchies for accurate object detection and semantic
+  segmentation.
+\newblock In {\em Proceedings of the IEEE conference on computer vision and
+  pattern recognition}, pages 580--587, 2014.
+
+\bibitem{redmon2016you}
+Joseph Redmon, Santosh Divvala, Ross Girshick, and Ali Farhadi.
+\newblock You only look once: Unified, real-time object detection.
+\newblock In {\em Proceedings of the IEEE conference on computer vision and
+  pattern recognition}, pages 779--788, 2016.
+
+\bibitem{liu2016ssd}
+Wei Liu, Dragomir Anguelov, Dumitru Erhan, Christian Szegedy, Scott Reed,
+  Cheng-Yang Fu, and Alexander~C. Berg.
+\newblock Ssd: Single shot multibox detector.
+\newblock In {\em European conference on computer vision}, pages 21--37.
+  Springer, 2016.
+
+\bibitem{mediapipePoseLandmarker}
+Google.
+\newblock Mediapipe pose landmarker.
+\newblock
+  \url{https://developers.google.com/mediapipe/solutions/vision/pose_landmarker}.
+\newblock Accessed: [insert date here].
+
+\bibitem{ronneberger2015u}
+Olaf Ronneberger, Philipp Fischer, and Thomas Brox.
+\newblock U-net: Convolutional networks for biomedical image segmentation.
+\newblock In {\em International Conference on Medical image computing and
+  computer-assisted intervention}, pages 234--241. Springer, 2015.
+
+\bibitem{sandler2018mobilenetv2}
+Mark Sandler, Andrew Howard, Menglong Zhu, Andrey Zhmoginov, and Liang-Chieh
+  Chen.
+\newblock Mobilenetv2: Inverted residuals and linear bottlenecks.
+\newblock In {\em Proceedings of the IEEE conference on computer vision and
+  pattern recognition}, pages 4510--4520, 2018.
+
+\bibitem{isola2017image}
+Phillip Isola, Jun-Yan Zhu, Tinghui Zhou, and Alexei~A. Efros.
+\newblock Image-to-image translation with conditional adversarial networks.
+\newblock In {\em Proceedings of the IEEE conference on computer vision and
+  pattern recognition}, pages 1125--1134, 2017.
+
+\bibitem{inproceedings}
+Timo Ahonen, Abdenour Hadid, and Matti Pietikäinen.
+\newblock Face recognition with local binary patterns.
+\newblock volume 3021, pages 469--481, 05 2004.
+
+\bibitem{losses}
+Juan Terven, Diana-Margarita Cordova-Esparza, Alfonzo Ramirez-Pedraza, and
+  Edgar Chávez~Urbiola.
+\newblock Loss functions and metrics in deep learning. a review, 07 2023.
+
+\bibitem{Reyad2023}
+Mohamed Reyad, Amany~M. Sarhan, and M.~Arafa.
+\newblock A modified adam algorithm for deep neural network optimization.
+\newblock {\em Neural Computing and Applications}, 35(23):17095--17112, 2023.
+
+\bibitem{DBLP:journals/corr/abs-2006-08517}
+Yang You, Yuhui Wang, Huan Zhang, Zhao Zhang, James Demmel, and Cho{-}Jui
+  Hsieh.
+\newblock The limit of the batch size.
+\newblock {\em CoRR}, abs/2006.08517, 2020.
 
 \bibitem{bhuyan2017review}
 M.~K. Bhuyan, M.~K. Bhuyan, and A.~Gogoi.
@@ -62,44 +137,11 @@ Google~AI Blog.
   \href{https://ai.googleblog.com/2019/08/on-devicereal-time-hand-tracking-with.html}{Blog
   Post} Accessed: December, 2023.
 
-\bibitem{CERRI201439}
-Ricardo Cerri, Rodrigo~C. Barros, and André~C.P.L.F. {de Carvalho}.
-\newblock Hierarchical multi-label classification using local neural networks.
-\newblock {\em Journal of Computer and System Sciences}, 80(1):39--56, 2014.
-
-\bibitem{doi:10.1080/08839514.2023.2176607}
-Sheng-Kuan Wang Victor R.L. Shen Yi-Chih Tung Frank H.C.~Shen Cheng-Ying~Yang,
-  Yi-Nan~Lin and Chun-Hsiang Huang.
-\newblock Smart control of home appliances using hand gesture recognition in an
-  iot-enabled system.
-\newblock {\em Applied Artificial Intelligence}, 37(1):2176607, 2023.
-
-\bibitem{a16080361}
-Ahmed Eid and Friedhelm Schwenker.
-\newblock Visual static hand gesture recognition using convolutional neural
-  network.
-\newblock {\em Algorithms}, 16(8):361, 2023.
-\newblock \href{https://www.mdpi.com/1999-4893/16/8/361}{Journal Article} DOI:
-  10.3390/a16080361.
-
-\bibitem{escote2021djitellopy}
-D.~F. Escoté.
-\newblock djitellopy, 2021.
-\newblock \href{https://github.com/damiafuentes/DJITelloPy}{GitHub Repository}.
-
-\bibitem{girshick2014rich}
-Ross Girshick, Jeff Donahue, Trevor Darrell, and Jitendra Malik.
-\newblock Rich feature hierarchies for accurate object detection and semantic
-  segmentation.
-\newblock In {\em Proceedings of the IEEE conference on computer vision and
-  pattern recognition}, pages 580--587, 2014.
-
-\bibitem{mediapipePoseLandmarker}
-Google.
-\newblock Mediapipe pose landmarker.
-\newblock
-  \url{https://developers.google.com/mediapipe/solutions/vision/pose_landmarker}.
-\newblock Accessed: [insert date here].
+\bibitem{DBLP:journals/corr/abs-1708-02002}
+Tsung{-}Yi Lin, Priya Goyal, Ross~B. Girshick, Kaiming He, and Piotr
+  Doll{\'{a}}r.
+\newblock Focal loss for dense object detection.
+\newblock {\em CoRR}, abs/1708.02002, 2017.
 
 \bibitem{GoogleHandLandmarker}
 Google.
@@ -109,48 +151,11 @@ Google.
   2024.
 \newblock Accessed: date-of-access.
 
-\bibitem{touchlessdronecontrol}
-Hedviga.
-\newblock Touchless drone control, 2024.
-\newblock
-  \href{https://github.com/heviga/TouchlessDroneControll/blob/main/mediapipe-python-sample-main/mediapipe-python-sample-main/predictions.py}{Project
-  Repository on GitHub} Accessed: December 2023.
-
-\bibitem{howard2017mobilenets}
-Andrew~G. Howard, Menglong Zhu, Bo~Chen, Dmitry Kalenichenko, Weijun Wang,
-  Tobias Weyand, Marco Andreetto, and Hartwig Adam.
-\newblock Mobilenets: Efficient convolutional neural networks for mobile vision
-  applications, 2017.
-
-\bibitem{isola2017image}
-Phillip Isola, Jun-Yan Zhu, Tinghui Zhou, and Alexei~A. Efros.
-\newblock Image-to-image translation with conditional adversarial networks.
-\newblock In {\em Proceedings of the IEEE conference on computer vision and
-  pattern recognition}, pages 1125--1134, 2017.
-
-\bibitem{articlefr}
-Ladislav Lenc and Pavel Král.
-\newblock Automatic face recognition system based on the sift features.
-\newblock {\em Computers \& Electrical Engineering}, 46, 02 2015.
-
-\bibitem{LiZhang2022}
-Y~Li and P~Zhang.
-\newblock Static hand gesture recognition based on hierarchical decision and
-  classification of finger features.
-\newblock {\em Science Progress}, 105(1), 2022.
-
-\bibitem{DBLP:journals/corr/abs-1708-02002}
-Tsung{-}Yi Lin, Priya Goyal, Ross~B. Girshick, Kaiming He, and Piotr
-  Doll{\'{a}}r.
-\newblock Focal loss for dense object detection.
-\newblock {\em CoRR}, abs/1708.02002, 2017.
-
-\bibitem{liu2016ssd}
-Wei Liu, Dragomir Anguelov, Dumitru Erhan, Christian Szegedy, Scott Reed,
-  Cheng-Yang Fu, and Alexander~C. Berg.
-\newblock Ssd: Single shot multibox detector.
-\newblock In {\em European conference on computer vision}, pages 21--37.
-  Springer, 2016.
+\bibitem{bazarevsky2019blazeface}
+Valentin Bazarevsky, Yury Kartynnik, Andrey Vakunov, Karthik Raveendran, and
+  Matthias Grundmann.
+\newblock Blazeface: Sub-millisecond neural face detection on mobile gpus,
+  2019.
 
 \bibitem{Liu_2016}
 Wei Liu, Dragomir Anguelov, Dumitru Erhan, Christian Szegedy, Scott Reed,
@@ -158,102 +163,11 @@ Wei Liu, Dragomir Anguelov, Dumitru Erhan, Christian Szegedy, Scott Reed,
 \newblock {\em SSD: Single Shot MultiBox Detector}, page 21–37.
 \newblock Springer International Publishing, 2016.
 
-\bibitem{lopez2019gesture}
-Carmen L{\'o}pez-Casado, Enrique Bauzano, Irene Rivas-Blanco, Carlos~J
-  P{\'e}rez-del Pulgar, and V{\'\i}ctor~F Mu{\~n}oz.
-\newblock A gesture recognition algorithm for hand-assisted laparoscopic
-  surgery.
-\newblock {\em Sensors}, 19(23):5182, 2019.
-
-\bibitem{mediapipe2023source}
-MediaPipe.
-\newblock Mediapipehands, 2023.
-\newblock
-  \href{https://github.com/google/mediapipe/tree/master/mediapipe/python/solutions}{MediaPipeHands
-  Source Code} Accessed: November 2023.
-
-\bibitem{recognition_model}
-Joe Minichino.
-\newblock Opencv mediapipe hand gesture recognition, 2022.
-\newblock
-  \href{https://github.com/techfort/opencv-mediapipe-hand-gesture-recognition.git}{Project
-  Repository on GitHub} Accessed: December 2023.
-
-\bibitem{nielsenneural}
-Michael~A. Nielsen.
-\newblock Neural networks and deep learning, 2018.
-
-\bibitem{park2014hand}
-JungSoo Park, Hyo-Rim Choi, JunYoung Kim, and TaeYong Kim.
-\newblock Hand pose recognition by using masked zernike moments.
-\newblock In {\em 2014 International Conference on Computer Vision Theory and
-  Applications (VISAPP)}, volume~1, pages 551--556. IEEE, 2014.
-
-\bibitem{decisiontree}
-Tomas Pranckevicius and Virginijus Marcinkevičius.
-\newblock Comparison of naive bayes, random forest, decision tree, support
-  vector machines, and logistic regression classifiers for text reviews
-  classification.
-\newblock {\em Baltic Journal of Modern Computing}, 5, 01 2017.
-
-\bibitem{premaratne2014chapter2}
-P.~Premaratne.
-\newblock {\em Chapter 2: Human Computer Interaction Using Hand Gestures},
-  chapter~2.
-\newblock Springer, Singapore, 2014 edition, 2014.
-
-\bibitem{premaratne2014human}
-P.~Premaratne.
-\newblock {\em Human Computer Interaction Using Hand Gestures}.
-\newblock Springer, Singapore, 2014 edition, 2014.
-
-\bibitem{priyal2013robust}
-S~Padam Priyal and Prabin~Kumar Bora.
-\newblock A robust static hand gesture recognition system using geometry based
-  normalizations and krawtchouk moments.
-\newblock {\em Pattern Recognition}, 46(8):2202--2219, 2013.
-
-\bibitem{redmon2016you}
-Joseph Redmon, Santosh Divvala, Ross Girshick, and Ali Farhadi.
-\newblock You only look once: Unified, real-time object detection.
-\newblock In {\em Proceedings of the IEEE conference on computer vision and
-  pattern recognition}, pages 779--788, 2016.
-
-\bibitem{Reyad2023}
-Mohamed Reyad, Amany~M. Sarhan, and M.~Arafa.
-\newblock A modified adam algorithm for deep neural network optimization.
-\newblock {\em Neural Computing and Applications}, 35(23):17095--17112, 2023.
-
-\bibitem{ronneberger2015u}
-Olaf Ronneberger, Philipp Fischer, and Thomas Brox.
-\newblock U-net: Convolutional networks for biomedical image segmentation.
-\newblock In {\em International Conference on Medical image computing and
-  computer-assisted intervention}, pages 234--241. Springer, 2015.
-
-\bibitem{tello2023specs}
-RYZE.
-\newblock Tello specs, 2023.
-\newblock \href{https://www.ryzerobotics.com/tello/specs}{TELLO Specifications}
-  Accessed: December 2023.
-
-\bibitem{sandler2018mobilenetv2}
-Mark Sandler, Andrew Howard, Menglong Zhu, Andrey Zhmoginov, and Liang-Chieh
-  Chen.
-\newblock Mobilenetv2: Inverted residuals and linear bottlenecks.
-\newblock In {\em Proceedings of the IEEE conference on computer vision and
-  pattern recognition}, pages 4510--4520, 2018.
-
-\bibitem{sharma2015evolution}
-P.~K. Sharma and S.~Sharma.
-\newblock Evolution of hand gesture recognition: A review.
-\newblock {\em International Journal of Engineering and Computer Science},
-  4(1):9963, Jan 2015.
-
-\bibitem{smith2022hand}
-J.~D. Smith and A.~B. Johnson.
-\newblock Hand gesture recognition using computer vision techniques.
-\newblock {\em International Journal of Computer Science}, 10(2):123--145,
-  2022.
+\bibitem{howard2017mobilenets}
+Andrew~G. Howard, Menglong Zhu, Bo~Chen, Dmitry Kalenichenko, Weijun Wang,
+  Tobias Weyand, Marco Andreetto, and Hartwig Adam.
+\newblock Mobilenets: Efficient convolutional neural networks for mobile vision
+  applications, 2017.
 
 \bibitem{opencv_mediapipe_hand_gesture_recognition}
 techfort.
@@ -262,29 +176,18 @@ techfort.
   \url{https://github.com/techfort/opencv-mediapipe-hand-gesture-recognition},
   2023.
 
-\bibitem{Turner2016}
-Alexander~P. Turner, Patrick Larkin, and Kyle Hourigan.
-\newblock 3d computational fluid dynamics simulations of swimmer's hand
-  velocity, hand orientation, and finger spread.
-\newblock {\em PLOS ONE}, 11(3):e0152173, 2016.
+\bibitem{tello2023specs}
+RYZE.
+\newblock Tello specs, 2023.
+\newblock \href{https://www.ryzerobotics.com/tello/specs}{TELLO Specifications}
+  Accessed: December 2023.
 
-\bibitem{DBLP:journals/corr/abs-2006-08517}
-Yang You, Yuhui Wang, Huan Zhang, Zhao Zhang, James Demmel, and Cho{-}Jui
-  Hsieh.
-\newblock The limit of the batch size.
-\newblock {\em CoRR}, abs/2006.08517, 2020.
-
-\bibitem{article}
-Tong Zhang, Huifeng Lin, Zhaojie Ju, and Chenguang Yang.
-\newblock Hand gesture recognition in complex background based on convolutional
-  pose machine and fuzzy gaussian mixture models.
-\newblock {\em International Journal of Fuzzy Systems}, 22, 03 2020.
-
-\bibitem{zhao2020mediapipe}
-F.~Zhao, V.~Bazarevsky, A.~Vakunov, et~al.
-\newblock Mediapipe hands: On-device real-time hand tracking, 2020.
-\newblock \href{https://arxiv.org/pdf/2006.10214.pdf}{Research Paper} Google
-  Research, USA.
+\bibitem{doi:10.1080/08839514.2023.2176607}
+Sheng-Kuan Wang Victor R.L. Shen Yi-Chih Tung Frank H.C.~Shen Cheng-Ying~Yang,
+  Yi-Nan~Lin and Chun-Hsiang Huang.
+\newblock Smart control of home appliances using hand gesture recognition in an
+  iot-enabled system.
+\newblock {\em Applied Artificial Intelligence}, 37(1):2176607, 2023.
 
 \bibitem{CARIKCI2012118}
 M.üge Çarıkçı and Figen Özen.
@@ -292,5 +195,24 @@ M.üge Çarıkçı and Figen Özen.
 \newblock {\em Procedia Technology}, 1:118--123, 2012.
 \newblock First World Conference on Innovation and Computer Sciences (INSODE
   2011).
+
+\bibitem{articlefr}
+Ladislav Lenc and Pavel Král.
+\newblock Automatic face recognition system based on the sift features.
+\newblock {\em Computers \& Electrical Engineering}, 46, 02 2015.
+
+\bibitem{10.1007/11744023_32}
+Herbert Bay, Tinne Tuytelaars, and Luc Van~Gool.
+\newblock Surf: Speeded up robust features.
+\newblock In Ale{\v{s}} Leonardis, Horst Bischof, and Axel Pinz, editors, {\em
+  Computer Vision -- ECCV 2006}, pages 404--417, Berlin, Heidelberg, 2006.
+  Springer Berlin Heidelberg.
+
+\bibitem{touchlessdronecontrol}
+Hedviga.
+\newblock Touchless drone control, 2024.
+\newblock
+  \href{https://github.com/heviga/TouchlessDroneControll/blob/main/mediapipe-python-sample-main/mediapipe-python-sample-main/predictions.py}{Project
+  Repository on GitHub} Accessed: December 2023.
 
 \end{thebibliography}

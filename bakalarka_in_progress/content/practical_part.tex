@@ -1,21 +1,21 @@
 \chapter{Practical Part}
 In this chapter, we discuss the implementation of a gesture recognition system utilizing the MediaPipe framework. We look into our neural network model and its results with a comprehensive analysis of the model's performance. Furthermore, the chapter includes a comparison of various machine learning optimizers, highlighting their impact on the training dynamics and outcomes of the model. We also discuss how the gesture recognition model is applied in real-world scenarios, controlling a Tello drone through recognized gestures. This practical application demonstrates how gestures can directly influence drone behavior for tasks such as navigation and interaction, bridging the gap between theoretical development and real-world application.
-\section{Mediapipe}
-MediaPipe is a framework used to create machine learning pipelines for time-series data like video and audio. Google initially developed it to process real-time video and audio analysis on YouTube \cite{mediapipe2019blog}. In 2019, the public release allowed researchers and developers to incorporate MediaPipe into their projects. Unlike other machine learning frameworks that require high computing power, MediaPipe can run efficiently on devices with low power, such as Android and IoT devices. It consists of the MediaPipe framework and MediaPipe solutions. The MediaPipe framework is developed using C++, Java, and Objective C programming. MediaPipe solutions include 16 pre-trained TensorFlow and TensorFlow Lite models built on top of the MediaPipe framework for specific use cases.
+\section{MediaPipe}
+MediaPipe is a framework used to create machine learning pipelines for time-series data like video and audio. Google initially developed it to process real-time video and audio analysis on YouTube \cite{mediapipe2019blog}. In 2019, the public release allowed researchers and developers to incorporate MediaPipe into their projects. Unlike other machine learning frameworks that require high computing power, MediaPipe can run efficiently on~devices with low power, such as Android and IoT devices. It consists of the MediaPipe framework and MediaPipe solutions. The MediaPipe framework is developed using C++, Java, and Objective C programming. MediaPipe solutions include 16 pre-trained TensorFlow and TensorFlow Lite models built on top of the MediaPipe framework for specific use cases.
 \subsection{MediaPipe Hands}
 MediaPipe Hands is a solution that tracks hands in real-time. The problem of detecting hands is somewhat intricate. The model must be able to recognize hands and it must function across a wide range of hand sizes with a big scale span so it must be robust. It is rather difficult to identify hands based just on their visual traits since hands lack high-contrast patterns.% found on faces, such as those surrounding the lips and eyes.
 
 MediaPipe Hands utilizes a combination of object detection, classification, and regression to recognize and track hands within a given image or video frame. The pipeline consists of two convolutional neural network models: a palm detector and a hand landmark model.
 
 
-The palm detector is a single-shot detector model that uses an orientated hand-bounding box to locate palms on a whole input image. This is done before landmark detection because it is easier to estimate bounding boxes of rigid objects like palms than detecting hands with articulated fingers. It ignores many aspect ratios and so the bounding boxes are only squared. The model uses both classification (hands, no hands), and object detection (predicting a bounding box around the detected hand), a focal loss \cite{DBLP:journals/corr/abs-1708-02002}. It was trained on over 30 000 real-world images, as well as several rendered synthetic hand models, and evaluated by data containing images of 14 geographical subregions, from both men and women \cite{GoogleHandLandmarker}.
-
+The palm detector is a single-shot detector model that
+operates on the principle of binary classification coupled with object detection. It uses an orientated hand-bounding box to locate palms on a whole input image. This is done before landmark detection because it is easier to estimate bounding boxes of rigid objects like palms than detecting hands with articulated fingers. It ignores many aspect ratios and so the bounding boxes are only squared. It was trained on over 30,000 real-world images, as well as several rendered synthetic hand models, and evaluated by data containing images of 14 geographical subregions, from both men and women \cite{GoogleHandLandmarker}.
 
 The Hand Landmark Model runs subsequently with the palm detection model and uses regression to precisely localize 21 3D (x, y, z) coordinates within the hand region, similar to the data glove \ref{txt:glove}. 2D applications (like in our work) can disregard the z-coordinate for simplified processing while retaining necessary detail in the x and y dimensions. Each landmark has a specific location on the hand that can vary within the pixel grid of an image. To capture the exact position, continuous values are used, allowing the model to indicate precisely where each landmark is located on the hand. The hands move and rotate freely, leading to a wide range of possible positions and orientations for each landmark. Continuous values are used because they make it possible to track hand gestures and movements more precisely. These gestures and movements may involve tiny changes to position and orientation that would be lost in discretized values.
 The model is resilient to self-occlusions and partially visible hands, and it learns a consistent internal hand posture representation. The results from the model contain 21 hand landmarks consisting of x, y, and z, a hand flag that indicates the likelihood that a hand is present in the input image, and a binary system of handedness, e.g. left or right hand.
 The coordinates x and y for each landmark are normalized, like in Figure \ref{fig:normalization} to [0, 1] by image width and height. 
 
-The model was trained both on real-world and synthetic datasets, noting that the wrist point was learned only from synthetic images. More than 30,000 manually annotated real-world images were used and the model is very robust, allowing it to detect and map hand landmark points accurately, even on partially visible hands in most cases. In Figure
+The model was trained both on real-world and synthetic datasets, noting that the wrist point was learned only from synthetic images. More than 30,000 manually annotated real-world images were used and the model is very robust, allowing it to detect and map hand landmark points accurately, even on partially visible hands in most cases. In~Figure
 \ref{fig:landmark_both_hands} my hands are not facing upfront but the model still finds all the landmarks for both hands. If tracking 2 hands, it also shows which one is left or right with different colors.
 
 For encountering a tracking failure, There was also another model output created for tracking failures. It generates the likelihood that the given crop contains a hand that is reasonably aligned. The detector is triggered to reset tracking if the score falls below a predetermined threshold.
@@ -32,12 +32,12 @@ For encountering a tracking failure, There was also another model output created
 %\newline
 
 \subsubsection*{Data Normalization}\label{sec:norm}
-The MediaPipe hand landmarks model provides coordinates for hand landmark points based on the position of pixels containing those points in an image. As a result, the coordinates of two images of the same hand sign with different placements in the frame can have significantly different distances between them. This makes it more challenging to train the model.
+The MediaPipe hand landmarks model provides coordinates for hand landmark points based on the position of pixels containing those points in an image. As a result, the~coordinates of two images of the same hand sign with different placements in~the~frame can have significantly different distances between them. This makes it more challenging to train the model.
 
-To solve this problem, the wrist's landmark point has been considered with coordinates [0,0], and the coordinates of all other landmark points were adjusted accordingly.
-First, the coordinates' values of the wrist's landmark point are subtracted from all coordinates' values.
+To solve this problem, using normalization as a data pre-processing technique, the~wrist's landmark point has been considered with coordinates [0,0], and the coordinates of all other landmark points were adjusted accordingly.
+First, the coordinates' values of~the~wrist's landmark point are subtracted from all coordinates' values.
 
-Then, the coordinates were normalized to be between 0 and 1 by dividing them by the largest absolute value of the difference. Finally, the normalized coordinates were collected in the landmarks list. The coordinate normalization procedure is shown in Figure \ref{fig:normalization}.
+Then, the coordinates were normalized to be between 0 and 1 by dividing them by the largest absolute value of the difference. Finally, the normalized coordinates were collected in the landmarks list. The coordinate normalization procedure is shown in~Figure \ref{fig:normalization}.
 
 
 \begin{figure}
@@ -49,8 +49,8 @@ Then, the coordinates were normalized to be between 0 and 1 by dividing them by 
 \end{figure}
 
 \subsection{MediaPipe Face}
-With support for multiple faces and six landmarks (left eye, right eye, nose tip, mouth, left eye region, and right eye region), MediaPipe Face Detection is a quick solution for face detection. Mediapipe BlazeFace \cite{bazarevsky2019blazeface} is a compact and efficient face detector designed for mobile GPU inference, that serves as its foundation, detecting only a few landmarks on the face and drawing a bounding box. Because of its real-time performance, the detector can be used with any live viewfinder experience that needs a precise facial region of interest as an input for other task-specific models, like face region segmentation, facial feature or expression classification, and 3D facial geometry estimation (like MediaPipe Face Mesh). BlazeFace leverages a resolution technique as an alternative to a GPU-friendly anchor mechanism adapted from Single Shot MultiBox Detector (SSD) \cite{Liu_2016} and a lightweight feature extraction network that is similar to MobileNetV1/V2 \cite{howard2017mobilenets}. With BlazeFace in use,
- we can get outputs shown in Figure \ref{fig:face_detections}, also outputting the confidence of the face. 
+With support for multiple faces and six landmarks (left eye, right eye, nose tip, mouth, left eye region, and right eye region), MediaPipe Face Detection is a quick solution for face detection. Mediapipe BlazeFace \cite{bazarevsky2019blazeface} is a compact and efficient face detector designed for mobile GPU inference, that serves as its foundation, detecting only a~few landmarks on the face and drawing a bounding box. Because of its real-time performance, the detector can be used with any live viewfinder experience that needs a precise facial region of interest as an input for other task-specific models, like face region segmentation, facial feature or expression classification, and 3D facial geometry estimation (like MediaPipe Face Mesh). BlazeFace leverages a resolution technique as an alternative to a GPU-friendly anchor mechanism adapted from Single Shot MultiBox Detector (SSD) \cite{Liu_2016} and a lightweight feature extraction network that is similar to MobileNetV1/V2 \cite{howard2017mobilenets}. With BlazeFace in use,
+ we can get outputs shown in~Figure \ref{fig:face_detections}, also outputting the confidence of the face. 
 
 
 \begin{figure}[ht]
@@ -72,7 +72,7 @@ With support for multiple faces and six landmarks (left eye, right eye, nose tip
 
 \section{Data Collection}
 
-To make gesture predictions, we had to train our model with data containing the gestures. Since we decided to use custom hand gestures, we had to collect the data ourselves. After finishing the training, we established drone commands and tested our program.
+To make gesture predictions, we had to train our model with data containing the~gestures. Since we decided to use custom hand gestures, we had to collect the data ourselves. After finishing the training, we established drone commands and tested our~program.
 
 Although many publicly accessible datasets contain pictures of hand gestures, we chose to collect our data using the MediaPipe hand-tracking model. To do this, we recorded video footage of various hand gestures being held for a specific duration and moved around to increase diversity. Because the MediaPipe models are open-sourced and many developers use them for various projects, there are also numerous programs available for capturing and labeling gestures, like \cite{opencv_mediapipe_hand_gesture_recognition}.
 \begin{figure}[h!]
@@ -87,25 +87,54 @@ Although many publicly accessible datasets contain pictures of hand gestures, we
 
 
 
-Our final dataset has 8 total classes, demonstrating the efficacy of the model and minimizing the risk of error commands that could lead to unsafe situations. The gestures are shown in Figure \ref{fig:all_gestures}.
+Our final dataset has 8 total classes, demonstrating the efficacy of the model and minimizing the risk of error commands that could lead to unsafe situations.
+More gestures could be implemented, with them also employing more drone functionalities.
+The gestures are shown in Figure \ref{fig:all_gestures}.
 
 
 The hand-tracking model used for data collection, outputs x and y coordinates of hand landmark points from images. After normalization described in \ref{sec:norm}, we stored the x and y coordinates of hand landmarks for various hand signs in a csv file for each hand landmark. 
+
+
+
+
 \begin{table}[ht!]
-\centering
-\caption{A selection of the normalized hand landmark coordinates of each gesture saved csv file, with the first column containing the gesture label, and the following columns containing pairs of x and y coordinates for landmarks 0-20.}
-\includegraphics[width = \textwidth]{images/gesture_laandmarks-cropped.pdf}
-\label{tab:saved_csv} % Use tab: prefix for table labels
+	\centering
+	
+	\caption{A selection of the normalized hand landmark coordinates of each gesture saved csv file, with the first column containing the gesture label, and the~following columns containing pairs of x and y coordinates for landmarks 0-20.}
+	\begin{tabular}{|c|c|c|c|c|c|c|c|}
+		\hline
+		Gesture & lm0.x & lm0.y & lm1.x & lm1.y & \ldots & lm20.x & lm20.y \\ \hline
+		0       & 0     & 0     & 0.19444 & -0.07639 & \ldots & -0.19444 & -0.77083 \\ \hline
+		1       & 0     & 0     & -0.42857 & 0.08929 & \ldots & 0.12500 & -0.44643 \\ \hline
+		3       & 0     & 0     & 0.23077 & -0.14530 & \ldots & 0.28205 & -0.85470 \\ \hline
+		4       & 0     & 0     & 0.16667 & -0.10526 & \ldots & -0.02632 & -0.30702 \\ \hline
+		5       & 0     & 0     & 0.21698 & -0.26415 & \ldots & 0.26415 & -0.05660 \\ \hline
+		6       & 0     & 0     & -0.12791 & -0.12209 & \ldots & 0.13953 & -0.16279 \\ \hline
+		7       & 0     & 0     & -0.22973 & 0.11486 & \ldots & 0.04054 & 0.41216 \\ \hline
+	\end{tabular}
+
+	\label{tab:saved_csv}
 \end{table}
 
 
-The coordinates displayed in Table \ref{tab:saved_csv} represent the data points used to generate the final dataset and train the final model. The first column denotes the gesture label, the next two columns indicate the coordinates of landmark 0 at the wrist, and so on. Our csv file contains many combinations of landmark coordinates for each gesture.
+
+%table}[ht!]
+%\centering
+%\caption{A selection of the normalized hand landmark coordinates of each gesture saved csv file, with the first column containing the gesture label, and the following columns containing pairs of x and y coordinates for landmarks 0-20.}
+%\includegraphics[width = \textwidth]{images/gesture_laandmarks-cropped.pdf}
+%\label{tab:saved_csv} % Use tab: prefix for table labels
+%\end{table}
+
+
+The coordinates displayed in Table \ref{tab:saved_csv} represent the data
+
+points used to generate the final dataset and train the final model. The first column denotes the gesture label, the next two columns indicate the coordinates of landmark 0 at the wrist, and so on. Our csv file contains many combinations of landmark coordinates for each gesture.
 
 
 
 \section{Model}
 
-The model we used for gesture recognition is a fully connected feedforward neural network. The model is adjusted to work with data outputed by KeyPointClassifier. KeyPointClassifier is a class that processes data of MediaPipe Hands models. The data are then sent to our gesture classifier.
+The model we used for gesture recognition is a fully connected feedforward neural network. The model is a multiclass classifier that is adjusted to work with data outputed by KeyPointClassifier. KeyPointClassifier is a class that processes data of MediaPipe Hands models. The~data that are real-time received and processed by the KeyPointClassifier are then sent to our gesture classifier.
 
 
 \begin{figure}[ht!]
@@ -248,7 +277,7 @@ The model we used for gesture recognition is a fully connected feedforward neura
 %	\caption{Configuration of the used feedforward neural network}
 %	\label{fig:layers}
 %\end{figure}
-The following is a report on training our neural network with the data. We utilized a model, which comprises one input layer and one output layer, along with five hidden layers consisting of three dense layers and two dropout layers after the input layer and after the first hidden layer. The sequential application of dropout and dense layers with ReLU activation acts as a mechanism to prevent overfitting while allowing the model to make nonlinear mappings. The output layer of the neural network comprises neurons equivalent to the number of hand gestures it can recognize - 8. The configuration of the model is depicted in Figure \ref{fig:neural_network}. The model was trained on a dataset split into training and testing sets (our particular model uses $75\%$ as the training data) and was trained using the Adam optimizer, which is efficient and appropriate for training models with large data and parameters. The Sparse Categorical Crossentropy loss function was utilized to evaluate the loss between predicted and actual labels, while accuracy was used as the evaluation metric to determine how frequently the prediction matches the actual label. The training was halted by early stopping when the validation loss stopped to decrease and then converted into TensorFlow Lite to reduce its size. Initially, the training model was set to have only four hidden layers (2 dense layers). However, the training accuracy failed to exceed 90\%. Consequently, we updated the model to have five hidden layers (with 3 dense layers), without any other modifications and obtained satisfactory results. The training accuracy, as mentioned in next chapter, was 99.62\%, and the calculated loss was 0.0309.
+The following is a report on training our neural network with the data. We utilized a~model, which comprises one input layer and one output layer, along with five hidden layers consisting of three dense layers and two dropout layers after the input layer and after the first hidden layer. The sequential application of dropout and dense layers with ReLU activation acts as a mechanism to prevent overfitting while allowing the model to~make nonlinear mappings. The output layer of the neural network comprises neurons equivalent to the number of~hand gestures it can recognize – 8. The configuration of~the model is depicted in Figure \ref{fig:neural_network}. The model was trained on a dataset split into training and testing sets (our particular model uses $75\%$ as the training data) and was trained using the Adam optimizer, which is efficient and appropriate for training models with large data and parameters. The Sparse Categorical Crossentropy loss function was utilized to evaluate the loss between predicted and actual labels, while accuracy was used as the evaluation metric to determine how frequently the prediction matches the actual label. The training was halted by early stopping when the validation loss stopped to decrease and then converted into TensorFlow Lite to~reduce its size. Initially, the training model was set to have only four hidden layers (2 dense layers). However, the training accuracy failed to exceed 90\%. Consequently, we updated the model to have five hidden layers (with 3 dense layers), without any other modifications and obtained satisfactory results. The training accuracy, as mentioned in next chapter, was 99.62\%, and the calculated loss was 0.0309.
 
 
 
@@ -368,7 +397,7 @@ To perform a quantitative analysis of the test dataset, we employed the \text{cl
 	\label{tab:report}
 \end{table}
 
-Precision is the ratio of correctly predicted positive observations to the total predicted positive observations, with the formula shown in Equation \ref{eq:precision}. Recall measures the number of predictions our model correctly labels as positives, as in Equation \ref{eq:recall}, and the F1 score is calculated by combining both precision and recall, as shown in Equation \ref{eq:f1_score}. Support is the number of samples in each class. The accuracy calculates the number of correctly predicted labels by the model from the entire dataset (Eqation\ref{eq:accuracy}). The macro-average of precision, recall and F1-score demonstrates the system's average performance across all classes, while the weighted average considers the class imbalance by weighting the metrics based on the number of samples in each class.
+Precision is the ratio of correctly predicted positive observations to the total predicted positive observations, with the formula shown in Equation \ref{eq:precision}. Recall measures the~number of predictions our model correctly labels as positives, as in Equation \ref{eq:recall}, and the F1 score is calculated by combining both precision and recall, as shown in Equation \ref{eq:f1_score}. Support is the number of samples in each class. The accuracy calculates the~number of correctly predicted labels by the model from the entire dataset (Eqation\ref{eq:accuracy}). The macro-average of precision, recall and F1-score demonstrates the system's average performance across all classes, while the weighted average considers the class imbalance by weighting the metrics based on the number of samples in each class.
 
 \begin{equation}
 	\text{precision} = \frac{TP}{TP + FP}
@@ -379,25 +408,26 @@ Precision is the ratio of correctly predicted positive observations to the total
 	\label{eq:recall}
 \end{equation}
 \begin{equation}
-	\text{F1 score} = \frac{2 \cdot P \cdot R}{P + R}
+	\text{F1 score} = \frac{2 \cdot \text{precision} \cdot \text{recall}}{\text{precision} + \text{recall}}
 	\label{eq:f1_score}
 \end{equation}
+
 \begin{equation}
 	\text{accuracy} = \frac{TP + TN}{TP + TN + FP + FN}
 	\label{eq:accuracy}
 \end{equation}
 
-In the context of equations (\ref{eq:accuracy}), (\ref{eq:precision}), (\ref{eq:recall}), and (\ref{eq:f1_score}), TP stands for True Positives, indicating the instances where the model accurately predicts the positive class. TN denotes True Negatives, capturing the correct predictions of the negative class by the model. Conversely, FP is used for False Positives, where the model erroneously labels negative instances as positive, and FN refers to False Negatives, highlighting the occasions when the model incorrectly classifies actual positive instances as negative.
+In the context of equations (\ref{eq:accuracy}), (\ref{eq:precision}), (\ref{eq:recall}), and (\ref{eq:f1_score}), TP stands for True Positives, indicating the instances where the model accurately predicts the positive class. TN denotes True Negatives, capturing the correct predictions of the negative class by~the model. Conversely, FP is used for False Positives, where the model erroneously labels negative instances as positive, and FN refers to False Negatives, highlighting the occasions when the model incorrectly classifies actual positive instances as negative.
 
 Additionally, the loss value of 0.0309 (not shown) indicates how efficiently the model is minimizing its errors during training, while overall accuracy stands at $99.62\%$. 
-The confusion matrix is a key performance metric used in machine learning, particularly in classification tasks. By utilizing the scikit-learn library in Python, one can create a confusion matrix. To conduct our experiment on predicting hand gestures, we obtained and pre-processed the necessary datasets.
+The confusion matrix is a key performance metric used in machine learning, particularly in classification tasks. By utilizing the scikit-learn library in Python, one can create a~confusion matrix. To conduct our experiment on predicting hand gestures, we obtained and pre-processed the necessary datasets.
 
 The confusion matrix was then utilized to evaluate the accuracy of our model, which is illustrated in Figure \ref{fig:confusion_matrix}. The x-axis represents predicted labels, while the y-axis represents actual labels. 
 
 \begin{figure}[ht!]
 	\centering
 	\includegraphics[width = 0.65\textwidth]{images/confusion_matrix.pdf}
-	\caption{Confusion matrix displaying the performance of the classification model across 8 classes. The x-axis represents the predicted class labels, while the y-axis shows the true class labels. The diagonal cells, highlighted in darker shades, indicate the number of correct predictions for each class, with the off-diagonal cells showing the instances of misclassifications.}
+	\caption{Confusion matrix displaying the performance of the classification model across 8 classes. The x-axis represents the predicted class labels, while the y-axis shows the true class labels. The diagonal cells, highlighted in~darker shades, indicate the number of correct predictions for each class, with the off-diagonal cells showing the instances of misclassifications.}
 	\label{fig:confusion_matrix}
 \end{figure}
 
@@ -409,30 +439,33 @@ The confusion matrix was then utilized to evaluate the accuracy of our model, wh
 	\label{fig:model_loss_relu}
 \end{figure}
 
-Through the confusion matrix, we can pinpoint which gestures are being incorrectly recognized. For instance, we observed that gesture 2 was misinterpreted as gesture 6 a total of 11 times. We can further calculate the recall of gesture 2 utilizing Equation \ref{eq:recall2}:
+Through the confusion matrix, we can pinpoint which gestures are being incorrectly recognized. For instance, we observed that gesture 2 (Rock)
+was misinterpreted as~gesture 6 (Down)
+a total of 11 times. We can further calculate the recall of gesture 2 utilizing Equation \ref{eq:recall2}:
 
 \begin{equation}
 	\text{recall(2)} = \frac{545}{545 + 11}
 	\label{eq:recall2}
 \end{equation}
 
+Although rare, misclassifications could occur due to landmark overlap, which may result in similar finger positions for both Rock and Down gestures depending on the camera perspective.
 
 The system's performance is satisfactory, with almost perfect precision, recall, and F1-score in most classes, as well as high accuracy and weighted average.
 
 
 
 
-To find the model's performance from a loss validation standpoint, we can plot its progress throughout the epochs.
+To find the model's performance from a loss validation standpoint, we can plot its~progress throughout the epochs.
 
 
 
 
-The graph in Figure \ref{fig:model_loss_relu} indicates a rapid decrease in loss in the initial epochs followed by a stable, low variance loss, demonstrating good model convergence without overfitting.
+The graph in Figure \ref{fig:model_loss_relu} indicates a rapid decrease in loss in the initial epochs followed by~a stable, low variance loss, demonstrating good model convergence without overfitting.
 
 
 
 
-\subsection{Comparisons}
+\subsection*{Comparisons}
 As we wanted to optimize our neural network, we conducted a comparison of the Stochastic Gradient Descent (SGD) and Adam optimizers. Figure \ref{fig:optimizers} shows that Adam achieves faster convergence, reduces loss swiftly, and maintains high accuracy, making it suitable for complex neural network training where time and resource optimization are as critical as model accuracy. On the other hand, SGD shows more gradual improvement and requires more epochs to reach comparable performance.
 
 \begin{figure}[ht!]
@@ -444,8 +477,8 @@ As we wanted to optimize our neural network, we conducted a comparison of the St
 
 
 We studied the impact of initial learning rates on Adam optimizer's performance. The initial learning rate has a significant effect on the convergence speed and training stability, as demonstrated in figure \ref{fig:learning_rates}.
-The model trained with a higher initial learning rate of $0.001$ (as used in our case) converges rapidly, as indicated by a swift decline in loss and a quick rise in accuracy. However, the models with lower initial rates of $0.0001$ and $1\cdot10^{-5}$ demonstrate a more gradual improvement, with the lowest rate showcasing the most stable but slowest progression.
-The initial learning rate serves as a multiplier to the adaptively computed rates and determines the starting point for adjustments.
+The model trained with a higher initial learning rate of~$0.001$ (as used in our case) converges rapidly, as indicated by a swift decline in loss and a quick rise in~accuracy. However, the models with lower initial rates of~$0.0001$ and $1\cdot10^{-5}$ demonstrate a more gradual improvement, with the lowest rate showcasing the most stable but slowest progression.
+The initial learning rate serves as~a multiplier to the adaptively computed rates and determines the starting point for~adjustments.
 \begin{figure}[ht!]
 	\centering
 	\includegraphics[width=0.9\textwidth]{images/adam_learning_rates_comparison.png}
@@ -502,7 +535,7 @@ After considering all the options, we chose a batch size of 128. This size balan
 
 
 
-To sum up the importance of hyperparameters, we can look at the learning rate, as well as the number of epochs needed for the training. The comparisons of the impact of the hyperparameters on learning rate and epochs are shown in table \ref{tab:comparison_across_epochs}. It's important to note, that these exact models weren't used in our project, but the comparisons were done with our data.
+To sum up the importance of hyperparameters, we can look at the learning rate, as well as the number of epochs needed for the training. The comparisons of the impact of the hyperparameters on learning rate and epochs are shown in table \ref{tab:comparison_across_epochs}. It's important to~note, that these exact models weren't used in our project, but the comparisons were done with our data.
 
 
 
@@ -518,7 +551,7 @@ Figure \ref{fig:epochs} shows the model's loss over 1000 epochs when using the R
 
 
 
-The importance of implementing early stopping as a regularization technique (like in figure \ref{fig:model_loss_relu}) is underscored by this extended training. Without it, the model risks wasting computational resources and reducing its ability to generalize. The increasing divergence between training and validation loss after several hundred epochs reinforces the need for early stopping to halt training when the model ceases to improve in generalization to validation data.
+The importance of implementing early stopping as a regularization technique (like in figure \ref{fig:model_loss_relu}) is underscored by this extended training. Without it, the model risks wasting computational resources and reducing its ability to generalize. The increasing divergence between training and validation loss after several hundred epochs reinforces the need for early stopping to halt training when the model ceases to improve in~generalization to validation data.
 
 \section{Drone Implementation}
 
@@ -533,11 +566,11 @@ The flow of this project is as follows: the drone flies off, and we process the 
 \end{figure}
 
 The Tello drone is a compact quadcopter that boasts an advanced vision positioning system and a high-resolution (8 mp) onboard camera, designed to capture aerial photographs and videos \cite{tello2023specs}.
- It offers versatile operating options, allowing users to control it through a laptop computer or a smartphone. The drone connects to devices using Wi-Fi, which facilitates a stable and fast connection essential for real-time video streaming and responsive flight control. Additionally, it supports the 2.4 GHz frequency band for remote control, a widely used standard that ensures reliable communication over distances. The drone has other built-in functions like a range finder, barometer, LED, or vision system. It is fitted with a single accelerometer and 3-axis magnetometer (which can get the drone orientation), a pressure, and an IR-based altitude detector. The Tello drone is compatible with a dedicated smartphone application available on both Android and iOS platforms. This app unlocks several intuitive flight modes, easy-to-use controls, and creative functions.
+ It offers versatile operating options, allowing users to~control it through a laptop computer or a smartphone. The drone connects to devices using Wi-Fi, which facilitates a stable and fast connection essential for real-time video streaming and responsive flight control. Additionally, it supports the 2.4 GHz frequency band for remote control, a widely used standard that ensures reliable communication over distances. The drone has other built-in functions like a range finder, barometer, LED, or vision system. It is fitted with a single accelerometer and 3-axis magnetometer (which can get the drone orientation), a pressure, and an IR-based altitude detector. The Tello drone is compatible with a dedicated smartphone application available~on both Android and iOS platforms. This app unlocks several intuitive flight modes, easy-to-use controls, and creative functions.
 
-The Tello library is a toolkit crafted to seamlessly integrate with Python. It's specifically designed for developers and hobbyists, offering easy access and control over the Tello drone's functionalities. With a comprehensive array of built-in functions, the library manages communication protocols with the drone, allowing for real-time transmission of control commands and reception of status updates. This ensures a smooth and responsive piloting experience.
+The Tello library is a toolkit crafted to seamlessly integrate with Python. It is specifically designed for developers and hobbyists, offering easy access and control over~the Tello drone's functionalities. With a comprehensive array of built-in functions, the library manages communication protocols with the drone, allowing for real-time transmission of control commands and reception of status updates. This ensures a~smooth and responsive piloting experience.
 
-Moreover, the Tello library efficiently handles state changes, adapting to various flight conditions and drone responses, such as battery levels, speed, and altitude. For example, if the drone is low on battery, it doesn't flip. This feature is essential for creating applications that require precise control and feedback from the drone, providing a foundation for developing flight patterns and maneuvers.
+Moreover, the Tello library efficiently handles state changes, adapting to various flight conditions and drone responses, such as battery levels, speed, and altitude. For example, if the drone is low on battery, it doesn't flip. This feature is essential for creating applications that require precise control and feedback from the drone, providing a~foundation for developing flight patterns and maneuvers.
 
 The library's event-driven control allows the execution of code in response to specific events, such as takeoff, landing, or moving in a direction with a designated speed.
 
@@ -548,13 +581,12 @@ The library's event-driven control allows the execution of code in response to s
 	\label{fig:tello}
 \end{figure}
 
-To operate a drone, we can use specific hand gestures as commands. This technique is chosen due to its ease of use and intuitive nature. Additionally, Tello provides a Python API that facilitates communication between the software (to recognize hand gestures) and the drone's control systems.
-This API eliminates the need for direct manipulation of the motor hardware,meaning we don't have to write complex code to interact with the drone's motors or navigation systems directly.  Instead, we can write simple commands in Python that tell the drone what to do, like 'take off', 'land', or 'turn right', each linked to a unique hand gesture. 
-llowing us to focus on perfecting our hand gestures and achieving more precise control of the drone. By assigning a distinct gesture ID to each of these commands via the API, we can create a seamless and efficient method of drone operation.
+To operate a drone, we can use specific hand gestures as commands. This technique is chosen due to its ease of use and intuitive nature. Additionally, Tello provides a~Python API that facilitates communication between the software (to recognize hand gestures) and the drone's control systems.
+This API eliminates the need for direct manipulation of the motor hardware, meaning we don't have to write complex code to interact with the drone's motors or navigation systems directly.  Instead, we can write simple commands in Python that tell the drone what to do, like 'take off', 'land', or~'turn right', each linked to a unique hand gesture, allowing us to focus on perfecting our~hand gestures and achieving more precise control of the drone. By assigning a~distinct gesture ID to each of these commands via the API, we can create an efficient method of drone operation.
 
 
 
-Table \ref{tab:gesture_commands} lists the commands used in our project, which were assigned to the labels of our gestures. The gestures we utilized can be found in Figure \ref{fig:all_gestures}.
+Table \ref{tab:gesture_commands} lists the commands used in our project, which were assigned to the labels of~our gestures. The gestures we utilized can be found in Figure \ref{fig:all_gestures}.
 
 \begin{table}[ht]
 	\centering
@@ -577,7 +609,9 @@ Table \ref{tab:gesture_commands} lists the commands used in our project, which w
 	\label{tab:gesture_commands}
 \end{table}
 
-Our program prompts the Tello drone to begin executing commands after a key press and identifies a gesture every 5 seconds. This allows for the comfortable execution of a command before recognizing the next one. After tweaking speeds and sleep times, the Tello drone executed the received commands rapidly and consistently.
+Our program prompts the Tello drone to begin executing commands after a key press and identifies a gesture every 5 seconds. This allows for the comfortable execution~of~a~command before recognizing the next one. After tweaking speeds and sleep times, the Tello drone executed the received commands rapidly and consistently.
+
+While the drone tries to carry out the actions safely, collisions due to environmental factors are still possible. However, this project has worked well only in an internal space with no wind and good lighting.
 
 \begin{figure}[ht]
 	\centering
@@ -600,23 +634,31 @@ In addition, if we are not recognizing any gesture, the drone is ready to land o
 
 
 \section{Future Work}
-Moving forward with our work, there is ample room for the expansion of the project. We have developed a good gesture classifier that can be utilized for other applications besides drones, such as smart home control, sign language translation, multimedia control, or security systems. For example, a previous study \cite{doi:10.1080/08839514.2023.2176607} used a gesture recognizer and ESP8266 microcontroller to control home appliances using gestures to adjust a simple LED light, turning it on/off, setting its brightness and color.
+Moving forward with our work, there is ample room for the expansion of the project. We have developed a good gesture classifier that can be utilized for other applications besides drones, such as smart home control, sign language translation, multimedia control, or security systems. For example, a previous study \cite{doi:10.1080/08839514.2023.2176607} used a gesture recognizer and ESP8266 microcontroller to control home appliances using gestures to~adjust a simple LED light, turning it on/off, setting its brightness and color.
 
 If we decide to implement face recognition, there are many popular face recognition systems available that we can use. Facial recognition systems are widely used in modern life, making authentication processes easier without the need for passwords or physical IDs. Some examples of algorithms used for face recognition include Eigenfaces \cite{CARIKCI2012118}, Local Binary Patterns Histograms (LBPH) \cite{inproceedings}, Fisherfaces, Scale-Invariant Feature Transform (SIFT) \cite{articlefr}, and Speed Up Robust Features (SURF) \cite{10.1007/11744023_32}. The Haar Cascade classifier by Paul Viola and Michael Jones \cite{inproceedings} is the first choice for face detection alone.
 
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.8\textwidth]{images/face_landmark.png}
+	\includegraphics[width=0.75\textwidth]{images/face_landmark.png}
 	\caption{Outputs of FaceBlaze and Face Landmark model.}
 	\label{fig:face_landmark}
 \end{figure}
-
-\par~
-\newline
-
 
 
 Since we are using Mediapipe, we opted to use their Face Landmark model to extract 478 3-dimensional face landmarks. This model works in conjunction with the BlazeFace detection model and the Face mesh model. Figure \ref{fig:face_landmark} shows the difference in outputs of each model. We applied these models in a similar way as we did with the hand models, using spatial positions of the landmarks. Firstly, we collected our data, labeling each capture of the face with a label. Then, we trained a simple KNN model to predict the person in the picture. However, since our database is not large (as we only tested with two people, and the prediction is real-time), it is difficult to conclude whether the model is sufficient for higher usage. Nevertheless, it demonstrates an alternative way for face recognition using only Mediapipe models. The face recognition model is saved in our repository \cite{touchlessdronecontrol}.
 
 
+
+
+
+If we incorporate the authorization feature into our work, we would need to include only one additional step in the logic of our program. After detecting the face, the BlazeFace model would then verify whether the face belongs to someone authorized in our database. The suggested logic flowchart is illustrated in Figure \ref{fig:flowchart2.pdf}.
+
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=\textwidth]{images/flowchart2.pdf}
+	\caption{Possiblr workflow of the drone control and facial recoginition system with implemented authorization.}
+	\label{fig:flowchart2.pdf}
+\end{figure}

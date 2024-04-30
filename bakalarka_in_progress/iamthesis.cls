@@ -297,7 +297,7 @@ Consultant: & Ing. Patrik Valábek\\
 \sectionmark{Bibliography}
 \addcontentsline{toc}{chapter}{Bibliography}
 \fi
-\bibliographystyle{plain}
+\bibliographystyle{unsrt}
 }
 
 %----------------------------------------------------------------%

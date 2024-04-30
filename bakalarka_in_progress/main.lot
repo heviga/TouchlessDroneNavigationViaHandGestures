@@ -2,9 +2,9 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces A selection of the normalized hand landmark coordinates of each gesture saved csv file, with the first column containing the gesture label, and the following columns containing pairs of x and y coordinates for landmarks 0-20.}}{27}{table.caption.23}%
-\contentsline {table}{\numberline {3.2}{\ignorespaces Detailed Classification Report showcasing Precision, Recall, F1-Score, and Support for each class in the model evaluation. The table also includes overall accuracy, macro average, and weighted average scores across all classes.}}{29}{table.caption.25}%
-\contentsline {table}{\numberline {3.3}{\ignorespaces Comparison of optimizers, learning rates, and batch sizes across training epochs, with validation loss and the number of epochs until learning plateaus.}}{34}{table.caption.31}%
-\contentsline {table}{\numberline {3.4}{\ignorespaces Hand gesture labels and corresponding drone commands. }}{38}{table.caption.35}%
+\contentsline {table}{\numberline {3.1}{\ignorespaces A selection of the normalized hand landmark coordinates of each gesture saved csv file, with the first column containing the gesture label, and the~following columns containing pairs of x and y coordinates for landmarks 0-20.}}{25}{table.caption.22}%
+\contentsline {table}{\numberline {3.2}{\ignorespaces Detailed Classification Report showcasing Precision, Recall, F1-Score, and Support for each class in the model evaluation. The table also includes overall accuracy, macro average, and weighted average scores across all classes.}}{27}{table.caption.24}%
+\contentsline {table}{\numberline {3.3}{\ignorespaces Comparison of optimizers, learning rates, and batch sizes across training epochs, with validation loss and the number of epochs until learning plateaus.}}{32}{table.caption.30}%
+\contentsline {table}{\numberline {3.4}{\ignorespaces Hand gesture labels and corresponding drone commands. }}{36}{table.caption.34}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
