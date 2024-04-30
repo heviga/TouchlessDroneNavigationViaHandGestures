@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.27)  30 APR 2024 15:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.27)  30 APR 2024 16:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1984,12 +1984,12 @@ Package pdftex.def Info: images/flowchart2.pdf  used on input line 661.
 
 (content/conclusions.tex
 Chapter 4.
-) [40
+[40
 
 
 
 
-] [41]
+]) [41]
 \openout2 = `content/resume.aux'.
 
  (content/resume.tex
@@ -2048,7 +2048,7 @@ s/ivadu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb><C:/Us
 ers/ivadu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Us
 ers/ivadu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy7.pfb><C:/Use
 rs/ivadu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
-Output written on main.pdf (61 pages, 10900195 bytes).
+Output written on main.pdf (61 pages, 10899995 bytes).
 PDF statistics:
  1077 PDF objects out of 1200 (max. 8388607)
  180 named destinations out of 1000 (max. 500000)
