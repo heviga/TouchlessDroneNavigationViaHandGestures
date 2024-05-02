@@ -641,24 +641,28 @@ If we decide to implement face recognition, there are many popular face recognit
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.75\textwidth]{images/face_landmark.png}
-	\caption{Outputs of FaceBlaze and Face Landmark model.}
+	\includegraphics[width=0.85\textwidth]{images/face_landmark.png}
+	\caption{Outputs of FaceBlaze and Face Landmark model, otputting 6 and 478 landmarks.}
 	\label{fig:face_landmark}
 \end{figure}
 
 
-Since we are using Mediapipe, we opted to use their Face Landmark model to extract 478 3-dimensional face landmarks. This model works in conjunction with the BlazeFace detection model and the Face mesh model. Figure \ref{fig:face_landmark} shows the difference in outputs of each model. We applied these models in a similar way as we did with the hand models, using spatial positions of the landmarks. Firstly, we collected our data, labeling each capture of the face with a label. Then, we trained a simple KNN model to predict the person in the picture. However, since our database is not large (as we only tested with two people, and the prediction is real-time), it is difficult to conclude whether the model is sufficient for higher usage. Nevertheless, it demonstrates an alternative way for face recognition using only Mediapipe models. The face recognition model is saved in our repository \cite{touchlessdronecontrol}.
+Since we are using Mediapipe, we opted to use their Face Landmark model to extract 478 3-dimensional face landmarks. This model works in conjunction with the BlazeFace detection model and the Face mesh model. Figure \ref{fig:face_landmark} shows the difference in outputs of each model.
+
+We applied these models in a similar way as we did with the hand models, using spatial positions of the landmarks. Firstly, we collected our data, labeling each capture of the face with a label. Then, we trained a simple KNN model to predict the person in the picture. However, since our database is not large (as we only tested with two people, and the prediction is real-time), it is difficult to conclude whether the model is sufficient for higher usage. Nevertheless, it demonstrates an alternative way for face recognition using only Mediapipe models. The face recognition model is saved in our repository \cite{touchlessdronecontrol}.
+
+\clearpage
 
 
 
 
-
-If we incorporate the authorization feature into our work, we would need to include only one additional step in the logic of our program. After detecting the face, the BlazeFace model would then verify whether the face belongs to someone authorized in our database. The suggested logic flowchart is illustrated in Figure \ref{fig:flowchart2.pdf}.
-
-
-\begin{figure}[ht]
+\begin{figure}[ht!]
 	\centering
 	\includegraphics[width=\textwidth]{images/flowchart2.pdf}
-	\caption{Possiblr workflow of the drone control and facial recoginition system with implemented authorization.}
+	\caption{Possible workflow of the drone control and facial recoginition system with implemented authorization.}
 	\label{fig:flowchart2.pdf}
 \end{figure}
+
+If we incorporate the authorization feature into our work, we would need to include only one additional step in the logic of our program. After detecting the face, the BlazeFace model would then verify whether the face belongs to someone authorized in our database. The program would then proceed with palm detection, followed by landmark location and prediction.
+The suggested logic flowchart is illustrated in Figure \ref{fig:flowchart2.pdf}.
+

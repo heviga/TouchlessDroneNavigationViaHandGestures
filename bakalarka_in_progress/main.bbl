@@ -123,6 +123,19 @@ Yang You, Yuhui Wang, Huan Zhang, Zhao Zhang, James Demmel, and Cho{-}Jui
 \newblock The limit of the batch size.
 \newblock {\em CoRR}, abs/2006.08517, 2020.
 
+\bibitem{dwina2018skin}
+Novira Dwina, Fitri Arnia, and Khairul Munadi.
+\newblock Skin segmentation based on improved thresholding method.
+\newblock In {\em 2018 International ECTI Northern Section Conference on
+  Electrical, Electronics, Computer and Telecommunications Engineering
+  (ECTI-NCON)}, pages 95--99. IEEE, 2018.
+
+\bibitem{Mod_Maasum_2015}
+Farah Farhana~Mod Ma'asum, Suhana Sulaiman, and Azilah Saparon.
+\newblock An overview of hand gestures recognition system techniques.
+\newblock {\em IOP Conference Series: Materials Science and Engineering},
+  99(1):012012, nov 2015.
+
 \bibitem{bhuyan2017review}
 M.~K. Bhuyan, M.~K. Bhuyan, and A.~Gogoi.
 \newblock A review on hand gesture recognition techniques, challenges, and
@@ -136,12 +149,6 @@ Google~AI Blog.
 \newblock
   \href{https://ai.googleblog.com/2019/08/on-devicereal-time-hand-tracking-with.html}{Blog
   Post} Accessed: December, 2023.
-
-\bibitem{DBLP:journals/corr/abs-1708-02002}
-Tsung{-}Yi Lin, Priya Goyal, Ross~B. Girshick, Kaiming He, and Piotr
-  Doll{\'{a}}r.
-\newblock Focal loss for dense object detection.
-\newblock {\em CoRR}, abs/1708.02002, 2017.
 
 \bibitem{GoogleHandLandmarker}
 Google.

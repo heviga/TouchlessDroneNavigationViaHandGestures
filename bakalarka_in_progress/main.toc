@@ -26,6 +26,6 @@
 \contentsline {section}{\numberline {3.4}Results}{27}{section.3.4}%
 \contentsline {section}{\numberline {3.5}Drone Implementation}{34}{section.3.5}%
 \contentsline {section}{\numberline {3.6}Future Work}{37}{section.3.6}%
-\contentsline {chapter}{\numberline {4}Conclusions}{40}{chapter.4}%
-\contentsline {chapter}{\numberline {A}Resumé}{42}{appendix.A}%
-\contentsline {chapter}{Bibliography}{45}{Item.13}%
+\contentsline {chapter}{\numberline {4}Conclusions}{41}{chapter.4}%
+\contentsline {chapter}{\numberline {A}Resumé}{43}{appendix.A}%
+\contentsline {chapter}{Bibliography}{46}{Item.13}%

@@ -9,7 +9,7 @@
 \contentsline {figure}{\numberline {2.5}{\ignorespaces A diagram of the NN softmax classification process.}}{11}{figure.caption.12}%
 \contentsline {figure}{\numberline {2.6}{\ignorespaces Softmax/Sigmoid function and Rectifier function.}}{12}{figure.caption.13}%
 \contentsline {figure}{\numberline {2.7}{\ignorespaces Visualization of dropout.}}{17}{figure.caption.16}%
-\contentsline {figure}{\numberline {2.8}{\ignorespaces Cyberglove II and visualization of its sensors. }}{18}{figure.caption.17}%
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Cyberglove II and visualization of its sensors. }}{19}{figure.caption.17}%
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Hand landmarks model output of non-ideal picture input.}}{22}{figure.caption.18}%
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Process of normalization of three landmark coordinates.}}{23}{figure.caption.19}%
@@ -25,7 +25,7 @@
 \contentsline {figure}{\numberline {3.12}{\ignorespaces Logic in the recognition process.}}{35}{figure.caption.32}%
 \contentsline {figure}{\numberline {3.13}{\ignorespaces Tello drone used in this project.}}{36}{figure.caption.33}%
 \contentsline {figure}{\numberline {3.14}{\ignorespaces Gesture recognition shots from the drone camera right before command execution.}}{37}{figure.caption.35}%
-\contentsline {figure}{\numberline {3.15}{\ignorespaces Outputs of FaceBlaze and Face Landmark model.}}{38}{figure.caption.36}%
-\contentsline {figure}{\numberline {3.16}{\ignorespaces Possiblr workflow of the drone control and facial recoginition system with implemented authorization.}}{39}{figure.caption.37}%
+\contentsline {figure}{\numberline {3.15}{\ignorespaces Outputs of FaceBlaze and Face Landmark model, otputting 6 and 478 landmarks.}}{38}{figure.caption.36}%
+\contentsline {figure}{\numberline {3.16}{\ignorespaces Possible workflow of the drone control and facial recoginition system with implemented authorization.}}{39}{figure.caption.37}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }

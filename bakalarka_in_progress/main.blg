@@ -32,45 +32,45 @@ Too many commas in name 1 of "Cheng-Ying Yang, Yi-Nan Lin, Sheng-Kuan Wang, Vict
 while executing---line 944 of file unsrt.bst
 Too many commas in name 1 of "Cheng-Ying Yang, Yi-Nan Lin, Sheng-Kuan Wang, Victor R.L. Shen, Yi-Chih Tung, Frank H.C. Shen and Chun-Hsiang Huang" for entry doi:10.1080/08839514.2023.2176607
 while executing---line 944 of file unsrt.bst
-You've used 34 entries,
+You've used 35 entries,
             1791 wiz_defined-function locations,
-            642 strings with 10191 characters,
-and the built_in function-call counts, 8253 in all, are:
-= -- 717
-> -- 400
-< -- 10
-+ -- 147
-- -- 113
-* -- 491
-:= -- 1246
-add.period$ -- 104
-call.type$ -- 34
-change.case$ -- 33
+            651 strings with 10478 characters,
+and the built_in function-call counts, 8643 in all, are:
+= -- 759
+> -- 405
+< -- 11
++ -- 149
+- -- 114
+* -- 519
+:= -- 1293
+add.period$ -- 108
+call.type$ -- 35
+change.case$ -- 34
 chr.to.int$ -- 0
-cite$ -- 35
-duplicate$ -- 372
-empty$ -- 812
-format.name$ -- 113
-if$ -- 1897
+cite$ -- 36
+duplicate$ -- 392
+empty$ -- 856
+format.name$ -- 114
+if$ -- 1995
 int.to.chr$ -- 0
-int.to.str$ -- 34
-missing$ -- 25
-newline$ -- 172
-num.names$ -- 36
-pop$ -- 147
+int.to.str$ -- 35
+missing$ -- 26
+newline$ -- 177
+num.names$ -- 37
+pop$ -- 153
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 234
+skip$ -- 244
 stack$ -- 0
-substring$ -- 463
-swap$ -- 130
-text.length$ -- 10
+substring$ -- 505
+swap$ -- 139
+text.length$ -- 11
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 1
-while$ -- 73
-width$ -- 36
-write$ -- 367
+while$ -- 78
+width$ -- 37
+write$ -- 379
 (There were 5 error messages)
